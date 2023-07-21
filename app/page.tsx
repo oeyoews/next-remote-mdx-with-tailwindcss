@@ -1,95 +1,51 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import { type MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import { promises as fs } from "fs";
+import { MdxContent } from "./mdx-content";
 
-export default function Home() {
+type Frontmatter = {
+  title: string;
+  date: string;
+};
+
+type Post<TFrontmatter> = {
+  serialized: MDXRemoteSerializeResult;
+  frontmatter: TFrontmatter;
+};
+
+async function getPost(filepath: string): Promise<Post<Frontmatter>> {
+  // Read the file from the filesystem
+  const raw = await fs.readFile(filepath, "utf-8");
+
+  // Serialize the MDX content and parse the frontmatter
+  const serialized = await serialize(raw, {
+    parseFrontmatter: true,
+  });
+
+  // Typecast the frontmatter to the correct type
+  const frontmatter = serialized.frontmatter as Frontmatter;
+
+  // Return the serialized content and frontmatter
+  return {
+    frontmatter,
+    serialized,
+  };
+}
+
+export default async function Home() {
+  // Get the serialized content and frontmatter
+  const { serialized, frontmatter } = await getPost("content/post.mdx");
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+    <main>
+      <section className="w-2/3 bg-neutral-100 prose mx-auto my-4 p-4 rounded">
+        <article>
+          <h1>{frontmatter.title}</h1>
+          <p>Published {frontmatter.date}</p>
+          <hr />
+          <MdxContent source={serialized} />
+        </article>
+      </section>
     </main>
-  )
+  );
 }
