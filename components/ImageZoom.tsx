@@ -1,5 +1,6 @@
 import { ComponentProps, useRef } from 'react'
 import mediumZoom, { Zoom, ZoomOptions } from 'medium-zoom'
+// TODO
 // import Image from 'next/image'
 
 type ImageZoomProps = ComponentProps<'img'> & {

@@ -3,9 +3,10 @@ import path from "path";
 import { type MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import remarkGFM from 'remark-gfm'
-// import rehypeAutolinkHeadings, {
-// 	type Options as AutolinkOptions,
-// } from 'rehype-autolink-headings';
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+// import rehypePrettyCode from "rehype-pretty-code";
+import remarkToc from 'remark-toc'
+import rehypeSlug from "rehype-slug";
 // https://github.com/kfirfitousi/blog/blob/4169a4268764a46ba61e6ea5ed51e459a73926e5/contentlayer.config.ts#L7
 
 type Frontmatter = {
@@ -28,15 +29,19 @@ const rootDirectory = path.join(process.cwd(), 'content')
 export async function getPost(fileName: string): Promise<Post> {
 	// TODO: why filename have default .mdx
 	// Read the file from the filesystem
-	const filePath = path.join(rootDirectory, `${fileName}`)
+	fileName = fileName.replace(/\.mdx$/, '');
+	const filePath = path.join(rootDirectory, `${fileName}.mdx`)
 	const rawFileContent = await fs.readFile(filePath, "utf-8");
 
 	// Serialize the MDX content and parse the frontmatter
 	const contentHtml = await serialize(rawFileContent, {
 		parseFrontmatter: true,
 		mdxOptions: {
-			remarkPlugins: [remarkGFM],
+			remarkPlugins: [remarkGFM, remarkToc],
 			rehypePlugins: [
+				// rehypeAutolinkHeadings,
+				rehypeSlug
+				// rehypePrettyCode
 			],
 			format: 'mdx',
 		},
