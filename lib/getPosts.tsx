@@ -3,7 +3,7 @@ import path from "path";
 import { type MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import remarkGFM from 'remark-gfm'
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+// import rehypeAutolinkHeadings from "rehype-autolink-headings";
 // import rehypePrettyCode from "rehype-pretty-code";
 import remarkToc from 'remark-toc'
 import rehypeSlug from "rehype-slug";
