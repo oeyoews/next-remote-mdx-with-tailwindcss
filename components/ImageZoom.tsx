@@ -1,6 +1,6 @@
 import { ComponentProps, useRef } from 'react'
 import mediumZoom, { Zoom, ZoomOptions } from 'medium-zoom'
-import Image from 'next/image'
+// import Image from 'next/image'
 
 type ImageZoomProps = ComponentProps<'img'> & {
 	options?: ZoomOptions
@@ -28,5 +28,5 @@ export function ImageZoom({ options, ...props }: ImageZoomProps) {
 	}
 
 	// use Image
-	return <Image {...props} ref={attachZoom} />
+	return <img {...props} ref={attachZoom} />
 }
