@@ -1,6 +1,10 @@
 "use client"; // NOTE: This is required!
 
+// use dynamic import
+// https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote
+
 import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
+import Image from "next/image";
 
 type MdxContentProps = {
   source: MDXRemoteSerializeResult;
@@ -8,12 +12,7 @@ type MdxContentProps = {
 
 /** Place your custom MDX components here */
 const MdxComponents = {
-  /** h1 colored in yellow */
-  h1: (props: React.HTMLProps<HTMLHeadingElement>) => <h1 {...props} />,
-  /** Card component */
-  Card: (props: React.HTMLProps<HTMLDivElement>) => (
-    <div className="bg-neutral-100 shadow-md p-2 my-2" {...props} />
-  ),
+  Img: (props: React.HTMLProps<HTMLDivElement>) => <Image {...props} />,
 };
 
 export function MdxContent({ source }: MdxContentProps) {
