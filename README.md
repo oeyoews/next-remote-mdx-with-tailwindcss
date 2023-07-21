@@ -5,6 +5,7 @@ https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/webs
 * support highlight code
 * zoom image
 * support og
+* https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
 * support meta
 * support meta
 * 支持递归
