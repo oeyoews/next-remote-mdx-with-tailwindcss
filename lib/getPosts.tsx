@@ -1,4 +1,5 @@
 import { promises as fs, readdirSync } from "fs";
+import path from "path";
 import { type MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 
@@ -16,9 +17,12 @@ type Post = {
 	frontmatter: Frontmatter;
 };
 
-export async function getPost(filepath: string): Promise<Post> {
+const rootDirectory = path.join(process.cwd(), 'content')
+
+export async function getPost(fileName: string): Promise<Post> {
 	// Read the file from the filesystem
-	const rawFileContent = await fs.readFile(filepath, "utf-8");
+	const filePath = path.join(rootDirectory, `${fileName}`)
+	const rawFileContent = await fs.readFile(filePath, "utf-8");
 
 	// Serialize the MDX content and parse the frontmatter
 	const contentHtml = await serialize(rawFileContent, {
@@ -44,7 +48,7 @@ export async function getAllPosts() {
 	// Iterate over each MDX file
 	for (const file of mdxFiles) {
 		// Get the post data for the current file
-		const post = await getPost(`content/${file}`);
+		const post = await getPost(`${file}`);
 		// Add the post to the posts array
 		posts.push(post);
 	}
