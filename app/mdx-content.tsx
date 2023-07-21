@@ -12,7 +12,8 @@ type MdxContentProps = {
 
 /** Place your custom MDX components here */
 const MdxComponents = {
-  Img: (props: React.HTMLProps<HTMLDivElement>) => <Image {...props} />,
+  Img: (props: { src: string; alt: string; height?: number; width?: number }) => <Image src={props.src as string}
+    alt={props.alt} height={props.height} width={props.width} />,
 };
 
 export function MdxContent({ source }: MdxContentProps) {
