@@ -16,7 +16,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 	return (
 		<main className="bg-neutral-100 prose mx-auto my-4 rounded max-w-none sm:w-full md:w-2/3 p-4">
 			<article>
-				<h1 className="capitalize">{post.frontmatter.title}</h1>
+				<h1 className="capitalize">{slug}</h1>
 				<p className="text-center">{post.frontmatter.date}</p>
 				<p className="text-center">{post.frontmatter.description}</p>
 				<MdxContent source={post.contentHtml} />

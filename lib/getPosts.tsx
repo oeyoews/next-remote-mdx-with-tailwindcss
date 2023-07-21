@@ -8,6 +8,7 @@ type Frontmatter = {
 	date: string;
 	description?: string;
 	cover?: string;
+	slug?: string;
 };
 
 type Post = {
