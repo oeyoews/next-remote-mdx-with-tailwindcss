@@ -3,8 +3,6 @@ import path from "path";
 import { type MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import remarkGFM from 'remark-gfm'
-// import rehypeAutolinkHeadings from "rehype-autolink-headings";
-// import rehypePrettyCode from "rehype-pretty-code";
 import remarkToc from 'remark-toc'
 import rehypeSlug from "rehype-slug";
 // https://github.com/kfirfitousi/blog/blob/4169a4268764a46ba61e6ea5ed51e459a73926e5/contentlayer.config.ts#L7
@@ -39,9 +37,9 @@ export async function getPost(fileName: string): Promise<Post> {
 		mdxOptions: {
 			remarkPlugins: [remarkGFM, remarkToc],
 			rehypePlugins: [
+				// rehypePrettyCode
 				// rehypeAutolinkHeadings,
 				rehypeSlug
-				// rehypePrettyCode
 			],
 			format: 'mdx',
 		},

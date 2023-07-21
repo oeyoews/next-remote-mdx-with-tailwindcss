@@ -18,18 +18,14 @@ slug: oeyoews-hello
 
 <Img src="https://plus.unsplash.com/premium_photo-1680883415362-238794b19dde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmFubmVyfGVufDB8fDB8fHww&auto=format&fit=crop" alt="banner" width={256} height={256} className='rounded m-8' />
 
-```jsx:post.jsx
+```jsx
 "use client"; // NOTE: This is required!
 
 import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
 
 type MdxContentProps = {
   source: MDXRemoteSerializeResult;
-};
-
-/** Place your custom MDX components here */
-const MdxComponents = {
-  /** h1 colored in yellow */
+}; /** Place your custom MDX components here */ const MdxComponents = { /** h1 colored in yellow */
   h1: (props: React.HTMLProps<HTMLHeadingElement>) => <h1 {...props} />,
   /** Card component */
   Card: (props: React.HTMLProps<HTMLDivElement>) => <div {...props} />,
@@ -38,4 +34,9 @@ const MdxComponents = {
 export function MdxContent({ source }: MdxContentProps) {
   return <MDXRemote {...source} components={MdxComponents} />;
 }
+```
+
+```js
+const num = 1
+console.log('This is a dmeo')
 ```
