@@ -4,7 +4,9 @@
 // https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote
 
 import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
-import Image from "next/image";
+import { ImageZoom } from "@/components/ImageZoom";
+import { ZoomOptions } from "medium-zoom";
+import { JSX, ClassAttributes, ImgHTMLAttributes } from "react";
 
 type MdxContentProps = {
   source: MDXRemoteSerializeResult;
@@ -12,8 +14,7 @@ type MdxContentProps = {
 
 /** Place your custom MDX components here */
 const MdxComponents = {
-  Img: (props: { src: string; alt: string; height?: number; width?: number }) => <Image src={props.src as string}
-    alt={props.alt} height={props.height} width={props.width} />,
+  Img: (props: JSX.IntrinsicAttributes & ClassAttributes<HTMLImageElement> & ImgHTMLAttributes<HTMLImageElement> & { options?: ZoomOptions | undefined; }) => <ImageZoom {...props} />,
 };
 
 export function MdxContent({ source }: MdxContentProps) {
