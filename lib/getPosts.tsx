@@ -1,31 +1,15 @@
 import fs, { readdirSync } from "fs";
 import path from "path";
-import { type MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import remarkGFM from 'remark-gfm'
 import remarkToc from 'remark-toc'
 import rehypeSlug from "rehype-slug";
 // https://github.com/kfirfitousi/blog/blob/4169a4268764a46ba61e6ea5ed51e459a73926e5/contentlayer.config.ts#L7
 
-type TFrontmatter = {
-	// Define the structure of your frontmatter here
-	title: string;
-	// toDO not double quote
-	date: string;
-	description?: string;
-	cover?: string;
-	slug?: string;
-};
-
-type Post = {
-	contentHtml: MDXRemoteSerializeResult;
-	frontmatter: TFrontmatter;
-};
-
 // TODO config option
 const rootDirectory = path.join(process.cwd(), 'content')
 
-export async function getPost(fileName: string) {
+export async function getPostsMeta(fileName: string) {
 	// TODO: why filename have default .mdx
 	// Read the file from the filesystem
 	fileName = fileName.replace(/\.mdx$/, '');
@@ -68,7 +52,7 @@ export async function getAllPosts() {
 	// 	})
 	// )
 	for (const file of mdxFiles) {
-		const post = await getPost(file);
+		const post = await getPostsMeta(file);
 		posts.push(post);
 	}
 	return posts

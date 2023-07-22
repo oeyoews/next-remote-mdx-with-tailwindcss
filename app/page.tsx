@@ -6,8 +6,7 @@ export default async function App() {
 
   return (
     <main>
-      <section className="bg-neutral-100 prose mx-auto mt-16 rounded max-w-none sm:w-full md:w-1/2 p-4">
-        I'm a test
+      <section className="bg-neutral-100 prose prose-xl mx-auto mt-16 rounded max-w-none sm:w-full md:w-1/2 p-4">
         <ul className="list-none">
           {posts.map(({ frontmatter }) => (
             <li key={frontmatter.title}>

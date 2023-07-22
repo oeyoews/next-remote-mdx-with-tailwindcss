@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 	if (!post) {
 		return {
-			title: `${slug} Post Not Found`
+			title: `${decodeURIComponent(slug)} Post Not Found`
 		}
 	}
 

@@ -6,15 +6,11 @@
 import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
 import { ImageZoom } from "@/components/ImageZoom";
 
-type MdxContentProps = {
-  source: MDXRemoteSerializeResult;
-};
-
 /** Place your custom MDX components here */
 const MdxComponents = {
   Img: (props: {}) => <ImageZoom {...props} />,
 };
 
-export function CompileMdx({ source }: MdxContentProps) {
+export function CompileMdx({ source }: { source: MDXRemoteSerializeResult }) {
   return <MDXRemote {...source} components={MdxComponents} />;
 }
