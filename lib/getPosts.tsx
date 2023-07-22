@@ -5,32 +5,38 @@ import remarkGFM from 'remark-gfm'
 import remarkToc from 'remark-toc'
 import rehypeSlug from "rehype-slug";
 import remarkEmoji from 'remark-emoji'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
 
 // https://github.com/kfirfitousi/blog/blob/4169a4268764a46ba61e6ea5ed51e459a73926e5/contentlayer.config.ts#L7
 
 // TODO config option
 const rootDirectory = path.join(process.cwd(), 'content')
 
+const mdxOptions: {} = {
+	remarkPlugins: [remarkGFM, remarkToc, remarkEmoji, remarkMath,],
+	rehypePlugins: [
+		// rehypePrettyCode
+		// rehypeAutolinkHeadings,
+		// rehypePrism,
+		rehypeSlug,
+		rehypeKatex
+	],
+	format: 'mdx',
+}
+
 export async function getPostsMeta(fileName: string) {
 	// TODO: why filename have default .mdx
 	// Read the file from the filesystem
-	fileName = fileName.replace(/\.mdx$/, '');
-	const filePath = path.join(rootDirectory, `${fileName}.mdx`)
+	// NOTE: fileName 参数自带扩展名
+	const filePath = path.join(rootDirectory, `${fileName}`)
 	const rawFileContent = fs.readFileSync(filePath, "utf-8");
 
 	// Serialize the MDX content and parse the frontmatter
 	// must use promise await
 	const contentHtml = await serialize(rawFileContent, {
 		parseFrontmatter: true,
-		mdxOptions: {
-			remarkPlugins: [remarkGFM, remarkToc, remarkEmoji],
-			rehypePlugins: [
-				// rehypePrettyCode
-				// rehypeAutolinkHeadings,
-				rehypeSlug
-			],
-			format: 'mdx',
-		},
+		mdxOptions,
 	});
 
 	// Typecast the frontmatter to the correct type
@@ -54,8 +60,11 @@ export async function getAllPosts() {
 	// 	})
 	// )
 	for (const file of mdxFiles) {
-		const post = await getPostsMeta(file);
-		posts.push(post);
+		const ext = path.extname(file)
+		if (ext === '.mdx' || ext === '.md') {
+			const post = await getPostsMeta(file);
+			posts.push(post);
+		}
 	}
 	return posts.sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date))
 }

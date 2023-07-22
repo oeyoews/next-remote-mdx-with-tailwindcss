@@ -28,6 +28,6 @@ export function ImageZoom({ options, ...props }: ImageZoomProps) {
 		}
 	}
 
-	// use Image
+	// how use next/Image
 	return <img {...props} ref={attachZoom} />
 }
