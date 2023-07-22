@@ -8,8 +8,11 @@ import remarkEmoji from 'remark-emoji'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import mdxCustomComponents from "@/components/MdxComponents";
+import dotenv from 'dotenv'
 
+dotenv.config()
 // https://github.com/kfirfitousi/blog/blob/4169a4268764a46ba61e6ea5ed51e459a73926e5/contentlayer.config.ts#L7
+
 
 // TODO config option
 const rootDirectory = path.join(process.cwd(), 'content')
@@ -40,7 +43,9 @@ export async function getPostsBySlug(fileName: string) {
 }
 
 export async function getAllPostsMeta() {
-	const mdxFiles = readdirSync("content");
+
+	const MARKDOWN_PATH = process.env.MARKDOWN_PATH as string
+	const mdxFiles = readdirSync(MARKDOWN_PATH);
 	const posts = []
 
 	for (const file of mdxFiles) {
