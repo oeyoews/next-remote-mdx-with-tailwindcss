@@ -3,13 +3,15 @@ import { getAllPosts } from "@/lib/getPosts";
 import Link from "next/link";
 import { notFound } from 'next/navigation'
 
-// TODO
-// export async function generateStaticParams() {
-// 	const posts = await getAllPosts();
-// 	return posts.map((post) => ({
-// 		slug: post.frontmatter.title
-// 	}))
-// }
+// https://nextjs.org/docs/app/building-your-application/routing/colocation
+// https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
+// https://nextjs.org/docs/app/api-reference/functions/generate-static-params
+export async function generateStaticParams() {
+	const posts = await getAllPosts();
+	return posts.map((post) => ({
+		slug: post.frontmatter.title
+	}))
+}
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
 	const { slug } = params
