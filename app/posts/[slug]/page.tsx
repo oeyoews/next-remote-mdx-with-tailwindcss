@@ -2,6 +2,7 @@ import getFormattedDate from "@/lib/getFormatedDate";
 import { getAllPostsMeta, getPostsBySlug } from "@/lib/mdx";
 import Link from "next/link";
 import { notFound } from 'next/navigation'
+import 'highlight.js/styles/atom-one-dark.css'
 
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
