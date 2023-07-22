@@ -9,8 +9,11 @@ function Star() {
 }
 
 const mdxCustomComponents = {
-	Star,
-	Image
+	Star: (props: {}) => (
+		<Star />
+	),
+	Image: (props: { src: string, alt: string, height: number, width: number }) =>
+		<Image width={props.width} height={props.height} src={props.src} alt={props.alt} />
 }
 
 export default mdxCustomComponents

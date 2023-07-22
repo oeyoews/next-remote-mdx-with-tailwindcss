@@ -6,9 +6,3 @@ type TFrontmatter = {
 	slug?: string;
 	tags?: string[]
 };
-
-type Post = {
-	// contentHtml: MDXRemoteSerializeResult;
-	frontmatter: TFrontmatter;
-	rawFileContent: any;
-};
