@@ -45,7 +45,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 	return (
 		<main className="prose mx-auto my-4 rounded max-w-none sm:w-full md:w-1/2 p-4">
 			<article>
-				<h1 className="capitalize">{meta.title}</h1>
+				<h1 className="capitalize sticky top-0 bg-white/30 p-1 backdrop-blur-sm text-center">{meta.title}</h1>
 				<small className="font-serif">{pubDate}</small>
 				<p className="text-center">{meta.description}</p>
 				{content}

@@ -7,6 +7,7 @@ export default async function App() {
   if (!posts.length) {
     return (
       <main>
+        <h1>Posts</h1>
         <section className="prose prose-md mx-auto rounded max-w-none sm:w-full md:w-1/2 p-4 max-h-screen">
           <h1>Posts is empty </h1>
         </section>
@@ -18,6 +19,7 @@ export default async function App() {
   return (
     <main>
       <section className="prose prose-md mx-auto rounded max-w-none sm:w-full md:w-1/2 p-4">
+        <h1>Posts</h1>
         {posts.map(({ meta }) => (
           <div className="mb-4" key={meta.title}>
             <h2 className="capitalize">
