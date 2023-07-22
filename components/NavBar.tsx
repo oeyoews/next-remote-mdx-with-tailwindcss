@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link"
 import { FcHome } from 'react-icons/fc'
+// usepathname is a client component
 import { usePathname } from "next/navigation"
 
 export default function NavBar() {
