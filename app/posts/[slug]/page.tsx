@@ -33,18 +33,20 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function Posts({ params }: { params: { slug: string } }) {
 	const { slug } = params;
+	const decodeSlug = decodeURIComponent(slug)
 	const posts = await getAllPosts();
-	const post = posts.find((post) => post.frontmatter.title === slug);
+	const post = posts.find((post) => post.frontmatter.title === decodeSlug);
 
 	if (!post) { notFound(); }
+	const { frontmatter, contentHtml } = post
 
 	return (
 		<main className="bg-neutral-100 prose mx-auto my-4 rounded max-w-none sm:w-full md:w-2/3 p-4">
 			<article>
-				<h1 className="capitalize">{slug}</h1>
-				<small>{post.frontmatter.date}</small>
-				<p className="text-center">{post.frontmatter.description}</p>
-				<CompileMdx source={post.contentHtml} />
+				<h1 className="capitalize">{frontmatter.title}</h1>
+				<small>{frontmatter.date}</small>
+				<p className="text-center">{frontmatter.description}</p>
+				<CompileMdx source={contentHtml} />
 				<p className="flex justify-end items-end">
 					<Link href="/">Back to Home</Link>
 				</p>
