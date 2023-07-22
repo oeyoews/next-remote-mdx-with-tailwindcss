@@ -3,14 +3,19 @@
 // use dynamic import
 // https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote
 
-import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import { ImageZoom } from "@/components/ImageZoom";
 
 /** Place your custom MDX components here */
-const MdxComponents = {
+const components = {
   Img: (props: {}) => <ImageZoom {...props} />,
 };
 
-export function CompileMdx({ source }: { source: MDXRemoteSerializeResult }) {
-  return <MDXRemote {...source} components={MdxComponents} />;
+export function MdxContent(props: MDXRemoteProps) {
+  return (
+    <MDXRemote
+      {...props}
+      components={{ ...components, ...(props.components || {}) }}
+    />
+  )
 }

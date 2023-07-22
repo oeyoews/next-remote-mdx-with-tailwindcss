@@ -8,6 +8,7 @@ type TFrontmatter = {
 };
 
 type Post = {
-	contentHtml: MDXRemoteSerializeResult;
+	// contentHtml: MDXRemoteSerializeResult;
 	frontmatter: TFrontmatter;
+	rawFileContent: any;
 };

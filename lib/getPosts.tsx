@@ -1,6 +1,5 @@
 import fs, { readdirSync } from "fs";
 import path from "path";
-import { serialize } from "next-mdx-remote/serialize";
 import remarkGFM from 'remark-gfm'
 import remarkToc from 'remark-toc'
 import rehypeSlug from "rehype-slug";
@@ -35,24 +34,25 @@ export async function getPostsMeta(fileName: string) {
 
 	// Serialize the MDX content and parse the frontmatter
 	// must use promise await
-	const contentHtml = await serialize(rawFileContent, {
-		parseFrontmatter: true,
-		mdxOptions,
-	});
+	// const contentHtml = await serialize(rawFileContent, {
+	// 	parseFrontmatter: true,
+	// 	mdxOptions,
+	// });
 
 	// Typecast the frontmatter to the correct type
-	const frontmatter = contentHtml.frontmatter as TFrontmatter;
+	// const frontmatter = contentHtml.frontmatter as TFrontmatter;
 
 	// Return the serialized content and frontmatter
 	return {
-		frontmatter,
-		contentHtml,
+		rawFileContent
+		// frontmatter,
+		// contentHtml,
 	};
 }
 
 export async function getAllPosts() {
 	const mdxFiles = readdirSync("content");
-	const posts: Array<Post> = [];
+	const posts = []
 
 	// await Promise.all(
 	// 	mdxFiles.map(async (file) => {
@@ -67,5 +67,6 @@ export async function getAllPosts() {
 			posts.push(post);
 		}
 	}
-	return posts.sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date))
+	// return posts.sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date))
+	return posts
 }
