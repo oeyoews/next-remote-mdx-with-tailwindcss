@@ -15,6 +15,6 @@ const MdxComponents = {
   Img: (props: {}) => <ImageZoom {...props} />,
 };
 
-export function MdxContent({ source }: MdxContentProps) {
+export function CompileMdx({ source }: MdxContentProps) {
   return <MDXRemote {...source} components={MdxComponents} />;
 }
