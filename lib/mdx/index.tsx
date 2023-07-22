@@ -53,6 +53,14 @@ export async function getAllPostsMeta() {
 			posts.push(post);
 		}
 	}
-	// TODO 文章置顶
-	return posts.sort((a, b) => b.meta.date.localeCompare(a.meta.date))
+	posts.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
+
+	// 置顶文章
+	const pinnedPosts = posts.filter((post) => post.meta.fixed);
+	if (pinnedPosts.length > 0) {
+		const nonPinnedPosts = posts.filter((post) => !post.meta.fixed);
+		return [...pinnedPosts, ...nonPinnedPosts];
+	}
+
+	return posts;
 }

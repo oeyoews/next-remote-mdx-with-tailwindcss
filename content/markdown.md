@@ -1,6 +1,6 @@
 ---
 title: "markdown test"
-date: "2023-07-21"
+date: "2023/07/23"
 slug: oeyoews-hello
 description: "Markdown file"
 ---
