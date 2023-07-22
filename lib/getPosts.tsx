@@ -4,6 +4,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkGFM from 'remark-gfm'
 import remarkToc from 'remark-toc'
 import rehypeSlug from "rehype-slug";
+import remarkEmoji from 'remark-emoji'
+
 // https://github.com/kfirfitousi/blog/blob/4169a4268764a46ba61e6ea5ed51e459a73926e5/contentlayer.config.ts#L7
 
 // TODO config option
@@ -21,7 +23,7 @@ export async function getPostsMeta(fileName: string) {
 	const contentHtml = await serialize(rawFileContent, {
 		parseFrontmatter: true,
 		mdxOptions: {
-			remarkPlugins: [remarkGFM, remarkToc],
+			remarkPlugins: [remarkGFM, remarkToc, remarkEmoji],
 			rehypePlugins: [
 				// rehypePrettyCode
 				// rehypeAutolinkHeadings,
