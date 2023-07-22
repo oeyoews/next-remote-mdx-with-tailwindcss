@@ -1,5 +1,5 @@
 import { FaGithub } from 'react-icons/fa'
-import Image from 'next/image'
+import { ImageZoom } from './ImageZoom'
 function Star() {
 	return (
 		<div className='bg-neutral-200 p-2 rounded'>
@@ -13,7 +13,7 @@ const mdxCustomComponents = {
 		<Star />
 	),
 	Image: (props: { src: string, alt: string, height: number, width: number }) =>
-		<Image width={props.width} height={props.height} src={props.src} alt={props.alt} />
+		<ImageZoom width={props.width} height={props.height} src={props.src} alt={props.alt} />
 }
 
 export default mdxCustomComponents
