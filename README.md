@@ -4,6 +4,7 @@
 
 ## TODO
 
+* use next-mdx-remote rsc
 * only load mdx files
 * better toc https://github.com/gaoxiu333/next-blog-template/blob/main/components/Articles/ArticleTableOfContens/ArticleTableOfContens.tsx
 * support reading time
