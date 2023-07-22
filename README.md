@@ -2,8 +2,16 @@
 
 * Next13, Tailwindcss, next-mdx-remote,
 
+## Preview
+
+* https://next-remote-mdx-with-tailwindcss.vercel.app/
+
 ## TODO
 
+* support sidebar
+* use next-themes
+* support loading
+* support pwa
 * [x] use next-mdx-remote rsc
 * [x] only load mdx files
 * better toc https://github.com/gaoxiu333/next-blog-template/blob/main/components/Articles/ArticleTableOfContens/ArticleTableOfContens.tsx
