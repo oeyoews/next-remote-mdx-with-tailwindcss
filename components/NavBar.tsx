@@ -4,6 +4,7 @@ import { FiGithub, FiHome } from 'react-icons/fi'
 // usepathname is a client component
 import { usePathname } from "next/navigation"
 
+// scale not work
 export default function NavBar() {
 	const pathname = usePathname()
 	const isHomePage = pathname === "/" ? true : false

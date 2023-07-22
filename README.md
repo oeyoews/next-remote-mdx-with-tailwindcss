@@ -4,9 +4,10 @@
 
 ## Preview
 
-* https://next-remote-mdx-with-tailwindcss.vercel.app/
+* https://next-remote-mdx-with-tailwindcss.vercel.app
 
 ## TODO
+
 
 * support sidebar
 * use next-themes
@@ -14,6 +15,7 @@
 * support pwa
 * [x] use next-mdx-remote rsc
 * [x] only load mdx files
+* 可折叠toc https://github.com/Rokt33r/remark-collapse
 * better toc https://github.com/gaoxiu333/next-blog-template/blob/main/components/Articles/ArticleTableOfContens/ArticleTableOfContens.tsx
 * support reading time
 * mdx-bundler

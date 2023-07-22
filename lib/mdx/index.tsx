@@ -16,7 +16,12 @@ import mdxCustomComponents from "@/components/MdxComponents";
 const rootDirectory = path.join(process.cwd(), 'content')
 
 const mdxOptions: {} = {
-	remarkPlugins: [remarkGFM, remarkToc, remarkEmoji, remarkMath,],
+	remarkPlugins: [remarkGFM, [remarkToc, {
+		ordered: true,
+		tight: true,
+		heading: "TOC",
+		maxDepth: 3
+	}], remarkEmoji, remarkMath,],
 	rehypePlugins: [rehypeSlug, rehypeKatex],
 	format: 'mdx',
 }
