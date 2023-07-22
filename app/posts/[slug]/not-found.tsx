@@ -1,7 +1,10 @@
+import Link from "next/link"
+
 export default function NotFound() {
 	return (
-		<h1 className="min-h-screen">
-			Not Found
-		</h1>
+		<div className="prose mx-auto">
+			<h1 className=""> Not Found </h1>
+			<Link href="/">Back to Home</Link>
+		</div>
 	)
 }
