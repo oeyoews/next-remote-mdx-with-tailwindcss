@@ -9,10 +9,12 @@ import { usePathname } from "next/navigation"
 export default function NavBar() {
 	const pathname = usePathname()
 	const isHomePage = pathname === "/" ? true : false
-	const iconClasses = "inline mr-1 align-baseline stroke-blue-300 hover:scale-125 transition duration-300 hover:stroke-indigo-300"
-	const Home = <Link href="/" className="no-underline hover:underline"><FiHome className={iconClasses} /></Link>
-	const GithubLink = <Link href={"https://github.com/oeyoews/next-remote-mdx-with-tailwindcss"} className="no-underline hover:underline"><FiGithub className={iconClasses} /> </Link>
-	const AboutPage = <Link href="/about" className="no-underline hover:underline"><FcInfo className={iconClasses} /></Link>
+	const iconClasses = "inline mr-1 align-baseline stroke-blue-300 hover:scale-125 transition duration-300 hover:stroke-indigo-300 no-underline hover:underline"
+
+	const Home = <Link href="/" ><FiHome className={iconClasses} /></Link>
+	const GithubLink = <Link href={"https://github.com/oeyoews/next-remote-mdx-with-tailwindcss"}><FiGithub className={iconClasses} /> </Link>
+	const AboutPage = <Link href="/about" className="scale-110"><FcInfo className={iconClasses} /></Link>
+
 	return (
 		// sticky
 		<header className="sticky top-0 z-50 hidden md:block">
