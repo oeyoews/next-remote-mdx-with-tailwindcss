@@ -23,3 +23,4 @@ https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/webs
 
 * https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes
 * support html in mdx file
+* use daysiui

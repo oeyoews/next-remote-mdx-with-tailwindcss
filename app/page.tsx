@@ -6,18 +6,28 @@ export default async function App() {
 
   return (
     <main>
-      <section className="bg-neutral-100 prose prose-xl mx-auto mt-16 rounded max-w-none sm:w-full md:w-1/2 p-4">
-        <ul className="list-none">
-          {posts.map(({ frontmatter }) => (
-            <li key={frontmatter.title}>
-              <Link
-                href={`/posts/${frontmatter.title}`} className="capitalize"
-              >
-                {frontmatter.title}
-              </Link>
-            </li>
-          ))
-          }</ul>
+      <section className="prose prose-md mx-auto mt-16 rounded max-w-none sm:w-full md:w-1/2 p-4">
+        {posts.map(({ frontmatter }) => (
+          <div className="mb-4 " key={frontmatter.title}>
+            <h2 className="capitalize">
+              {frontmatter.title}
+            </h2>
+            <small className="text-neutral-400 mx-2 px-2 font-semibold font-serif">
+              {frontmatter.date}
+            </small>
+
+            <Link
+              href={`/posts/${frontmatter.title}`} className="no-underline hover:underline text-neutral-700"
+            >
+              Read More →
+            </Link>
+
+            <blockquote className="text-neutral-400 prose-sm mx-2">
+              {frontmatter.description}
+            </blockquote>
+          </div>
+        ))
+        }
       </section>
     </main>
   )

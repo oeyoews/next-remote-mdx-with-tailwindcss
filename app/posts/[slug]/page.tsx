@@ -41,14 +41,14 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 	const { frontmatter, contentHtml } = post
 
 	return (
-		<main className="bg-neutral-100 prose mx-auto my-4 rounded max-w-none sm:w-full md:w-2/3 p-4">
+		<main className="prose mx-auto my-4 rounded max-w-none sm:w-full md:w-1/2 p-4">
 			<article>
 				<h1 className="capitalize">{frontmatter.title}</h1>
 				<small>{frontmatter.date}</small>
 				<p className="text-center">{frontmatter.description}</p>
 				<CompileMdx source={contentHtml} />
 				<p className="flex justify-end items-end">
-					<Link href="/">Back to Home</Link>
+					<Link href="/" className="no-underline hover:underline">← Back to Home</Link>
 				</p>
 			</article>
 		</main>
