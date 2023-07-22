@@ -4,8 +4,8 @@
 
 ## TODO
 
-* use next-mdx-remote rsc
-* only load mdx files
+* [x] use next-mdx-remote rsc
+* [x] only load mdx files
 * better toc https://github.com/gaoxiu333/next-blog-template/blob/main/components/Articles/ArticleTableOfContens/ArticleTableOfContens.tsx
 * support reading time
 * mdx-bundler

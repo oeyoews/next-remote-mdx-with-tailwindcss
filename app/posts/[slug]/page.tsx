@@ -1,3 +1,4 @@
+import getFormattedDate from "@/lib/getFormatedDate";
 import { getAllPostsMeta, getPostsBySlug } from "@/lib/mdx";
 import Link from "next/link";
 import { notFound } from 'next/navigation'
@@ -40,11 +41,12 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 	const post = posts.find((post) => post.meta.slug === originalSlug);
 	if (!post) { notFound(); }
 	const { meta, content } = post
+	const pubDate = getFormattedDate(meta.date)
 	return (
 		<main className="prose mx-auto my-4 rounded max-w-none sm:w-full md:w-1/2 p-4">
 			<article>
 				<h1 className="capitalize">{meta.title}</h1>
-				<small>{meta.date}</small>
+				<small className="font-serif">{pubDate}</small>
 				<p className="text-center">{meta.description}</p>
 				{content}
 				<p className="flex justify-end items-end">

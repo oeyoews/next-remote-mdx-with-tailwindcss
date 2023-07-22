@@ -1,3 +1,4 @@
+import getFormattedDate from "@/lib/getFormatedDate";
 import { getAllPostsMeta } from "@/lib/mdx";
 import Link from "next/link";
 
@@ -13,7 +14,7 @@ export default async function App() {
               {meta.title}
             </h2>
             <small className="text-neutral-400 mx-2 px-2 font-semibold font-serif">
-              {meta.date}
+              {getFormattedDate(meta.date)}
             </small>
 
             {/* 不支持中文, 无论是filename or title, so use custom slug  */}
