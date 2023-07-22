@@ -1,6 +1,6 @@
 import { MdxContent } from "@/app/mdx-content";
 import { compileMDX } from 'next-mdx-remote/rsc'
-import { getAllPosts } from "@/lib/getPosts";
+import { getAllPosts, getPostsMeta } from "@/lib/getPosts";
 import Link from "next/link";
 import { notFound } from 'next/navigation'
 import remarkGFM from 'remark-gfm'
@@ -20,41 +20,42 @@ const mdxOptions: {} = {
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
 // https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
 // https://nextjs.org/docs/app/api-reference/functions/generate-static-params
-export async function generateStaticParams() {
-	const posts = await getAllPosts();
-	return posts.map((post) => ({
-		slug: post.frontmatter.title
-	}))
-}
+// export async function generateStaticParams() {
+// 	const posts = await getAllPosts();
+// 	return posts.map((post) => ({
+// 		slug: post.frontmatter.title
+// 	}))
+// }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-	const { slug } = params
-	// must use async await because of mdx serialize
-	const posts = await getAllPosts();
-	const post = posts.find((post) => post.frontmatter.title === slug);
+// export async function generateMetadata({ params }: { params: { slug: string } }) {
+// 	const { slug } = params
+// 	// must use async await because of mdx serialize
+// 	const posts = await getAllPosts();
+// 	const post = posts.find((post) => post.frontmatter.title === slug);
 
-	if (!post) {
-		return {
-			title: `${decodeURIComponent(slug)} Post Not Found`
-		}
-	}
+// 	if (!post) {
+// 		return {
+// 			title: `${decodeURIComponent(slug)} Post Not Found`
+// 		}
+// 	}
 
-	return {
-		title: post.frontmatter.title
-	}
-}
+// 	return {
+// 		title: post.frontmatter.title
+// 	}
+// }
 
 
 export default async function Posts({ params }: { params: { slug: string } }) {
 	const { slug } = params;
 	const decodeSlug = decodeURIComponent(slug)
 	const posts = await getAllPosts();
-	// const post = posts.find((post) => post.frontmatter.title === decodeSlug);
-	const post = "markdown.md"
+	const { rawFileContent } = posts.find((post) => {
+		return 'markdown.md';
+	})
 
-	if (!post) { notFound(); }
-	const { content, frontmatter } = await compileMDX<TFrontmatter>({
-		source: `## demo`,
+	// if (!post) { notFound(); }
+	const { frontmatter, content } = await compileMDX<TFrontmatter>({
+		source: rawFileContent,
 		options: {
 			mdxOptions, parseFrontmatter: true
 		}
