@@ -8,6 +8,7 @@ import remarkEmoji from 'remark-emoji'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 
+
 // https://github.com/kfirfitousi/blog/blob/4169a4268764a46ba61e6ea5ed51e459a73926e5/contentlayer.config.ts#L7
 
 // TODO config option
