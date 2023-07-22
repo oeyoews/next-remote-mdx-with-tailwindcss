@@ -16,8 +16,9 @@ export default function NavBar() {
 	const AboutPage = <Link href="/about" className="scale-110"><FcInfo className={iconClasses} /></Link>
 
 	return (
+		// TODO: add menubar on mobile
 		// sticky
-		<header className="sticky top-0 z-50 hidden md:block">
+		<header className="sticky top-0 z-50 ">
 			<nav className='prose max-w-none rounded-full my-4 w-2/3 mx-auto px-4 py-1 justify-end flex items-center print:hidden space-x-2'>
 				{isHomePage ? null : Home}
 				{GithubLink}
