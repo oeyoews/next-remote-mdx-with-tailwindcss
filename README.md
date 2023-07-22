@@ -10,7 +10,6 @@ https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/webs
 * support meta
 * 支持递归
 * local image ref
-* support sorted
 * toc
 * callout
 * title support whitespace

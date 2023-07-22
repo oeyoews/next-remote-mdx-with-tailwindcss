@@ -57,5 +57,5 @@ export async function getAllPosts() {
 		const post = await getPostsMeta(file);
 		posts.push(post);
 	}
-	return posts
+	return posts.sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date))
 }
