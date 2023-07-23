@@ -43,7 +43,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 	const { meta, content } = post
 	const pubDate = getFormattedDate(meta.date)
 	return (
-		<main className="prose mx-auto my-4 rounded max-w-none sm:w-full md:w-1/2 p-4">
+		<main className="prose mx-auto my-4 rounded max-w-none sm:w-full md:w-3/4 lg:w-1/2 p-4">
 			<article>
 				<h1 className="capitalize md:sticky top-0 bg-white/30 p-1 backdrop-blur-sm text-center z-40">{meta.title}</h1>
 				<small className="font-serif">{pubDate}</small>

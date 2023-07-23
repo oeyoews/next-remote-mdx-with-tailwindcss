@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   pre[data-theme='light'],
   code[data-theme='light'] {
     display: none;
@@ -14,11 +14,10 @@
   code[data-theme='dark'] {
     display: none;
   }
-}
+} */
 
 code {
   counter-reset: line;
-  /* white-space: pre-wrap; */
 }
 
 code > [data-line]::before {

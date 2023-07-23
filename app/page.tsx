@@ -15,7 +15,6 @@ export default async function App() {
     )
   }
 
-
   return (
     <main>
       <section className="prose prose-md mx-auto rounded max-w-none sm:w-full md:w-1/2 p-4">

@@ -55,7 +55,7 @@ const Pre = (props: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreEle
 	return (
 		<div className="relative">
 			<pre
-				className={wrapCode ? 'whitespace-pre-wrap' : ''}
+				className={`overflow-hidden ${wrapCode ? 'whitespace-pre-wrap' : ''}`}
 				{...props}
 				onMouseEnter={() => setIsHovered(true)}
 				onMouseLeave={() => setIsHovered(false)}
