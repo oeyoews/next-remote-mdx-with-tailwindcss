@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 	}
 
 	return {
-		title: post.meta.title
+		title: post.meta.title,
+		description: post.meta?.description
 	}
 }
 

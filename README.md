@@ -4,7 +4,7 @@
 
 ## Preview
 
-* https://next-remote-mdx-with-tailwindcss.vercel.app
+https://next-remote-mdx-with-tailwindcss.vercel.app
 
 ## NOTE
 

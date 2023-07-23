@@ -4,18 +4,15 @@ export function generateImageMetadata() {
 	return [
 		{
 			contentType: 'image/png',
-			size: { width: 48, height: 48 },
-			id: 'small',
-		},
-		{
-			contentType: 'image/png',
-			size: { width: 72, height: 72 },
-			id: 'medium',
+			size: { width: 172, height: 172 },
+			id: 'posts'
 		},
 	]
 }
 
-export default function Icon({ id }: { id: string }) {
+export default function Icon({ params }: { params: { slug: string } }) {
+
+	const title = decodeURIComponent(params.slug)
 	return new ImageResponse(
 		(
 			<div
@@ -26,11 +23,11 @@ export default function Icon({ id }: { id: string }) {
 					alignItems: 'center',
 					justifyContent: 'center',
 					fontSize: 88,
-					background: '#000',
-					color: '#fafafa',
+					background: 'transparent',
+					color: '#000',
 				}}
 			>
-				Icon {id}
+				{title}
 			</div>
 		)
 	)

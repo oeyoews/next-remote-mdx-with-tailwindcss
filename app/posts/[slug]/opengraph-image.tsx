@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/server'
 
 export const runtime = 'edge'
 
-export const alt = 'About me'
+export const alt = 'og image'
 export const size = {
   width: 1200,
   height: 630,
@@ -10,10 +10,8 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image({ params }: { params: { slug: string } }) {
-  const post = await fetch(`https://next-remote-mdx-with-tailwindcss.vercel.app/posts/${params.slug}`).then((res) =>
-    res.json()
-  )
 
+  const title = decodeURIComponent(params.slug)
   return new ImageResponse(
     (
       <div
@@ -27,11 +25,8 @@ export default async function Image({ params }: { params: { slug: string } }) {
           justifyContent: 'center',
         }}
       >
-        {post.title}
+        {title}
       </div>
-    ),
-    {
-      ...size,
-    }
+    )
   )
 }
