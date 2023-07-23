@@ -3,7 +3,7 @@ import { getAllPostsMeta } from "@/lib/mdx";
 import Link from "next/link";
 import Gravatar from "@/components/Gravatar";
 
-export default async function App() {
+export default async function AllPostsListItem() {
   const posts = await getAllPostsMeta()
   if (!posts.length) {
     return (
@@ -24,10 +24,10 @@ export default async function App() {
             <Link
               href={`/posts/${meta.slug}`} className="no-underline text-neutral-700" key={meta.slug}
             >
-              <div className="border border-slate-300 px-6 py-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" >
-                <h2 className="capitalize font-semibold font-serif">{meta.title}
+              <div className="border-2 border-slate-200 px-6 py-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" >
+                <h2 className="capitalize font-semibold font-serif truncate">{meta.title}
                 </h2>
-                <div>
+                <div className="truncate">
                   <Gravatar />
                   <small className="text-neutral-400 ml-0 mr-2 px-2 font-semibold font-serif inline">
                     {getFormattedDate(meta.date)}
