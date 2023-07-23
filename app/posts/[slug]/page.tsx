@@ -17,12 +17,12 @@ export async function generateStaticParams() {
 	}))
 }
 
+
 export async function generateMetadata({ params }: { params: { slug: string } }) {
 	const { slug } = params
 	const originalSlug = decodeURIComponent(slug)
 	const posts = await getAllPostsMeta();
 	const post = posts.find((post) => post.meta.slug === originalSlug);
-
 
 	if (!post) {
 		return {
