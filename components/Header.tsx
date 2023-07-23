@@ -14,7 +14,11 @@ function Header() {
 		</div>
 	</div>
 
-	return homePage
+	return (
+		<Link href="/">
+			{homePage}
+		</Link>
+	)
 }
 
 export default Header
