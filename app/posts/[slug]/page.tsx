@@ -54,7 +54,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 				</small>
 				<p className="text-center">{meta.description}</p>
 				{content}
-				<p className="flex justify-end items-end">
+				<p className="flex justify-end items-end mt-16 mb-0">
 					<Link href="/" className="no-underline hover:underline">← Back to Home</Link>
 				</p>
 			</article>
