@@ -13,6 +13,8 @@
 ## TODO
 
 
+* full conten search
+* next auth (sites)
 * support sweetalert2
 * support codeblock title
 * support sidebar
@@ -43,7 +45,6 @@ https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/webs
 * title support whitespace
 * https://formidable.com/open-source/react-live/
 * i18n
-* next auth (sites)
 * https://nextjs.org/docs/app/building-your-application/routing/internationalization
 
 ## links

@@ -1,8 +1,6 @@
 export default function loading() {
 	return (
-		// center this
-		<div className="prose mx-auto h-screen flex justify-center  items-center font-semibold prose-xl">Loading
-			…
+		<div className="text-center font-semibold text-xl w-1/2 mx-auto">Loading …
 		</div>
 	)
 }
