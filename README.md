@@ -12,7 +12,8 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 
 ## TODO
 
-* og: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
+<!-- * og: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image -->
+* og not support cn name now
 * full conten search
 * next auth (sites)
 * support sweetalert2
