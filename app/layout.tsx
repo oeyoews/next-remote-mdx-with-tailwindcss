@@ -29,11 +29,17 @@ export const metadata: Metadata = {
   description: process.env.DESCRIPTION,
   keywords: ['Next.js', 'React', 'JavaScript', 'Blog'],
   openGraph: {
-    images: '/next.svg',
-    title: 'Next.js',
-    description: 'The React Framework for the Web',
+    images: [
+      {
+        url: '/next.svg',
+        width: 80,
+        height: 60
+      }
+    ],
+    title: 'Next.js Blog',
+    description: 'Next.js Blog',
     // url: 'https://nextjs.org',
-    siteName: 'Next.js',
+    siteName: 'Next.js Blog',
   },
   //  metadataBase: new URL('https://acme.com'),
 }
