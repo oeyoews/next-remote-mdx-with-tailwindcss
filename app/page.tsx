@@ -18,31 +18,29 @@ export default async function App() {
 
   return (
     <main>
-      <section className="prose prose-md mx-auto rounded max-w-none sm:w-full md:w-1/2 p-4">
-        <h1>Posts</h1>
-        {posts.map(({ meta }) => (
-          <div className="mb-4" key={meta.title}>
-            <h2 className="capitalize">
-              {meta.title}
-            </h2>
-            <Gravatar />
-            <small className="text-neutral-400 ml-0 mr-2 px-2 font-semibold font-serif inline">
-              {getFormattedDate(meta.date)}
-            </small>
-
-            {/* 不支持中文, 无论是filename or title, so use custom slug  */}
-            <Link
-              href={`/posts/${meta.slug}`} className="no-underline hover:underline text-neutral-700"
-            >
-              Read More →
-            </Link>
-
-            <blockquote className="text-neutral-400 prose-sm mx-2">
-              {meta.description}
-            </blockquote>
-          </div>
-        ))
-        }
+      <section className="mx-auto sm:w-full md:w-1/2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mx-2">
+          {posts.map(({ meta }) => (
+            <div className="border border-slate-300 p-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" key={meta.title}>
+              <Link
+                href={`/posts/${meta.slug}`} className="no-underline text-neutral-700"
+              >
+                <h2 className="capitalize font-semibold font-serif">{meta.title}
+                </h2>
+                <div>
+                  <Gravatar />
+                  <small className="text-neutral-400 ml-0 mr-2 px-2 font-semibold font-serif inline">
+                    {getFormattedDate(meta.date)}
+                  </small>
+                </div>
+              </Link>
+              <p className="text-slate-700">
+                {meta.description}
+              </p>
+            </div>
+          ))
+          }
+        </div>
       </section>
     </main>
   )

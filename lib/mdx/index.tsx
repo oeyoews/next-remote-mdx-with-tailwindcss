@@ -70,6 +70,7 @@ export async function getAllPostsMeta() {
 	posts.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
 
 	// 置顶文章
+	// 随机文章
 	const pinnedPosts = posts.filter((post) => post.meta.fixed);
 	if (pinnedPosts.length > 0) {
 		const nonPinnedPosts = posts.filter((post) => !post.meta.fixed);
