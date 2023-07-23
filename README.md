@@ -13,6 +13,7 @@
 ## TODO
 
 
+* support sweetalert2
 * support codeblock title
 * support sidebar
 * use next-themes
