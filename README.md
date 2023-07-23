@@ -1,6 +1,6 @@
 ## README
 
-* Next13, Tailwindcss, next-mdx-remote,
+* Next13, Tailwindcss, next-mdx-remote, og:image
 
 ## Preview
 
@@ -11,7 +11,6 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 <!-- * codeblock on dev is very slow for ui -->
 
 ## TODO
-
 
 * og: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
 * full conten search
@@ -52,4 +51,3 @@ https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/webs
 * https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes
 * support html in mdx file
 * use daysiui
-
