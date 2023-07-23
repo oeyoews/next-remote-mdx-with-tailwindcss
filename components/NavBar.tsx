@@ -19,7 +19,7 @@ export default function NavBar() {
 		// TODO: add menubar on mobile
 		// sticky
 		<header className="sticky top-0 z-50">
-			<nav className='prose max-w-none rounded-full my-4 lg:w-2/3 mx-auto px-4 py-1 justify-end flex items-center print:hidden space-x-2'>
+			<nav className='prose max-w-none rounded-full my-4 lg:w-2/3 mx-auto px-4 py-1 justify-end flex items-center print:hidden space-x-2 prose-xl'>
 				{isHomePage ? null : Home}
 				{GithubLink}
 				{AboutPage}

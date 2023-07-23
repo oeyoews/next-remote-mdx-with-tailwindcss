@@ -6,6 +6,10 @@
 
 * https://next-remote-mdx-with-tailwindcss.vercel.app
 
+## NOTE
+
+<!-- * codeblock on dev is very slow for ui -->
+
 ## TODO
 
 

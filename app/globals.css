@@ -18,6 +18,7 @@
 
 code {
   counter-reset: line;
+  /* white-space: pre-wrap; */
 }
 
 code > [data-line]::before {

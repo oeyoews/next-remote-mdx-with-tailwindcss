@@ -25,10 +25,11 @@ const mdxOptions: {} = {
 	}], remarkEmoji, remarkMath,],
 	rehypePlugins: [rehypeSlug, rehypeKatex,
 		[rehypePrettyCode, {
-			theme: {
-				dark: 'one-dark-pro',
-				light: 'one-dark-pro'
-			},
+			theme: 'one-dark-pro',
+			// theme: {
+			// 	dark: 'one-dark-pro',
+			// 	light: 'one-dark-pro'
+			// },
 			keepBackground: false,
 		}],],
 	format: 'mdx',
