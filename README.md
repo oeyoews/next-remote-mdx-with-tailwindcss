@@ -13,6 +13,7 @@
 ## TODO
 
 
+* og: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
 * full conten search
 * next auth (sites)
 * support sweetalert2
@@ -34,7 +35,6 @@ https://github.com/gaoxiu333/next-blog-template
 https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/website/post.js#L8
 * support highlight code
 * zoom image
-* support og
 * https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
 * support meta
 * support meta
