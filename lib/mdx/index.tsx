@@ -7,7 +7,7 @@ import rehypeSlug from "rehype-slug";
 import remarkEmoji from 'remark-emoji'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
-import rehypeHighlight from 'rehype-highlight'
+import rehypePrettyCode from 'rehype-pretty-code';
 import mdxCustomComponents from "@/components/MdxComponents";
 
 // https://github.com/kfirfitousi/blog/blob/4169a4268764a46ba61e6ea5ed51e459a73926e5/contentlayer.config.ts#L7
@@ -23,7 +23,14 @@ const mdxOptions: {} = {
 		heading: "TOC",
 		maxDepth: 3
 	}], remarkEmoji, remarkMath,],
-	rehypePlugins: [rehypeSlug, rehypeKatex, rehypeHighlight],
+	rehypePlugins: [rehypeSlug, rehypeKatex,
+		[rehypePrettyCode, {
+			theme: {
+				dark: 'one-dark-pro',
+				light: 'one-dark-pro'
+			},
+			keepBackground: false,
+		}],],
 	format: 'mdx',
 }
 

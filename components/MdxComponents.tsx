@@ -1,5 +1,6 @@
 import { FaGithub } from 'react-icons/fa'
 import { ImageZoom } from './ImageZoom'
+import Pre from './CopyCode'
 function Star() {
 	return (
 		<div className='bg-neutral-200 p-2 rounded'>
@@ -9,6 +10,7 @@ function Star() {
 }
 
 const mdxCustomComponents = {
+	pre: Pre,
 	Star: (props: {}) => (
 		<Star />
 	),
