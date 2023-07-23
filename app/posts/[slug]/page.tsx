@@ -2,6 +2,8 @@ import getFormattedDate from "@/lib/getFormatedDate";
 import { getAllPostsMeta } from "@/lib/mdx";
 import Link from "next/link";
 import { notFound } from 'next/navigation'
+import Image from "next/image";
+import Gravatar from "@/components/Gravatar";
 
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
@@ -46,7 +48,10 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 		<main className="prose mx-auto my-4 rounded max-w-none sm:w-full md:w-3/4 lg:w-1/2 p-4">
 			<article>
 				<h1 className="capitalize md:sticky top-0 bg-white/30 p-1 backdrop-blur-sm text-center z-40">{meta.title}</h1>
-				<small className="font-serif">{pubDate}</small>
+				<Gravatar />
+				<small className="font-serif text-gray-400">
+					{pubDate}
+				</small>
 				<p className="text-center">{meta.description}</p>
 				{content}
 				<p className="flex justify-end items-end">

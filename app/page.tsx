@@ -1,6 +1,7 @@
 import getFormattedDate from "@/lib/getFormatedDate";
 import { getAllPostsMeta } from "@/lib/mdx";
 import Link from "next/link";
+import Gravatar from "@/components/Gravatar";
 
 export default async function App() {
   const posts = await getAllPostsMeta()
@@ -24,7 +25,8 @@ export default async function App() {
             <h2 className="capitalize">
               {meta.title}
             </h2>
-            <small className="text-neutral-400 mx-2 px-2 font-semibold font-serif">
+            <Gravatar />
+            <small className="text-neutral-400 ml-0 mr-2 px-2 font-semibold font-serif inline">
               {getFormattedDate(meta.date)}
             </small>
 
