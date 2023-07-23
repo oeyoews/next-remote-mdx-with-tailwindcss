@@ -1,3 +1,4 @@
+import { getAllPostsMeta } from '@/lib/mdx'
 import { ImageResponse } from 'next/server'
 
 export const runtime = 'edge'
@@ -11,7 +12,11 @@ export const contentType = 'image/png'
 
 export default async function Image({ params }: { params: { slug: string } }) {
 
-  const title = decodeURIComponent(params.slug)
+  const originalSlug = decodeURIComponent(params.slug)
+  const posts = await getAllPostsMeta();
+  const post = posts.find((post) => post.meta.slug === originalSlug);
+  if (!post) return null
+
   return new ImageResponse(
     (
       <div
@@ -49,7 +54,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
             }}
           />
         </div>
-        {title.toUpperCase()}
+        {post.meta.title}
       </div>
     )
   )
