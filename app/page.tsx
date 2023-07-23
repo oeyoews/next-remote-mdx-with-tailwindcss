@@ -22,7 +22,7 @@ export default async function App() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mx-2">
           {posts.map(({ meta }) => (
             <Link
-              href={`/posts/${meta.slug}`} className="no-underline text-neutral-700"
+              href={`/posts/${meta.slug}`} className="no-underline text-neutral-700" key={meta.slug}
             >
               <div className="border border-slate-300 px-6 py-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" >
                 <h2 className="capitalize font-semibold font-serif">{meta.title}
