@@ -1,0 +1,16 @@
+{
+	"name": "Blog App",
+	"short_name": "Blog App",
+	"icons": [
+		{
+			"src": "/avatar.png",
+			"size": "80x80",
+			"type": "image/png"
+		}
+	],
+	"theme_color": "#FFFFFF",
+	"background_color": "#FFFFFF",
+	"start_url": "/",
+	"display": "standalone",
+	"orientation": "portrait"
+}
