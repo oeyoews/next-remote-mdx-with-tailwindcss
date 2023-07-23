@@ -1,0 +1,79 @@
+---
+title: Mdx Syntax Test
+date: "2023-07-22"
+description: This is a hello page with mdx
+alias: oeyoews-hello
+---
+
+```js showLineNumbers
+const [age, setAge] = useState(50); const [age, setAge] = useState(50); const [age, setAge] = useState(50); const [name, setName] = useState('Taylor');
+```
+
+```js title="hello.js" {1,2} caption="show line highlight"
+const [age, setAge] = useState(50);
+const [name, setName] = useState('Taylor');
+```
+
+```js /age/#v /name/#v /setAge/#s /setName/#s /50/#i /'Taylor'/#i
+const [age, setAge] = useState(50);
+const [name, setName] = useState('Taylor');
+```
+
+This is an array `console.log("This is a demo"){:js}` of numbers 1 through 3.
+
+```tsx title="main.tsx" caption="This is a dmeo for tsx"
+"use client"; // NOTE: This is required!
+
+import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
+
+type MdxContentProps = {
+  source: MDXRemoteSerializeResult;
+}; /** Place your custom MDX components here */ const MdxComponents = { /** h1 colored in yellow */
+  h1: (props: React.HTMLProps<HTMLHeadingElement>) => <h1 {...props} />,
+  /** Card component */
+  Card: (props: React.HTMLProps<HTMLDivElement>) => <div {...props} />,
+};
+
+export function MdxContent({ source }: MdxContentProps) {
+  return <MDXRemote {...source} components={MdxComponents} />;
+}
+```
+
+```js
+const num = 1
+console.log('This is a dmeo')
+```
+
+$$
+\ce{CO2 + C -> 2 CO}
+$$
+
+$E=mc^2$
+
+$$
+\ce{Hg^2+ ->[I-] HgI2 ->[I-] [Hg^{II}I4]^2-}
+$$
+
+
+$$
+E = mc^2
+$$
+
+## Components
+
+{/* navbar has hydration on client on refreshed */}
+This is a github icon
+<Star />
+
+<Image src="/girl.avif" width={256} height={256} alt="girl" />
+<Image src="/next.svg" width={256} height={256} alt="next"/>
+<Image src="/vercel.svg" width={256} height={256} alt="vercel"/>
+
+~~demo~~
+
+* demo
+* dmeo
+
+1. demo
+2. demo
+  1. demo
