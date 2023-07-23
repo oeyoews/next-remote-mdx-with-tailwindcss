@@ -2,7 +2,6 @@ import getFormattedDate from "@/lib/getFormatedDate";
 import { getAllPostsMeta } from "@/lib/mdx";
 import Link from "next/link";
 import { notFound } from 'next/navigation'
-import Image from "next/image";
 import Gravatar from "@/components/Gravatar";
 
 

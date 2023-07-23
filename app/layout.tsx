@@ -6,8 +6,8 @@ import Header from '@/components/Header'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Next Mdx with TailwindCSS',
-  description: 'Next Mdx with TailwindCSS demo project',
+  title: process.env.TITLE,
+  description: process.env.DESCRIPTION
 }
 
 export default function RootLayout({
