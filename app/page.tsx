@@ -24,7 +24,7 @@ export default async function App() {
             <Link
               href={`/posts/${meta.slug}`} className="no-underline text-neutral-700"
             >
-              <div className="border border-slate-300 p-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" >
+              <div className="border border-slate-300 px-6 py-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" >
                 <h2 className="capitalize font-semibold font-serif">{meta.title}
                 </h2>
                 <div>
