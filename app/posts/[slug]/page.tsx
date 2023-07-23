@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 
+// support click h1 title to scroll top
 export default async function Posts({ params }: { params: { slug: string } }) {
 	const { slug } = params;
 	const originalSlug = decodeURIComponent(slug)

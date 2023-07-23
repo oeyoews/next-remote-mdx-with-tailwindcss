@@ -21,10 +21,10 @@ export default async function App() {
       <section className="mx-auto sm:w-full md:w-1/2">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mx-2">
           {posts.map(({ meta }) => (
-            <div className="border border-slate-300 p-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" key={meta.title}>
-              <Link
-                href={`/posts/${meta.slug}`} className="no-underline text-neutral-700"
-              >
+            <Link
+              href={`/posts/${meta.slug}`} className="no-underline text-neutral-700"
+            >
+              <div className="border border-slate-300 p-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" >
                 <h2 className="capitalize font-semibold font-serif">{meta.title}
                 </h2>
                 <div>
@@ -33,13 +33,10 @@ export default async function App() {
                     {getFormattedDate(meta.date)}
                   </small>
                 </div>
-              </Link>
-              <p className="text-slate-700">
-                {meta.description}
-              </p>
-            </div>
-          ))
-          }
+              </div>
+            </Link>
+          ))}
+
         </div>
       </section>
     </main>
