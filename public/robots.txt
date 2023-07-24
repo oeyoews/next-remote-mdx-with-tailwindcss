@@ -4,6 +4,3 @@ Allow: /
 
 # Host
 Host: https://next-remote-mdx-with-tailwindcss.vercel.app
-
-# Sitemaps
-Sitemap: https://next-remote-mdx-with-tailwindcss.vercel.app/sitemap.xml

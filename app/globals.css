@@ -16,6 +16,17 @@
   }
 } */
 
+/* conflict to prose */
+@layer base {
+  a {
+    @apply !no-underline hover:!underline hover:decoration-dotted
+  }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 code {
   counter-reset: line;
 }

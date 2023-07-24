@@ -35,15 +35,15 @@ const PassWord = ({ content, originPassword }: any) => {
 		<div>
 			{!showContent && (
 				<div className="text-center">
-					<p className="text-red-400 font-bold">私密文章, 请输入密码查看</p>
 					<form onSubmit={handlePasswordSubmit}>
 						<input
+							placeholder=' 请输入密码查看'
 							type="password"
 							value={password}
 							onChange={handlePasswordInput}
 							className="p-1 rounded bg-neutral-100 hover:bg-neutral-200 border-none outline-none transition duration-300"
 						/>
-						<button type="submit" className="p-2 bg-green-300 ml-1 rounded hover:bg-green-400 transition duration-300"><FcUnlock className='scale-125' /></button>
+						<button type="submit" className="p-2 bg-neutral-200 ml-1 rounded hover:bg-neutral-300 transition duration-300"><FcUnlock className='scale-125' /></button>
 						{error && <p className="text-red-400">密码错误，请重新输入。</p>}
 					</form>
 				</div>

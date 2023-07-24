@@ -1,7 +1,6 @@
 import getFormattedDate from "@/lib/getFormatedDate";
 import { getAllPostsMeta } from "@/lib/mdx";
 import Link from "next/link";
-import Gravatar from "@/components/Gravatar";
 
 export default async function AllPostsListItem() {
   const posts = await getAllPostsMeta()
@@ -17,28 +16,22 @@ export default async function AllPostsListItem() {
   }
 
   return (
-    <main>
-      <section className="mx-auto sm:w-full md:w-1/2 mt-12">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mx-2">
-          {posts.map(({ meta }) => (
-            <Link
-              href={`/posts/${meta.slug}`} className="no-underline text-neutral-700" key={meta.slug}
-            >
-              <div className="border-2 border-slate-200 px-6 py-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" >
-                <h2 className="capitalize font-semibold font-serif truncate">{meta.title}
-                </h2>
-                <div className="truncate">
-                  <Gravatar />
-                  <small className="text-neutral-400 ml-0 mr-2 px-2 font-semibold font-serif inline">
-                    {getFormattedDate(meta.date)}
-                  </small>
-                </div>
-              </div>
-            </Link>
-          ))}
-
-        </div>
-      </section>
-    </main>
+    <section className="mx-auto sm:w-full md:w-1/2 mt-12">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 mx-2">
+        {posts.map(({ meta }) => (
+          <Link
+            href={`/posts/${meta.slug}`} className="hover:no-underline text-neutral-700" key={meta.slug}
+          >
+            <div className="border border-neutral-200 px-6 py-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" >
+              <h2 className="capitalize font-semibold font-serif truncate">{meta.title}
+              </h2>
+              <small className="text-neutral-400 mr-2 py-2 font-semibold font-serif inline">
+                {getFormattedDate(meta.date)}
+              </small>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
   )
 }

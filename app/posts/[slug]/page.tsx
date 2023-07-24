@@ -49,27 +49,27 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 	const { meta, content } = post
 	const pubDate = getFormattedDate(meta.date)
 	return (
-		<main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-3/4 lg:w-1/2 p-4">
+		// <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2">
+		<article className="prose prose-indigo mx-auto mt-4 mb-0 sm:w-full md:1/2">
 			<ProgressBar />
-			<article>
-				<h1 className="capitalize sticky top-0.5 bg-white/30 p-1 backdrop-blur-sm text-center z-0 hover:cursor-pointer" onClick={scrollTop}>{meta.title}</h1>
-				<div className="text-center not-prose">
-					<Gravatar />
-					<small className="font-serif text-gray-400">
-						{pubDate}
-					</small>
-					{meta.cover && <ImageZoom src={meta.cover} alt={meta.title} width={1920} className="rounded-md mt-2" />}
-				</div>
+			{/* sticky backdrop-blur-sm */}
+			<h2 className="capitalize top-0.5 bg-white/30 p-1 text-center hover:cursor-pointer my-2" onClick={scrollTop}>{meta.title}</h2>
+			<div className="text-center not-prose">
+				<Gravatar />
+				<small className="font-serif text-gray-400">
+					{pubDate}
+				</small>
+				{meta.cover && <ImageZoom src={meta.cover} alt={meta.title} width={1920} className="rounded-md mt-2" />}
+			</div>
 
-				<blockquote className="my-2 text-slate-400 mb-8">
-					{meta.description}
-				</blockquote>
+			<blockquote className="my-2 text-slate-400 mb-8">
+				{meta.description}
+			</blockquote>
 
-				{meta.password ? <PassWord content={content} originPassword={meta.password} /> : content}
-				<p className="flex justify-end items-end mt-16 mb-0">
-					<Link href="/" className="no-underline hover:underline">← Back to Home</Link>
-				</p>
-			</article>
-		</main>
+			{meta.password ? <PassWord content={content} originPassword={meta.password} /> : content}
+			<p className="flex justify-end items-end mt-16 mb-0">
+				<Link href="/">← Back to Home</Link>
+			</p>
+		</article>
 	);
 }
