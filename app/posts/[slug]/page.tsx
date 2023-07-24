@@ -60,7 +60,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
       <ProgressBar />
       {/* sticky backdrop-blur-sm */}
       <h2
-        className="top-0.5 my-2 bg-white/30 p-1 text-center capitalize hover:cursor-pointer"
+        className="my-2 bg-white/30 p-1 text-center capitalize hover:cursor-pointer"
         onClick={scrollTop}
       >
         {meta.title}
