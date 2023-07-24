@@ -11,7 +11,7 @@ export default function NavBar() {
 	const AboutPage = <Link href="/about" className="scale-110"><FcInfo className={iconClasses} /></Link>
 
 	return (
-		<nav className="sticky top-0 flex justify-between items-center p-2 mx-auto sm:w-full lg:w-1/2 print:hidden text-xl bg-white">
+		<nav className="sticky top-0 flex justify-between items-center p-2 mx-auto sm:w-full lg:w-1/2 print:hidden text-xl bg-white z-50">
 			<div className="flex items-center">
 				<Link href='/'>
 					<Image src="/next.svg" alt='Next.js Logo' width={100} height={37} />

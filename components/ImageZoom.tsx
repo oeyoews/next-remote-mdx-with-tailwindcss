@@ -1,8 +1,9 @@
 'use client';
-import { ComponentProps, useRef } from 'react'
+import { useRef } from 'react'
 import mediumZoom, { Zoom, ZoomOptions } from 'medium-zoom'
+import Image, { ImageProps } from 'next/image'
 
-type ImageZoomProps = ComponentProps<'img'> & {
+interface ImageZoomProps extends ImageProps {
 	options?: ZoomOptions
 }
 
@@ -27,6 +28,5 @@ export function ImageZoom({ options, ...props }: ImageZoomProps) {
 		}
 	}
 
-	// how use next/Image
-	return <img {...props} ref={attachZoom} />
+	return <Image {...props} ref={attachZoom} />
 }

@@ -12,7 +12,7 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 
 ## TODO
 
-- [ ] support password
+- [x] support password
 <!-- * og: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image -->
 * og not support cn name now
 * full context search
@@ -35,7 +35,7 @@ https://github.com/gaoxiu333/next-blog-template
 - [ ] support rss
 https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/website/post.js#L8
 * support highlight code
-* zoom image
+* [x] zoom image
 * https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
 * support meta
 * support meta

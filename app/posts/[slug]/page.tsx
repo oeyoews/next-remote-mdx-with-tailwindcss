@@ -50,7 +50,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 	const pubDate = getFormattedDate(meta.date)
 	return (
 		// <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2">
-		<article className="prose prose-indigo mx-auto mt-4 mb-0 sm:w-full md:1/2">
+		<article className="prose prose-indigo mx-auto mt-4 sm:w-full md:1/2">
 			<ProgressBar />
 			{/* sticky backdrop-blur-sm */}
 			<h2 className="capitalize top-0.5 bg-white/30 p-1 text-center hover:cursor-pointer my-2" onClick={scrollTop}>{meta.title}</h2>
@@ -59,7 +59,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 				<small className="font-serif text-gray-400">
 					{pubDate}
 				</small>
-				{meta.cover && <ImageZoom src={meta.cover} alt={meta.title} width={1920} className="rounded-md mt-2" />}
+				{meta.cover && <ImageZoom src={meta.cover} alt={meta.title} width={1920} height={1080} className="rounded-md mt-2" />}
 			</div>
 
 			<blockquote className="my-2 text-slate-400 mb-8">
@@ -67,7 +67,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 			</blockquote>
 
 			{meta.password ? <PassWord content={content} originPassword={meta.password} /> : content}
-			<p className="flex justify-end items-end mt-16 mb-0">
+			<p className="flex justify-end items-end mt-16 mb-8">
 				<Link href="/">← Back to Home</Link>
 			</p>
 		</article>
