@@ -5,5 +5,6 @@ type TFrontmatter = {
 	cover?: string;
 	slug?: string;
 	tags?: string[]
+	draft?: boolean,
 	fixed?: boolean
 };

@@ -64,6 +64,10 @@ export async function getAllPostsMeta() {
 		const ext = path.extname(file)
 		if (ext === '.mdx' || ext === '.md') {
 			const post = await getPostsBySlug(file);
+			// 判断是否包含draft字段，如果包含则跳过当前文章
+			if (post.meta.draft) {
+				continue;
+			}
 			posts.push(post);
 		}
 	}
