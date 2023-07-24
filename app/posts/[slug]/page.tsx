@@ -6,6 +6,7 @@ import Gravatar from "@/components/Gravatar";
 import { ImageZoom } from "@/components/ImageZoom";
 import scrollTop from "@/lib/scrollTop";
 import PassWord from "@/components/PassWord";
+import ProgressBar from "@/components/ProgressBar";
 
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
@@ -47,11 +48,11 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 	if (!post) { notFound(); }
 	const { meta, content } = post
 	const pubDate = getFormattedDate(meta.date)
-
 	return (
 		<main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-3/4 lg:w-1/2 p-4">
+			<ProgressBar />
 			<article>
-				<h1 className="capitalize sticky top-0 bg-white/30 p-1 backdrop-blur-sm text-center z-40 hover:cursor-pointer" onClick={scrollTop}>{meta.title}</h1>
+				<h1 className="capitalize sticky top-0.5 bg-white/30 p-1 backdrop-blur-sm text-center z-0 hover:cursor-pointer" onClick={scrollTop}>{meta.title}</h1>
 				<div className="text-center not-prose">
 					<Gravatar />
 					<small className="font-serif text-gray-400">
