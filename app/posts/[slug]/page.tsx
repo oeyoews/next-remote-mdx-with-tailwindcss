@@ -1,14 +1,14 @@
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
-import Gravatar from '@/components/Gravatar';
-import { ImageZoom } from '@/components/ImageZoom';
-import PassWord from '@/components/PassWord';
-import ProgressBar from '@/components/ProgressBar';
+import Gravatar from "@/components/Gravatar";
+import { ImageZoom } from "@/components/ImageZoom";
+import PassWord from "@/components/PassWord";
+import ProgressBar from "@/components/ProgressBar";
 
-import getFormattedDate from '@/lib/getFormatedDate';
-import { getAllPostsMeta } from '@/lib/mdx';
-import scrollTop from '@/lib/scrollTop';
+import getFormattedDate from "@/lib/getFormatedDate";
+import { getAllPostsMeta } from "@/lib/mdx";
+import scrollTop from "@/lib/scrollTop";
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
 // https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
@@ -56,7 +56,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
   const pubDate = getFormattedDate(meta.date);
   return (
     // <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2">
-    <article className="md:1/2 prose prose-indigo mx-auto mt-4 sm:w-full">
+    <article className="md:1/2 prose prose-indigo mx-auto mt-4 p-4 sm:w-full">
       <ProgressBar />
       {/* sticky backdrop-blur-sm */}
       <h2
