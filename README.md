@@ -35,6 +35,7 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 - [ ] support slug
 - [ ] not found page
 - [ ] support rss
+      rss parser
       https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/website/post.js#L8
 
 * support highlight code
