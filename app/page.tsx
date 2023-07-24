@@ -1,6 +1,7 @@
-import getFormattedDate from "@/lib/getFormatedDate";
-import { getAllPostsMeta } from "@/lib/mdx";
-import Link from "next/link";
+import Link from 'next/link';
+
+import getFormattedDate from '@/lib/getFormatedDate';
+import { getAllPostsMeta } from '@/lib/mdx';
 
 export default async function AllPostsListItem() {
   const posts = await getAllPostsMeta();

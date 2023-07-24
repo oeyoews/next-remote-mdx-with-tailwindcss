@@ -1,9 +1,11 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import NavBar from '@/components/NavBar'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] })
+import NavBar from '@/components/NavBar';
+
+import './globals.css';
+
+const inter = Inter({ subsets: ['latin'] });
 
 // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
 export const metadata: Metadata = {
@@ -22,7 +24,10 @@ export const metadata: Metadata = {
     },
   },
   generator: 'Next.js',
-  authors: [{ name: 'oeyoews' }, { name: 'oeyoews', url: 'https://github.com/oeyoews' }],
+  authors: [
+    { name: 'oeyoews' },
+    { name: 'oeyoews', url: 'https://github.com/oeyoews' },
+  ],
   creator: 'oeyoews',
   applicationName: 'Next.js',
   title: process.env.TITLE,
@@ -33,8 +38,8 @@ export const metadata: Metadata = {
       {
         url: '/next.svg',
         width: 80,
-        height: 60
-      }
+        height: 60,
+      },
     ],
     title: 'Next.js Blog',
     description: 'Next.js Blog',
@@ -42,12 +47,12 @@ export const metadata: Metadata = {
     siteName: 'Next.js Blog',
   },
   //  metadataBase: new URL('https://acme.com'),
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -56,5 +61,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }

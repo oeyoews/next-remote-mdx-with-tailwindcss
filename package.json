@@ -8,11 +8,13 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
+    "format": "prettier --write .",
     "lint": "next lint"
   },
   "dependencies": {
     "@react-three/fiber": "^8.13.5",
     "@tailwindcss/typography": "^0.5.9",
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",

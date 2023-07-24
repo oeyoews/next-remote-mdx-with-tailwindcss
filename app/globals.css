@@ -19,12 +19,12 @@
 /* conflict to prose */
 @layer base {
   a {
-    @apply !no-underline hover:!underline hover:decoration-dotted
+    @apply !no-underline hover:!underline hover:decoration-dotted;
   }
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 code {
