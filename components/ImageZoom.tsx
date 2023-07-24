@@ -31,5 +31,12 @@ export function ImageZoom({ options, ...props }: ImageZoomProps) {
     }
   }
 
-  return <Image {...props} ref={attachZoom} />;
+  return (
+    <figure>
+      <Image {...props} ref={attachZoom} />
+      <figcaption className="text-slate-400 text-sm mt-1 font-serif">
+        {props.alt}
+      </figcaption>
+    </figure>
+  );
 }

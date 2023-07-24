@@ -2,7 +2,8 @@ type TFrontmatter = {
   title: string;
   date: string;
   description?: string;
-  cover?: string | any;
+  cover?: string;
+  coverAlt: string;
   slug?: string;
   tags?: string[];
   draft?: boolean;

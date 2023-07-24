@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-import Gravatar from "@/components/Gravatar";
-import { ImageZoom } from "@/components/ImageZoom";
-import PassWord from "@/components/PassWord";
-import ProgressBar from "@/components/ProgressBar";
+import Gravatar from '@/components/Gravatar';
+import { ImageZoom } from '@/components/ImageZoom';
+import PassWord from '@/components/PassWord';
+import ProgressBar from '@/components/ProgressBar';
 
-import getFormattedDate from "@/lib/getFormatedDate";
-import { getAllPostsMeta } from "@/lib/mdx";
-import scrollTop from "@/lib/scrollTop";
+import getFormattedDate from '@/lib/getFormatedDate';
+import { getAllPostsMeta } from '@/lib/mdx';
+import scrollTop from '@/lib/scrollTop';
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
 // https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
@@ -58,10 +58,10 @@ export default async function Posts({ params }: { params: { slug: string } }) {
     // <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2">
     <article className="md:1/2 prose prose-indigo mx-auto mt-4 p-4 sm:w-full">
       <ProgressBar />
-      {/* sticky backdrop-blur-sm */}
+      {/* sticky backdrop-blur-sm hover:cursor-pointer */}
       <h2
-        className="my-2 bg-white/30 p-1 text-center capitalize hover:cursor-pointer"
-        onClick={scrollTop}
+        className="my-2 bg-white/30 p-1 text-center capitalize font-serif"
+        // onClick={scrollTop}
       >
         {meta.title}
       </h2>
@@ -71,7 +71,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
         {meta.cover && (
           <ImageZoom
             src={meta.cover}
-            alt={meta.title}
+            alt={meta.coverAlt}
             width={1920}
             height={1080}
             className="mt-2 rounded-md"
