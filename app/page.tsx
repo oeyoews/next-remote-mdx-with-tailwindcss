@@ -3,29 +3,32 @@ import { getAllPostsMeta } from "@/lib/mdx";
 import Link from "next/link";
 
 export default async function AllPostsListItem() {
-  const posts = await getAllPostsMeta()
+  const posts = await getAllPostsMeta();
   if (!posts.length) {
     return (
       <main>
         <h1>Posts</h1>
-        <section className="prose prose-md mx-auto rounded max-w-none sm:w-full md:w-1/2 p-4 max-h-screen">
+        <section className="prose-md prose mx-auto max-h-screen max-w-none rounded p-4 sm:w-full md:w-1/2">
           <h1>Posts is empty </h1>
         </section>
       </main>
-    )
+    );
   }
 
   return (
-    <section className="mx-auto sm:w-full md:w-1/2 mt-12">
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 mx-2">
+    <section className="mx-auto mt-12 sm:w-full md:w-1/2">
+      <div className="mx-2 grid grid-cols-1 gap-4 lg:grid-cols-2">
         {posts.map(({ meta }) => (
           <Link
-            href={`/posts/${meta.slug}`} className="hover:no-underline text-neutral-700" key={meta.slug}
+            href={`/posts/${meta.slug}`}
+            className="text-neutral-700 hover:no-underline"
+            key={meta.slug}
           >
-            <div className="border border-neutral-200 px-6 py-4 rounded-md shadow-sm bg-white  hover:bg-neutral-200 transition duration-300 hover:cursor-pointer" >
-              <h2 className="capitalize font-semibold font-serif truncate">{meta.title}
+            <div className="rounded-md border border-neutral-200 bg-white px-6 py-4 shadow-sm  transition duration-300 hover:cursor-pointer hover:bg-neutral-200">
+              <h2 className="truncate font-serif font-semibold capitalize">
+                {meta.title}
               </h2>
-              <small className="text-neutral-400 mr-2 py-2 font-semibold font-serif inline">
+              <small className="mr-2 inline py-2 font-serif font-semibold text-neutral-400">
                 {getFormattedDate(meta.date)}
               </small>
             </div>
@@ -33,5 +36,5 @@ export default async function AllPostsListItem() {
         ))}
       </div>
     </section>
-  )
+  );
 }
