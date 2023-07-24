@@ -8,7 +8,6 @@ import ProgressBar from '@/components/ProgressBar';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPostsMeta } from '@/lib/mdx';
-import scrollTop from '@/lib/scrollTop';
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
 // https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
@@ -71,7 +70,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
         {meta.cover && (
           <ImageZoom
             src={meta.cover}
-            alt={meta.coverAlt}
+            alt={meta.title}
             width={1920}
             height={1080}
             className="mt-2 rounded-md"

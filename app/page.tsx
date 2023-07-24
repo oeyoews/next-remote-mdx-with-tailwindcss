@@ -22,12 +22,12 @@ export default async function AllPostsListItem() {
         {posts.map(({ meta }) => (
           <Link
             href={`/posts/${meta.slug}`}
-            className="text-neutral-700 hover:no-underline"
+            className="text-neutral-700 hover:!no-underline"
             key={meta.slug}
           >
-            <div className="rounded-md border border-neutral-200 bg-white px-6 py-4 shadow-sm  transition duration-300 hover:cursor-pointer hover:bg-neutral-200">
-              <h2 className="truncate font-serif font-semibold capitalize">
-                {meta.title}
+            <div className="rounded-md border border-neutral-200 bg-white px-6 py-4 shadow-sm  transition duration-300 hover:cursor-pointer hover:bg-neutral-200 text-xl">
+              <h2 className="truncate font-semibold capitalize">
+                {meta.title} <span className="font-bold">→</span>
               </h2>
               <small className="mr-2 inline py-2 font-serif font-semibold text-neutral-400">
                 {getFormattedDate(meta.date)}

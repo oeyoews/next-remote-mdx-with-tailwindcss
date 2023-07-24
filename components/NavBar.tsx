@@ -1,20 +1,20 @@
-import { FcInfo } from "react-icons/fc";
-import { FiGithub } from "react-icons/fi";
+import { FcInfo } from 'react-icons/fc';
+import { FiGithub } from 'react-icons/fi';
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 // scale not work
 export default function NavBar() {
   const iconClasses =
-    "inline mr-1 align-baseline stroke-blue-300 hover:scale-125 transition duration-300 hover:stroke-indigo-300";
+    'inline mr-1 align-baseline stroke-blue-300 hover:scale-125 transition duration-300 hover:stroke-indigo-300';
 
   const GithubLink = (
     <a
       target="_blank"
-      href={"https://github.com/oeyoews/next-remote-mdx-with-tailwindcss"}
+      href={'https://github.com/oeyoews/next-remote-mdx-with-tailwindcss'}
     >
-      <FiGithub className={iconClasses} />{" "}
+      <FiGithub className={iconClasses} />{' '}
     </a>
   );
   const AboutPage = (

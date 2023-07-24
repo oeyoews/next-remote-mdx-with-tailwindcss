@@ -1,12 +1,17 @@
-type TFrontmatter = {
+interface TMetaOptions {
   title: string;
   date: string;
-  description?: string;
-  cover?: string;
+}
+
+interface TMetaAdditionialOptions {
+  description: string;
+  cover: string;
   coverAlt: string;
-  slug?: string;
-  tags?: string[];
-  draft?: boolean;
-  password?: string | number;
-  fixed?: boolean;
-};
+  slug: string;
+  tags: string[];
+  draft: boolean;
+  password: string | number;
+  fixed: boolean;
+}
+
+type TFrontmatter = TMetaOptions & Partial<TMetaAdditionialOptions>;
