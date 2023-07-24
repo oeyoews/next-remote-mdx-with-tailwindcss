@@ -34,19 +34,25 @@ const PassWord = ({ content, originPassword }: any) => {
 	return (
 		<div>
 			{!showContent && (
-				<div className="text-center">
-					<form onSubmit={handlePasswordSubmit}>
+				<>
+					<form onSubmit={handlePasswordSubmit} className='flex space-x-2 justify-center items-center'>
 						<input
-							placeholder=' 请输入密码查看'
+							placeholder=' 请输入密码'
 							type="password"
 							value={password}
 							onChange={handlePasswordInput}
 							className="p-1 rounded bg-neutral-100 hover:bg-neutral-200 border-none outline-none transition duration-300"
 						/>
-						<button type="submit" className="p-2 bg-neutral-200 ml-1 rounded hover:bg-neutral-300 transition duration-300"><FcUnlock className='scale-125' /></button>
-						{error && <p className="text-red-400">密码错误，请重新输入。</p>}
+						<button type="submit" className="p-2 bg-neutral-200 rounded hover:bg-neutral-300 transition duration-300">
+
+							<FcUnlock className='scale-125' />
+						</button>
 					</form>
-				</div>
+					<div className='flex justify-center items-center space-x-2'>
+						{error && <p className="text-red-600 font-semibold">
+							密码错误</p>}
+					</div>
+				</>
 			)}
 
 			{showContent && content}
