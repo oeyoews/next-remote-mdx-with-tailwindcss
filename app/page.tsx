@@ -18,7 +18,7 @@ export default async function AllPostsListItem() {
 
   return (
     <main>
-      <section className="mx-auto sm:w-full md:w-1/2">
+      <section className="mx-auto sm:w-full md:w-1/2 mt-12">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mx-2">
           {posts.map(({ meta }) => (
             <Link

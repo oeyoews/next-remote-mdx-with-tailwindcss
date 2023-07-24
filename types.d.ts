@@ -1,10 +1,10 @@
 type TFrontmatter = {
-	title: string;
-	date: string;
-	description?: string;
-	cover?: string;
-	slug?: string;
+	title: string
+	date: string
+	description?: string
+	cover?: string | any
+	slug?: string
 	tags?: string[]
-	draft?: boolean,
+	draft?: boolean
 	fixed?: boolean
 };

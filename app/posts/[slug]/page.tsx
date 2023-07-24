@@ -3,6 +3,8 @@ import { getAllPostsMeta } from "@/lib/mdx";
 import Link from "next/link";
 import { notFound } from 'next/navigation'
 import Gravatar from "@/components/Gravatar";
+import Image from 'next/image'
+import { ImageZoom } from "@/components/ImageZoom";
 
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
@@ -46,14 +48,15 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 	const { meta, content } = post
 	const pubDate = getFormattedDate(meta.date)
 	return (
-		<main className="prose prose-indigo mx-auto my-4 rounded max-w-none sm:w-full md:w-3/4 lg:w-1/2 p-4">
+		<main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-3/4 lg:w-1/2 p-4">
 			<article>
 				<h1 className="capitalize sticky top-0 bg-white/30 p-1 backdrop-blur-sm text-center z-40">{meta.title}</h1>
-				<div className="text-center">
+				<div className="text-center not-prose">
 					<Gravatar />
 					<small className="font-serif text-gray-400">
 						{pubDate}
 					</small>
+					{meta.cover && <ImageZoom src={meta.cover} alt={meta.title} width={1920} className="rounded-md mt-2" />}
 				</div>
 
 				<blockquote className="my-2 text-slate-400 mb-8">
