@@ -6,5 +6,6 @@ type TFrontmatter = {
 	slug?: string
 	tags?: string[]
 	draft?: boolean
+	password?: string | number,
 	fixed?: boolean
 };

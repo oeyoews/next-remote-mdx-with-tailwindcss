@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import Gravatar from "@/components/Gravatar";
 import { ImageZoom } from "@/components/ImageZoom";
 import scrollTop from "@/lib/scrollTop";
+import PassWord from "@/components/PassWord";
 
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
@@ -37,7 +38,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 	}
 }
 
-
 // support click h1 title to scroll top
 export default async function Posts({ params }: { params: { slug: string } }) {
 	const { slug } = params;
@@ -47,6 +47,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 	if (!post) { notFound(); }
 	const { meta, content } = post
 	const pubDate = getFormattedDate(meta.date)
+
 	return (
 		<main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-3/4 lg:w-1/2 p-4">
 			<article>
@@ -63,7 +64,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 					{meta.description}
 				</blockquote>
 
-				{content}
+				{meta.password ? <PassWord content={content} originPassword={meta.password} /> : content}
 				<p className="flex justify-end items-end mt-16 mb-0">
 					<Link href="/" className="no-underline hover:underline">← Back to Home</Link>
 				</p>

@@ -12,13 +12,14 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 
 ## TODO
 
+* support password
 <!-- * og: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image -->
 * og not support cn name now
-* full conten search
+* full context search
 * next auth (sites)
 * support sweetalert2
 * support codeblock title
-* support sidebar
+* support sidebar maybe with framer-motion
 * use next-themes
 * support loading
 * support pwa
