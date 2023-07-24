@@ -4,6 +4,7 @@ import { FiGithub, FiHome, } from 'react-icons/fi'
 import { FcInfo } from 'react-icons/fc'
 // usepathname is a client component
 import { usePathname } from "next/navigation"
+import Image from 'next/image'
 
 // scale not work
 export default function NavBar() {
@@ -17,14 +18,17 @@ export default function NavBar() {
 
 	return (
 		// TODO: add menubar on mobile
-		// sticky
-		// use header or nav
-		<header className="sticky top-0 z-50">
-			<nav className='prose max-w-none rounded-full my-4 lg:w-2/3 mx-auto px-4 py-1 justify-end flex items-center print:hidden space-x-2 prose-xl'>
+		<nav className="sticky top-0 flex flex-between items-center p-2 w-1/2 mx-auto print:hidden text-xl">
+			<div className="flex items-center">
+				<Link href='/'>
+					<Image src="/next.svg" alt='Next.js Logo' width={100} height={37} />
+				</Link>
+			</div>
+			<div className='flex'>
 				{isHomePage ? null : Home}
 				{GithubLink}
 				{AboutPage}
-			</nav>
-		</header>
+			</div>
+		</nav>
 	)
 }
