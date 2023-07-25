@@ -51,10 +51,15 @@ const mdxOptions: {} = {
 };
 
 // 不要主动调用这个函数, 在没有检查文件是否存在的情况下
-export async function getPostsBySlug(fileName: string) {
+export async function getPostBySlug(fileName: string) {
   // support md, mdx
   const realSlug = fileName.replace(/\.mdx?$/, '');
   const filePath = path.join(rootDirectory, fileName);
+
+  // if (!fs.existsSync(filePath)) {
+  //   return null;
+  // }
+
   const rawFileContent = fs.readFileSync(filePath, 'utf-8');
 
   const { frontmatter, content } = await compileMDX<TFrontmatter>({
@@ -73,13 +78,18 @@ export async function getPostsBySlug(fileName: string) {
 
 export async function getAllPostsMeta() {
   const MARKDOWN_PATH = process.env.MARKDOWN_PATH as string;
-  const mdxFiles = readdirSync(MARKDOWN_PATH);
+  const mdxFileDirectory = readdirSync(MARKDOWN_PATH);
+
+  // if (!fs.existsSync(mdxFileDirectory as any)) {
+  //   return null;
+  // }
+
   const posts: Post[] = [];
 
-  for (const file of mdxFiles) {
+  for (const file of mdxFileDirectory) {
     const ext = path.extname(file);
     if (ext === '.mdx' || ext === '.md') {
-      const post = await getPostsBySlug(file);
+      const post = await getPostBySlug(file);
       // 判断是否包含draft字段，如果包含则跳过当前文章
       if (post.meta.draft) {
         continue;
@@ -98,4 +108,10 @@ export async function getAllPostsMeta() {
   }
 
   return posts;
+}
+
+// promise return bug
+export async function getExistPostBySlug(slug: string) {
+  const posts = await getAllPostsMeta();
+  return posts.find((post) => post.meta.slug === slug) || null;
 }

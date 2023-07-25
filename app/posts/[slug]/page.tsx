@@ -48,6 +48,7 @@ export default async function Posts({ params }: { params: { slug: string } }) {
   const originalSlug = decodeURIComponent(slug);
   const posts = await getAllPostsMeta();
   const post = posts.find((post) => post.meta.slug === originalSlug);
+
   if (!post) {
     notFound();
   }
