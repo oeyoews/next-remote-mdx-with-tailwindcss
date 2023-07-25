@@ -1,4 +1,4 @@
-interface KeyboardNavigationProps {
+interface PostNavigationProps {
   prevPost: Post;
   nextPost: Post;
 }

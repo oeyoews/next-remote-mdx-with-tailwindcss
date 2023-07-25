@@ -1,10 +1,10 @@
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import Gravatar from '@/components/Gravatar';
 import { ImageZoom } from '@/components/ImageZoom';
 import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
+import PostNavigation from '@/components/PostNav';
 import TransitionWrapper from '@/components/TransitionWrapper';
 import ProgressBar from '@/components/framer-motion/ProgressBar';
 
@@ -111,22 +111,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           content
         )}
         <hr />
-        <div className="justify-between items-center sm:block md:flex ">
-          {prevPost && (
-            <p className="mb-4 text-center">
-              <Link href={`/posts/${prevPost.meta.slug}`}>
-                ← {prevPost.meta.title}
-              </Link>
-            </p>
-          )}
-          {nextPost && (
-            <p className="mb-4 text-center">
-              <Link href={`/posts/${nextPost.meta.slug}`}>
-                {nextPost.meta.title} →
-              </Link>
-            </p>
-          )}
-        </div>
+        <PostNavigation prevPost={prevPost} nextPost={nextPost} />
       </article>
     </TransitionWrapper>
   );
