@@ -106,7 +106,11 @@ export default async function Post({ params }: { params: { slug: string } }) {
         </blockquote>
 
         {meta.password ? (
-          <PassWord content={content} originPassword={meta.password} />
+          <PassWord
+            content={content}
+            originPassword={meta.password}
+            title={meta.title}
+          />
         ) : (
           content
         )}

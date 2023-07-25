@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { FcUnlock } from 'react-icons/fc';
 
-const PassWord = ({ content, originPassword }: any) => {
+const PassWord = ({ title, content, originPassword }: any) => {
   const [password, setPassword] = useState('');
   const [showContent, setShowContent] = useState(false);
   const [error, setError] = useState(false);
@@ -14,9 +14,15 @@ const PassWord = ({ content, originPassword }: any) => {
 
   const handlePasswordSubmit = (e: any) => {
     e.preventDefault();
-    // 这里假设预设的密码是"password"
-    console.log(password, originPassword);
     if (password === originPassword) {
+      // 获取已存储的密码对象
+      const storedPasswords = JSON.parse(
+        localStorage.getItem('PostPasswords') || '{}',
+      );
+      // 更新或添加postname对应的密码
+      storedPasswords[title] = { password };
+      // 存储更新后的密码对象
+      localStorage.setItem('PostPasswords', JSON.stringify(storedPasswords));
       setShowContent(true);
       setError(false);
     } else {
@@ -24,12 +30,27 @@ const PassWord = ({ content, originPassword }: any) => {
     }
   };
 
+  const checkPassword = () => {
+    const storedPasswords = JSON.parse(
+      localStorage.getItem('PostPasswords') || '{}',
+    );
+    const storedPassword = storedPasswords[title]?.password;
+    return storedPassword === originPassword;
+  };
+
   useEffect(() => {
-    // 在showContent状态改变时，滚动到顶部
-    if (showContent) {
-      window.scrollTo(0, 0);
+    const isPasswordSaved = checkPassword();
+    if (isPasswordSaved) {
+      setShowContent(true);
     }
-  }, [showContent]);
+  }, []);
+
+  // useEffect(() => {
+  //   // 在showContent状态改变时，滚动到顶部
+  //   if (showContent) {
+  //     window.scrollTo(0, 0);
+  //   }
+  // }, [showContent]);
 
   return (
     <div>
