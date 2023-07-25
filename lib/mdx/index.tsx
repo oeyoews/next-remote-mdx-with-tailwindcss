@@ -63,16 +63,18 @@ export async function getPostsBySlug(fileName: string) {
     components: mdxCustomComponents,
   });
 
-  return {
+  const post: Post = {
     meta: { ...frontmatter, slug: realSlug },
     content,
   };
+
+  return post;
 }
 
 export async function getAllPostsMeta() {
   const MARKDOWN_PATH = process.env.MARKDOWN_PATH as string;
   const mdxFiles = readdirSync(MARKDOWN_PATH);
-  const posts = [];
+  const posts: Post[] = [];
 
   for (const file of mdxFiles) {
     const ext = path.extname(file);

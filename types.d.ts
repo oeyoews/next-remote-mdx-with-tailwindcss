@@ -15,3 +15,8 @@ interface TMetaAdditionialOptions {
 }
 
 type TFrontmatter = TMetaOptions & Partial<TMetaAdditionialOptions>;
+
+interface Post {
+  meta: TFrontmatter;
+  content: any;
+}
