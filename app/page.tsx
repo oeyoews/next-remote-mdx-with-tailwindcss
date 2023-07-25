@@ -8,6 +8,7 @@ import { getAllPostsMeta } from '@/lib/mdx';
 export default async function AllPostsListItem() {
   const posts = await getAllPostsMeta();
   const totalPosts = posts.length;
+
   if (!totalPosts) {
     return (
       <main>
@@ -46,6 +47,7 @@ export default async function AllPostsListItem() {
           posts 🚀
         </div>
       </section>
+      {/* <Paging pageCount={10} /> */}
     </TransitionWrapper>
   );
 }
