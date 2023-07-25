@@ -69,7 +69,9 @@ export default async function Posts({ params }: { params: { slug: string } }) {
         <small className="font-serif text-gray-400">{pubDate}</small>
         {meta.cover && (
           <ImageZoom
+            placeholder="blur"
             src={meta.cover}
+            blurDataURL="https://images.unsplash.com/photo-1690184432588-81068877d852?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"
             alt={meta.title}
             width={1920}
             height={1080}
