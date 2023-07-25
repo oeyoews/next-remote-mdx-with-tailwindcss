@@ -8,6 +8,7 @@ import { getAllPostsMeta } from '@/lib/mdx';
 export default async function AllPostsListItem() {
   const posts = await getAllPostsMeta();
   const totalPosts = posts.length;
+
   if (!posts.length) {
     return (
       <main>
@@ -43,7 +44,7 @@ export default async function AllPostsListItem() {
         <div className="text-center mt-8 text-neutral-600 font-serif">
           You have
           <span className="font-bold mx-1">{totalPosts}</span>
-          posts 🚀
+          posts and updated {new Date().toLocaleDateString()} 🚀
         </div>
       </section>
     </TransitionWrapper>
