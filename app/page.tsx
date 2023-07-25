@@ -22,10 +22,10 @@ export default async function AllPostsListItem() {
         {posts.map(({ meta }) => (
           <Link
             href={`/posts/${meta.slug}`}
-            className="text-neutral-700 hover:!no-underline"
+            className="text-neutral-700 hover:!no-underline group"
             key={meta.slug}
           >
-            <div className="rounded-md border border-neutral-200 bg-white px-6 py-4 shadow-sm  transition duration-300 hover:cursor-pointer hover:bg-neutral-200 text-xl">
+            <div className="rounded-md border border-neutral-200 bg-white px-6 py-4 shadow-sm  transition duration-300 hover:cursor-pointer hover:bg-neutral-200 text-xl hover:scale-105 hover:shadow-md group-[]">
               <h2 className="truncate font-semibold capitalize">
                 {meta.title} <span className="font-bold">→</span>
               </h2>
