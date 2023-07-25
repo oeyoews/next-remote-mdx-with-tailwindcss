@@ -70,7 +70,7 @@ const Pre = (
   };
 
   return (
-    <div className="relative">
+    <div className="relative -z-10">
       <pre
         className={`overflow-hidden ${wrapCode ? 'whitespace-pre-wrap' : ''}`}
         {...props}

@@ -4,18 +4,14 @@ import { useRef } from 'react';
 
 import Image, { ImageProps } from 'next/image';
 
-import mediumZoom, { Zoom, ZoomOptions } from 'medium-zoom';
+import mediumZoom, { Zoom } from 'medium-zoom';
 
-interface ImageZoomProps extends ImageProps {
-  options?: ZoomOptions;
-}
-
-export function ImageZoom({ options, ...props }: ImageZoomProps) {
+export function ImageZoom({ ...props }: ImageProps) {
   const zoomRef = useRef<Zoom | null>(null);
 
   function getZoom() {
     if (zoomRef.current === null) {
-      zoomRef.current = mediumZoom(options);
+      zoomRef.current = mediumZoom();
     }
 
     return zoomRef.current;
@@ -26,10 +22,13 @@ export function ImageZoom({ options, ...props }: ImageZoomProps) {
 
     if (image) {
       zoom.attach(image);
+      zoom.update({
+        background: 'rgba(0, 0, 0, 0.5)',
+      });
     } else {
       zoom.detach();
     }
   }
 
-  return <Image {...props} ref={attachZoom} />;
+  return <Image {...props} ref={attachZoom} className="rounded" />;
 }

@@ -85,10 +85,9 @@ export default async function Posts({ params }: { params: { slug: string } }) {
               src={meta.cover}
               // placeholder="blur"
               // blurDataURL="https://images.unsplash.com/photo-1690184432588-81068877d852?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"
-              alt={meta.title}
               width={1920}
               height={1080}
-              className="mt-2 rounded-md"
+              alt={meta.title}
             />
           )}
         </div>
@@ -103,25 +102,21 @@ export default async function Posts({ params }: { params: { slug: string } }) {
           content
         )}
         <hr />
-        <div className="flex justify-between items-center">
-          <div className="flex">
-            {prevPost && (
-              <p className="mb-4 text-center">
-                <Link href={`/posts/${prevPost.meta.slug}`}>
-                  ← {prevPost.meta.title}
-                </Link>
-              </p>
-            )}
-          </div>
-          <div className="flex">
-            {nextPost && (
-              <p className="mb-4 text-center">
-                <Link href={`/posts/${nextPost.meta.slug}`}>
-                  {nextPost.meta.title} →
-                </Link>
-              </p>
-            )}
-          </div>
+        <div className="justify-between items-center sm:block md:flex ">
+          {prevPost && (
+            <p className="mb-4 text-center">
+              <Link href={`/posts/${prevPost.meta.slug}`}>
+                ← {prevPost.meta.title}
+              </Link>
+            </p>
+          )}
+          {nextPost && (
+            <p className="mb-4 text-center">
+              <Link href={`/posts/${nextPost.meta.slug}`}>
+                {nextPost.meta.title} →
+              </Link>
+            </p>
+          )}
         </div>
       </article>
     </TransitionWrapper>
