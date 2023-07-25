@@ -1,3 +1,8 @@
+interface KeyboardNavigationProps {
+  prevPost: Post;
+  nextPost: Post;
+}
+
 interface TMetaOptions {
   title: string;
   date: string;

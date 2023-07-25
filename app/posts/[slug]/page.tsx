@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 
 import Gravatar from '@/components/Gravatar';
 import { ImageZoom } from '@/components/ImageZoom';
+import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import TransitionWrapper from '@/components/TransitionWrapper';
 import ProgressBar from '@/components/framer-motion/ProgressBar';
@@ -44,7 +45,7 @@ export async function generateMetadata({
 }
 
 // support click h1 title to scroll top
-export default async function Posts({ params }: { params: { slug: string } }) {
+export default async function Post({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const originalSlug = decodeURIComponent(slug);
   const posts = await getAllPostsMeta();
@@ -53,21 +54,29 @@ export default async function Posts({ params }: { params: { slug: string } }) {
   if (!post) {
     notFound();
   }
+
   const { meta, content } = post;
   const pubDate = getFormattedDate(meta.date);
 
   const currentIndex = posts.findIndex(
     (post) => post.meta.slug === originalSlug,
   );
+
   const prevIndex = currentIndex - 1;
   const nextIndex = currentIndex + 1;
-  const prevPost = prevIndex >= 0 ? posts[prevIndex] : null;
-  const nextPost = nextIndex < posts.length ? posts[nextIndex] : null;
+
+  // 循环
+  const firstPost = posts[0];
+  const lastPost = posts[posts.length - 1];
+  const prevPost = prevIndex >= 0 ? posts[prevIndex] : lastPost;
+  const nextPost = nextIndex < posts.length ? posts[nextIndex] : firstPost;
+
   {
     /* // <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2"> */
   }
   return (
     <TransitionWrapper>
+      <KeyboardNavigation prevPost={prevPost} nextPost={nextPost} />
       <article className="md:1/2 prose prose-indigo mx-auto mt-4 p-4 sm:w-full">
         <ProgressBar />
         {/* sticky backdrop-blur-sm hover:cursor-pointer */}
