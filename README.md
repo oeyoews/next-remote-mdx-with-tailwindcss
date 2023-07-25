@@ -2,6 +2,13 @@
 
 - Next13, Tailwindcss, next-mdx-remote, og:image
 
+## Feature
+
+- [x] 支持方向键查看下篇文章
+- [x] 每篇文章支持设置密码
+- [ ] 支持 md 和 mdx 文章
+- [ ] 支持草稿模式,和文章置顶
+
 ## Preview
 
 https://next-remote-mdx-with-tailwindcss.vercel.app

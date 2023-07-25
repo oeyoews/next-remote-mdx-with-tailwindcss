@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { FcUnlock } from 'react-icons/fc';
 
-const PassWord = ({ title, content, originPassword }: any) => {
+const PassWord = ({ title, originPassword, content }: PassWord) => {
   const [password, setPassword] = useState('');
   const [showContent, setShowContent] = useState(false);
   const [error, setError] = useState(false);
@@ -44,13 +44,6 @@ const PassWord = ({ title, content, originPassword }: any) => {
       setShowContent(true);
     }
   }, []);
-
-  // useEffect(() => {
-  //   // 在showContent状态改变时，滚动到顶部
-  //   if (showContent) {
-  //     window.scrollTo(0, 0);
-  //   }
-  // }, [showContent]);
 
   return (
     <div>

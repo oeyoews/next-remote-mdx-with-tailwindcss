@@ -84,7 +84,7 @@ export async function getAllPostsMeta() {
   //   return null;
   // }
 
-  const posts: Post[] = [];
+  let posts = [];
 
   for (const file of mdxFileDirectory) {
     const ext = path.extname(file);
@@ -97,17 +97,36 @@ export async function getAllPostsMeta() {
       posts.push(post);
     }
   }
-  posts.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
 
-  // 置顶文章
-  // 随机文章
-  const pinnedPosts = posts.filter((post) => post.meta.fixed);
-  if (pinnedPosts.length > 0) {
-    const nonPinnedPosts = posts.filter((post) => !post.meta.fixed);
-    return [...pinnedPosts, ...nonPinnedPosts];
+  /* const posts = [
+  'mdx' = {
+    meta: { date: '', fixed: false },
+    content: ''
+  }
+] */
+
+  function sortByRules(posts: Array<Post>) {
+    const fixedArray = [];
+    const dateArray = [];
+    const noDateArray = [];
+
+    for (const item of posts) {
+      if (item.meta.fixed == true) {
+        fixedArray.push(item);
+      } else if (item.meta.date) {
+        dateArray.push(item);
+      } else {
+        noDateArray.push(item);
+      }
+    }
+
+    dateArray.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
+
+    posts = [...fixedArray, ...dateArray, ...noDateArray];
+    return posts;
   }
 
-  return posts;
+  return sortByRules(posts);
 }
 
 // promise return bug

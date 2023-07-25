@@ -25,3 +25,9 @@ interface Post {
   meta: TFrontmatter;
   content: any;
 }
+
+interface PassWord {
+  title: string;
+  originPassword: string | number;
+  content: any;
+}
