@@ -68,6 +68,7 @@ export async function getPostBySlug(fileName: string) {
     components: mdxCustomComponents,
   });
 
+  // NOTE: 由于时间的格式可能不一致, 导致时间比较时候出错 ???
   const post: Post = {
     meta: { ...frontmatter, slug: realSlug },
     content,
@@ -98,31 +99,19 @@ export async function getAllPostsMeta() {
     }
   }
 
-  /* const posts = [
-  'mdx' = {
-    meta: { date: '', fixed: false },
-    content: ''
-  }
-] */
+  /* const posts = [ { meta: { date: '', fixed: false }, content: '' } ] */
 
   function sortByRules(posts: Array<Post>) {
-    const fixedArray = [];
-    const dateArray = [];
-    const noDateArray = [];
+    let fixedPosts = posts.filter(({ meta }) => meta.fixed === true);
+    let datePosts = posts.filter(({ meta }) => !meta.fixed && meta.date);
+    const noDatePost = posts.filter(({ meta }) => !meta.date && !meta.fixed);
 
-    for (const item of posts) {
-      if (item.meta.fixed == true) {
-        fixedArray.push(item);
-      } else if (item.meta.date) {
-        dateArray.push(item);
-      } else {
-        noDateArray.push(item);
-      }
-    }
+    fixedPosts.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
 
-    dateArray.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
+    datePosts.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
 
-    posts = [...fixedArray, ...dateArray, ...noDateArray];
+    posts = [...fixedPosts, ...datePosts, ...noDatePost];
+    // posts = [...datePosts];
     return posts;
   }
 
