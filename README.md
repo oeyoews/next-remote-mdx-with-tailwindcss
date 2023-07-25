@@ -12,6 +12,7 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 
 ## TODO
 
+- [ ] 渐进式呈现元素 with framer-motion
 - [ ] 分页 paging
 - [x] support password
 <!-- * og: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image -->

@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import Gravatar from '@/components/Gravatar';
 import { ImageZoom } from '@/components/ImageZoom';
 import PassWord from '@/components/PassWord';
-import ProgressBar from '@/components/ProgressBar';
+import TransitionWrapper from '@/components/TransitionWrapper';
+import ProgressBar from '@/components/framer-motion/ProgressBar';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPostsMeta } from '@/lib/mdx';
@@ -62,64 +63,67 @@ export default async function Posts({ params }: { params: { slug: string } }) {
   const nextIndex = currentIndex + 1;
   const prevPost = prevIndex >= 0 ? posts[prevIndex] : null;
   const nextPost = nextIndex < posts.length ? posts[nextIndex] : null;
-
+  {
+    /* // <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2"> */
+  }
   return (
-    // <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2">
-    <article className="md:1/2 prose prose-indigo mx-auto mt-4 p-4 sm:w-full">
-      <ProgressBar />
-      {/* sticky backdrop-blur-sm hover:cursor-pointer */}
-      <h2
-        className="my-2 bg-white/30 p-1 text-center capitalize font-serif"
-        // onClick={scrollTop}
-      >
-        {meta.title}
-      </h2>
-      <div className="not-prose text-center">
-        <Gravatar />
-        <small className="font-serif text-gray-400">{pubDate}</small>
-        {meta.cover && (
-          <ImageZoom
-            src={meta.cover}
-            // placeholder="blur"
-            // blurDataURL="https://images.unsplash.com/photo-1690184432588-81068877d852?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"
-            alt={meta.title}
-            width={1920}
-            height={1080}
-            className="mt-2 rounded-md"
-          />
+    <TransitionWrapper>
+      <article className="md:1/2 prose prose-indigo mx-auto mt-4 p-4 sm:w-full">
+        <ProgressBar />
+        {/* sticky backdrop-blur-sm hover:cursor-pointer */}
+        <h2
+          className="my-2 bg-white/30 p-1 text-center capitalize font-serif"
+          // onClick={scrollTop}
+        >
+          {meta.title}
+        </h2>
+        <div className="not-prose text-center">
+          <Gravatar />
+          <small className="font-serif text-gray-400">{pubDate}</small>
+          {meta.cover && (
+            <ImageZoom
+              src={meta.cover}
+              // placeholder="blur"
+              // blurDataURL="https://images.unsplash.com/photo-1690184432588-81068877d852?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"
+              alt={meta.title}
+              width={1920}
+              height={1080}
+              className="mt-2 rounded-md"
+            />
+          )}
+        </div>
+
+        <blockquote className="my-2 mb-8 text-slate-400">
+          {meta.description}
+        </blockquote>
+
+        {meta.password ? (
+          <PassWord content={content} originPassword={meta.password} />
+        ) : (
+          content
         )}
-      </div>
-
-      <blockquote className="my-2 mb-8 text-slate-400">
-        {meta.description}
-      </blockquote>
-
-      {meta.password ? (
-        <PassWord content={content} originPassword={meta.password} />
-      ) : (
-        content
-      )}
-      <hr />
-      <div className="flex justify-between items-center">
-        <div className="flex">
-          {prevPost && (
-            <p className="mb-4 text-center">
-              <Link href={`/posts/${prevPost.meta.slug}`}>
-                ← {prevPost.meta.title}
-              </Link>
-            </p>
-          )}
+        <hr />
+        <div className="flex justify-between items-center">
+          <div className="flex">
+            {prevPost && (
+              <p className="mb-4 text-center">
+                <Link href={`/posts/${prevPost.meta.slug}`}>
+                  ← {prevPost.meta.title}
+                </Link>
+              </p>
+            )}
+          </div>
+          <div className="flex">
+            {nextPost && (
+              <p className="mb-4 text-center">
+                <Link href={`/posts/${nextPost.meta.slug}`}>
+                  {nextPost.meta.title} →
+                </Link>
+              </p>
+            )}
+          </div>
         </div>
-        <div className="flex">
-          {nextPost && (
-            <p className="mb-4 text-center">
-              <Link href={`/posts/${nextPost.meta.slug}`}>
-                {nextPost.meta.title} →
-              </Link>
-            </p>
-          )}
-        </div>
-      </div>
-    </article>
+      </article>
+    </TransitionWrapper>
   );
 }
