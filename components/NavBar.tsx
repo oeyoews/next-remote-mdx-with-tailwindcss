@@ -33,6 +33,7 @@ export default function NavBar() {
       <div className="flex space-x-2">
         {GithubLink}
         {AboutPage}
+        {/* <SideBar /> */}
       </div>
     </nav>
   );

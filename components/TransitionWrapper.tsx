@@ -10,6 +10,7 @@ const transition = {
 const TransitionWrapper = ({ children }: any) => {
   return (
     <motion.div
+      // whileInView={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
