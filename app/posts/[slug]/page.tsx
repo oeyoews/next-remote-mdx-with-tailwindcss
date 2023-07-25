@@ -53,6 +53,15 @@ export default async function Posts({ params }: { params: { slug: string } }) {
   }
   const { meta, content } = post;
   const pubDate = getFormattedDate(meta.date);
+
+  const currentIndex = posts.findIndex(
+    (post) => post.meta.slug === originalSlug,
+  );
+  const prevIndex = currentIndex - 1;
+  const nextIndex = currentIndex + 1;
+  const prevPost = prevIndex >= 0 ? posts[prevIndex] : null;
+  const nextPost = nextIndex < posts.length ? posts[nextIndex] : null;
+
   return (
     // <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2">
     <article className="md:1/2 prose prose-indigo mx-auto mt-4 p-4 sm:w-full">
@@ -89,9 +98,27 @@ export default async function Posts({ params }: { params: { slug: string } }) {
       ) : (
         content
       )}
-      <p className="mb-8 mt-16 flex items-end justify-end">
-        <Link href="/">← Back to Home</Link>
-      </p>
+      <hr />
+      <div className="flex justify-between items-center">
+        <div className="flex">
+          {prevPost && (
+            <p className="mb-4 text-center">
+              <Link href={`/posts/${prevPost.meta.slug}`}>
+                ← {prevPost.meta.title}
+              </Link>
+            </p>
+          )}
+        </div>
+        <div className="flex">
+          {nextPost && (
+            <p className="mb-4 text-center">
+              <Link href={`/posts/${nextPost.meta.slug}`}>
+                {nextPost.meta.title} →
+              </Link>
+            </p>
+          )}
+        </div>
+      </div>
     </article>
   );
 }
