@@ -12,6 +12,7 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 
 ## TODO
 
+- [ ] 7/21 写一个时间组件
 - [ ] support backtotop
 - [ ] 渐进式呈现元素 with framer-motion
 - [ ] 分页 paging
