@@ -2,6 +2,8 @@ import { compileMDX } from 'next-mdx-remote/rsc';
 
 import mdxCustomComponents from '@/components/MdxComponents';
 
+import getFormattedDate from '../getFormatedDate';
+
 import fs, { readdirSync } from 'fs';
 import path from 'path';
 import rehypeKatex from 'rehype-katex';
@@ -68,7 +70,7 @@ export async function getPostBySlug(fileName: string) {
     components: mdxCustomComponents,
   });
 
-  // NOTE: 由于时间的格式可能不一致, 导致时间比较时候出错 ???
+  frontmatter.date = getFormattedDate(frontmatter.date);
   const post: Post = {
     meta: { ...frontmatter, slug: realSlug },
     content,
@@ -103,6 +105,7 @@ export async function getAllPostsMeta() {
 
   function sortByRules(posts: Array<Post>) {
     let fixedPosts = posts.filter(({ meta }) => meta.fixed === true);
+    // 此刻时间还没有进行验证, 是按照字符串比较的
     let datePosts = posts.filter(({ meta }) => !meta.fixed && meta.date);
     const noDatePost = posts.filter(({ meta }) => !meta.date && !meta.fixed);
 
@@ -111,7 +114,7 @@ export async function getAllPostsMeta() {
     datePosts.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
 
     posts = [...fixedPosts, ...datePosts, ...noDatePost];
-    // posts = [...datePosts];
+    // posts = [...noDatePost];
     return posts;
   }
 

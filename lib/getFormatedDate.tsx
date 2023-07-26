@@ -1,11 +1,14 @@
-// NOTE: date 最好加上引号, 时间格式化有多种, 数字不保证绝对正确
-export default function getFormattedDate(dateString: string) {
-  const date = dateString;
-  if (!date) {
-    return '';
+import { format, isValid, parseISO } from 'date-fns';
+
+// TODO: 支持各种格式的日期
+function getFormattedDate(date: string) {
+  const parsedDate = parseISO(date);
+  const currentDate = new Date();
+
+  if (isValid(parsedDate) && currentDate >= parsedDate) {
+    return format(parsedDate, 'yyyy-MM-dd');
   }
 
-  return new Intl.DateTimeFormat('en-US', {
-    dateStyle: 'long',
-  }).format(new Date(dateString));
+  return false;
 }
+export default getFormattedDate;
