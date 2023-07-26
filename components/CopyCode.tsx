@@ -70,7 +70,9 @@ const Pre = (
   };
 
   return (
-    <div className="relative -z-10">
+    // if this z-index less zero, this hover not worked
+    // 这可能是因为当z-index的值为负数时，元素会被认为是堆叠顺序中的底部元素，导致鼠标事件无法正确触发。
+    <div className="relative ">
       <pre
         className={`overflow-hidden ${wrapCode ? 'whitespace-pre-wrap' : ''}`}
         {...props}
