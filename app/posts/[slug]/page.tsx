@@ -49,6 +49,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const originalSlug = decodeURIComponent(slug);
   const posts = await getAllPostsMeta();
+  // support chinese key steps
   const post = posts.find((post) => post.meta.slug === originalSlug);
 
   if (!post) {
