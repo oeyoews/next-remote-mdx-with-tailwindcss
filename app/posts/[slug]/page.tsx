@@ -62,15 +62,12 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const currentIndex = posts.findIndex(
     (post) => post.meta.slug === originalSlug,
   );
-
-  const prevIndex = currentIndex - 1;
-  const nextIndex = currentIndex + 1;
-
-  // 循环
   const firstPost = posts[0];
   const lastPost = posts[posts.length - 1];
-  const prevPost = prevIndex >= 0 ? posts[prevIndex] : lastPost;
-  const nextPost = nextIndex < posts.length ? posts[nextIndex] : firstPost;
+
+  const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : lastPost;
+  const nextPost =
+    currentIndex < posts.length - 1 ? posts[currentIndex + 1] : firstPost;
 
   {
     /* // <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2"> */

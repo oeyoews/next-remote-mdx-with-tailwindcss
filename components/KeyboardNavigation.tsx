@@ -12,9 +12,9 @@ export default function KeyboardNavigation({
   const handleKeyDown = (event: { key: any }) => {
     const { key } = event;
 
-    if (key === 'ArrowLeft' && prevPost) {
+    if (prevPost && key === 'ArrowLeft') {
       router.push(`/posts/${prevPost.meta.slug}`);
-    } else if (key === 'ArrowRight' && nextPost) {
+    } else if (nextPost && key === 'ArrowRight') {
       router.push(`/posts/${nextPost.meta.slug}`);
     }
   };
