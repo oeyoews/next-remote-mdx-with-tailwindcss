@@ -1,8 +1,19 @@
+'use client';
+
 import { FcInfo } from 'react-icons/fc';
 import { FiGithub } from 'react-icons/fi';
 
 import Image from 'next/image';
 import Link from 'next/link';
+
+import clickSound from './click.mp3';
+
+import useSound from 'use-sound';
+
+const [play] = useSound(clickSound);
+const clickHandler = () => {
+  play();
+};
 
 // scale not work
 export default function NavBar() {
@@ -18,7 +29,7 @@ export default function NavBar() {
     </a>
   );
   const AboutPage = (
-    <Link href="/about" className="scale-110">
+    <Link href="/about" className="scale-110" onClick={clickHandler}>
       <FcInfo className={iconClasses} />
     </Link>
   );

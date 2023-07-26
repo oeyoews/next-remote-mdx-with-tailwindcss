@@ -31,3 +31,8 @@ interface PassWord {
   originPassword: string | number;
   content: any;
 }
+
+declare module '*.mp3' {
+  const value: string;
+  export default value;
+}
