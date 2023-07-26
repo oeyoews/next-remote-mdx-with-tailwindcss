@@ -39,7 +39,7 @@ export default async function AllPostsListItem() {
                 }`}
               >
                 <h2 className="truncate font-semibold capitalize">
-                  {meta.title} <span className="font-bold">→</span>
+                  {meta.title || meta.slug} <span className="font-bold">→</span>
                 </h2>
                 <small className="mr-2 inline py-2 font-serif font-semibold text-neutral-400">
                   {getFormattedDate(meta.date)}

@@ -39,7 +39,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: post.meta.title,
+    title: post.meta.title || post.meta.slug,
     description: post.meta?.description,
   };
 }
@@ -82,7 +82,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           className="my-2 bg-white/30 p-1 text-center capitalize font-serif"
           // onClick={scrollTop}
         >
-          {meta.title}
+          {meta.title || meta.slug}
         </h2>
         <div className="not-prose text-center">
           <Gravatar />
@@ -94,7 +94,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
               // blurDataURL="https://images.unsplash.com/photo-1690184432588-81068877d852?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"
               width={1920}
               height={1080}
-              alt={meta.title}
+              alt={meta.slug}
             />
           )}
         </div>
@@ -107,7 +107,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <PassWord
             content={content}
             originPassword={meta.password}
-            title={meta.title}
+            title={meta.title || meta.slug}
           />
         ) : (
           content

@@ -4,15 +4,15 @@ interface PostNavigationProps {
 }
 
 interface TMetaOptions {
-  title: string;
-  date: string;
+  title?: string;
+  date?: any;
 }
 
 interface TMetaAdditionialOptions {
   description: string;
   cover: string;
   coverAlt: string;
-  slug: string;
+  slug: any;
   tags: string[];
   draft: boolean;
   password: string | number;
@@ -27,7 +27,7 @@ interface Post {
 }
 
 interface PassWord {
-  title: string;
+  title: string | undefined;
   originPassword: string | number;
   content: any;
 }
