@@ -1,6 +1,7 @@
 import { FcInfo } from 'react-icons/fc';
 import { FiGithub } from 'react-icons/fi';
 
+// TODO: effect https://github.com/oeyoews/nextjs-blog/blob/main/src/components/LayoutWrapper.tsx
 import Image from 'next/image';
 import Link from 'next/link';
 
