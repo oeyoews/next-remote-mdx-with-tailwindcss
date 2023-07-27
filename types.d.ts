@@ -17,6 +17,7 @@ interface TMetaAdditionialOptions {
   draft: boolean;
   password: string | number;
   fixed: boolean;
+  tweet: number;
   content: any;
 }
 
