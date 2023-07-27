@@ -31,11 +31,10 @@ export default function NavBar() {
           <Image src="/next.svg" alt="Next.js Logo" width={100} height={37} />
         </Link>
       </div>
-      <div className="flex space-x-2">
+      {/* <div className="flex space-x-2">
         {GithubLink}
         {AboutPage}
-        {/* <SideBar /> */}
-      </div>
+      </div> */}
     </nav>
   );
 }
