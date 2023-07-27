@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import TransitionWrapper from '@/components/TransitionWrapper';
+
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
 
@@ -23,36 +25,38 @@ export default async function AllPostsListItem() {
   }
 
   return (
-    <section className="mx-auto mt-12 max-w-3xl px-2">
-      <div className="mx-2 grid grid-cols-1 gap-4 lg:grid-cols-2">
-        {posts.map((post, index) => (
-          <Link
-            key={post.slug}
-            href={`/posts/${post.slug}`}
-            // className="text-neutral-700 hover:!no-underline group"
-            className={`text-neutral-700 transition duration-300 hover:scale-105 bg-gradient-to-r p-1 rounded-lg hover:!no-underline group ${
-              index === 0 && post.fixed ? 'lg:col-span-2 lg:text-center' : ''
-            } ${(gradientBorder && indexToColor[index]) || ''}`}
-          >
-            <div
-              className={`rounded-lg border border-neutral-200 bg-white px-6 py-4 shadow-sm text-xl`}
+    <TransitionWrapper>
+      <section className="mx-auto mt-12 max-w-3xl px-2">
+        <div className="mx-2 grid grid-cols-1 gap-4 lg:grid-cols-2">
+          {posts.map((post, index) => (
+            <Link
+              key={post.slug}
+              href={`/posts/${post.slug}`}
+              // className="text-neutral-700 hover:!no-underline group"
+              className={`text-neutral-700 transition duration-300 hover:scale-105 bg-gradient-to-r p-1 rounded-lg hover:!no-underline group ${
+                index === 0 && post.fixed ? 'lg:col-span-2 lg:text-center' : ''
+              } ${(gradientBorder && indexToColor[index]) || ''}`}
             >
-              <h2 className="truncate font-semibold capitalize">
-                {post.title || post.slug} <span className="font-bold">→</span>
-              </h2>
-              <small className="mr-2 inline py-2 font-serif font-semibold text-neutral-400">
-                {getFormattedDate(post.date)}
-              </small>
-            </div>
+              <div
+                className={`rounded-lg border border-neutral-200 bg-white px-6 py-4 shadow-sm text-xl`}
+              >
+                <h2 className="truncate font-semibold capitalize">
+                  {post.title || post.slug} <span className="font-bold">→</span>
+                </h2>
+                <small className="mr-2 inline py-2 font-serif font-semibold text-neutral-400">
+                  {getFormattedDate(post.date)}
+                </small>
+              </div>
+            </Link>
+          ))}
+          <Link
+            href="/posts"
+            className="sm:col-span-1 lg:col-span-2 font-bold text-center rounded p-2 bg-neutral-100"
+          >
+            ...
           </Link>
-        ))}
-        <Link
-          href="/posts"
-          className="sm:col-span-1 lg:col-span-2 font-bold text-center rounded p-2 bg-neutral-100"
-        >
-          ...
-        </Link>
-      </div>
-    </section>
+        </div>
+      </section>
+    </TransitionWrapper>
   );
 }

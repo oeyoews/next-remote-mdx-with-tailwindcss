@@ -59,10 +59,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className}`}>
         <ProgressBar />
-        <TransitionWrapper>
-          <NavBar />
-          {children}
-        </TransitionWrapper>
+        <NavBar />
+        <TransitionWrapper>{children}</TransitionWrapper>
       </body>
     </html>
   );
