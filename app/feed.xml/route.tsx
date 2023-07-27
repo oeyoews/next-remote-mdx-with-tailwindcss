@@ -20,8 +20,8 @@ export async function GET() {
       title: post.title,
       description: post.description,
       url: `${domain}/posts/${post.slug}`,
-      author: 'oeyoews', // optional - defaults to feed author property
-      pubDate: post.date, // any format that js Date can parse.
+      author: 'oeyoews',
+      pubDate: post.date,
     });
   });
 
