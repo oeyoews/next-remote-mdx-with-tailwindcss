@@ -7,6 +7,7 @@ import { getAllPosts } from '@/lib/mdx';
 
 export default async function AllPostsListItem() {
   const posts = (await getAllPosts()).slice(0, 3);
+  const gradientBorder = false;
   const indexToColor: any = {
     0: 'from-[#D8B4FE] to-[#818CF8]',
     1: 'from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
@@ -34,7 +35,7 @@ export default async function AllPostsListItem() {
               // className="text-neutral-700 hover:!no-underline group"
               className={`text-neutral-700 transition duration-300 hover:scale-105 bg-gradient-to-r p-1 rounded-lg hover:!no-underline group ${
                 index === 0 && post.fixed ? 'lg:col-span-2 lg:text-center' : ''
-              } ${indexToColor[index] || ''}`}
+              } ${(gradientBorder && indexToColor[index]) || ''}`}
             >
               <div
                 className={`rounded-lg border border-neutral-200 bg-white px-6 py-4 shadow-sm text-xl`}
