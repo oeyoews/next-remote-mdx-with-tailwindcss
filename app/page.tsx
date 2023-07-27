@@ -3,10 +3,10 @@ import Link from 'next/link';
 import TransitionWrapper from '@/components/TransitionWrapper';
 
 import getFormattedDate from '@/lib/getFormatedDate';
-import { getAllPostsMeta } from '@/lib/mdx';
+import { getAllPosts } from '@/lib/mdx';
 
 export default async function AllPostsListItem() {
-  const posts = await getAllPostsMeta();
+  const posts = await getAllPosts();
   const totalPosts = posts.length;
 
   if (!posts.length) {
@@ -23,26 +23,26 @@ export default async function AllPostsListItem() {
     <TransitionWrapper>
       <section className="mx-auto mt-12 sm:w-full md:w-1/2">
         <div className="mx-2 grid grid-cols-1 gap-4 lg:grid-cols-2">
-          {posts.map(({ meta }, index) => (
+          {posts.map((post, index) => (
             <Link
-              href={`/posts/${meta.slug}`}
+              href={`/posts/${post.slug}`}
               // className="text-neutral-700 hover:!no-underline group"
               className={`text-neutral-700 hover:!no-underline group ${
-                index === 0 && meta.fixed ? 'lg:col-span-2 lg:text-center' : ''
+                index === 0 && post.fixed ? 'lg:col-span-2 lg:text-center' : ''
               }`}
-              key={meta.slug}
+              key={post.slug}
             >
               {/* <div className="rounded-md border border-neutral-200 bg-white px-6 py-4 shadow-sm  transition duration-300 hover:cursor-pointer hover:bg-neutral-200 text-xl hover:scale-105 hover:shadow-md group-[]"> */}
               <div
                 className={`rounded-md border border-neutral-200 bg-white px-6 py-4 shadow-sm transition duration-300 hover:cursor-pointer hover:bg-neutral-200 text-xl hover:scale-105 hover:shadow-md ${
-                  index === 0 && meta.fixed ? 'lg:col-span-2' : ''
+                  index === 0 && post.fixed ? 'lg:col-span-2' : ''
                 }`}
               >
                 <h2 className="truncate font-semibold capitalize">
-                  {meta.title || meta.slug} <span className="font-bold">→</span>
+                  {post.title || post.slug} <span className="font-bold">→</span>
                 </h2>
                 <small className="mr-2 inline py-2 font-serif font-semibold text-neutral-400">
-                  {getFormattedDate(meta.date)}
+                  {getFormattedDate(post.date)}
                 </small>
               </div>
             </Link>

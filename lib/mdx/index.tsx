@@ -71,15 +71,17 @@ export async function getPostBySlug(fileName: string) {
   });
 
   frontmatter.date = getFormattedDate(frontmatter.date);
-  const post: Post = {
-    meta: { ...frontmatter, slug: realSlug },
+  const post = {
+    // meta: { ...frontmatter, slug: realSlug },
+    ...frontmatter,
+    slug: realSlug,
     content,
   };
 
   return post;
 }
 
-export async function getAllPostsMeta() {
+export async function getAllPosts() {
   const MARKDOWN_PATH = process.env.MARKDOWN_PATH as string;
   const mdxFileDirectory = readdirSync(MARKDOWN_PATH);
 
@@ -94,24 +96,22 @@ export async function getAllPostsMeta() {
     if (ext === '.mdx' || ext === '.md') {
       const post = await getPostBySlug(file);
       // 判断是否包含draft字段，如果包含则跳过当前文章
-      if (post.meta.draft) {
+      if (post.draft) {
         continue;
       }
       posts.push(post);
     }
   }
 
-  /* const posts = [ { meta: { date: '', fixed: false }, content: '' } ] */
-
-  function sortByRules(posts: Array<Post>) {
-    let fixedPosts = posts.filter(({ meta }) => meta.fixed === true);
+  function sortByRules(posts: TFrontmatter[]) {
+    let fixedPosts = posts.filter((post) => post.fixed === true);
     // 此刻时间还没有进行验证, 是按照字符串比较的
-    let datePosts = posts.filter(({ meta }) => !meta.fixed && meta.date);
-    const noDatePost = posts.filter(({ meta }) => !meta.date && !meta.fixed);
+    let datePosts = posts.filter((post) => !post.fixed && post.date);
+    const noDatePost = posts.filter((post) => !post.date && !post.fixed);
 
-    fixedPosts.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
+    fixedPosts.sort((a, b) => b.date.localeCompare(a.date));
 
-    datePosts.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
+    datePosts.sort((a, b) => b.date.localeCompare(a.date));
 
     posts = [...fixedPosts, ...datePosts, ...noDatePost];
     // posts = [...noDatePost];
@@ -123,6 +123,6 @@ export async function getAllPostsMeta() {
 
 // promise return bug
 export async function getExistPostBySlug(slug: string) {
-  const posts = await getAllPostsMeta();
-  return posts.find((post) => post.meta.slug === slug) || null;
+  const posts = await getAllPosts();
+  return posts.find((post) => post.slug === slug) || null;
 }

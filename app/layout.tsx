@@ -9,6 +9,12 @@ const inter = Inter({ subsets: ['latin'] });
 
 // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/feed.xml',
+    types: {
+      'application/rss+xml': [{ url: '/feed.xml', title: 'rss' }],
+    },
+  },
   //  manifest: 'https://nextjs.org/manifest.json',
   // robots: {
   //   index: false,

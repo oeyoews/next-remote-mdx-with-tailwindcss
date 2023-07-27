@@ -7,16 +7,12 @@ function PostNavigation({ prevPost, nextPost }: PostNavigationProps) {
     <div className="justify-between items-center sm:block md:flex ">
       {prevPost && (
         <p className="mb-4 text-center">
-          <Link href={`/posts/${prevPost.meta.slug}`}>
-            ← {prevPost.meta.title}
-          </Link>
+          <Link href={`/posts/${prevPost.slug}`}>← {prevPost.title}</Link>
         </p>
       )}
       {nextPost && (
         <p className="mb-4 text-center">
-          <Link href={`/posts/${nextPost.meta.slug}`}>
-            {nextPost.meta.title} →
-          </Link>
+          <Link href={`/posts/${nextPost.slug}`}>{nextPost.title} →</Link>
         </p>
       )}
     </div>

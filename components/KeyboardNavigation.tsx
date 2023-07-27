@@ -13,9 +13,9 @@ export default function KeyboardNavigation({
     const { key } = event;
 
     if (prevPost && key === 'ArrowLeft') {
-      router.push(`/posts/${prevPost.meta.slug}`);
+      router.push(`/posts/${prevPost.slug}`);
     } else if (nextPost && key === 'ArrowRight') {
-      router.push(`/posts/${nextPost.meta.slug}`);
+      router.push(`/posts/${nextPost.slug}`);
     }
   };
 

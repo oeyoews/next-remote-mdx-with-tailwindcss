@@ -4,7 +4,7 @@
 // https://github.com/vercel/next.js/blob/d68097553730d859a6be91158fc3e489f971ea57/examples/cms-buttercms/pages/blog/search.js#L11
 import React, { ChangeEvent, useState } from 'react';
 
-import { getAllPostsMeta } from '@/lib/mdx';
+import { getAllPosts } from '@/lib/mdx';
 
 const SearchComponent: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,11 +15,11 @@ const SearchComponent: React.FC = () => {
     setSearchTerm(keyword);
 
     // 调用获取所有文章元数据的函数
-    const allPosts = await getAllPostsMeta();
+    const allPosts = await getAllPosts();
 
     // 进行搜索
     const filteredResults = allPosts.filter((post) =>
-      post.meta.title.toLowerCase().includes(keyword.toLowerCase()),
+      post.title.toLowerCase().includes(keyword.toLowerCase()),
     );
 
     setSearchResults(filteredResults as any);
