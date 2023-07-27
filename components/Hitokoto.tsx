@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react';
 function Hitokoto() {
   const [hitokoto, setHitokoto] = useState('');
 
+  // wired ???
   async function fetchHitokoto() {
     const response = await fetch('https://v1.hitokoto.cn', {
-      cache: 'default',
-      next: {
-        // not work on this instance
-        revalidate: 5,
-      },
+      // cache: 'default',
+      // next: {
+      //   revalidate: 5,
+      // },
     });
     const { hitokoto: hitokotoText } = await response.json();
     setHitokoto(hitokotoText);
