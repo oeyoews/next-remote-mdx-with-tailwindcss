@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import Hitokoto from '@/components/Hitokoto';
 import TransitionWrapper from '@/components/TransitionWrapper';
 
 import getFormattedDate from '@/lib/getFormatedDate';
