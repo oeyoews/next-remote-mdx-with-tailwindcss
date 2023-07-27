@@ -19,7 +19,7 @@ export async function GET() {
     feed.item({
       title: post.title,
       description: post.description,
-      url: `${domain}/${post.slug}`,
+      url: `${domain}/posts/${post.slug}`,
       author: 'oeyoews', // optional - defaults to feed author property
       pubDate: new Date(post.date), // any format that js Date can parse.
     });
