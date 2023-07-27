@@ -16,7 +16,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="prose mx-auto max-h-screen w-1/2 max-w-none">
+    <div className="prose mx-auto max-h-screen max-w-3xl">
       <h2 className="text-red-400">Something went wrong!</h2>
       <button
         className="rounded bg-red-400 p-2 font-semibold"

@@ -1,22 +1,24 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
-const transition = {
-  duration: 0.7,
-  ease: 'easeInOut',
-};
+// TODO: not support clicke directly
+import { AnimatePresence, motion } from 'framer-motion';
 
 const TransitionWrapper = ({ children }: any) => {
   return (
-    <motion.div
-      // whileInView={{ opacity: 1 }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={transition}
-    >
-      {children}
+    <motion.div className="min-h-screen">
+      <AnimatePresence initial={true} mode="sync">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 70,
+          }}
+          layout
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 70 }}
+        >
+          <motion.main>{children}</motion.main>
+        </motion.div>
+      </AnimatePresence>
     </motion.div>
   );
 };

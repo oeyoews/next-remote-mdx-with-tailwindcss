@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import NavBar from '@/components/NavBar';
+import TransitionWrapper from '@/components/TransitionWrapper';
+import ProgressBar from '@/components/framer-motion/ProgressBar';
 
 import './globals.css';
 
@@ -9,30 +11,29 @@ const inter = Inter({ subsets: ['latin'] });
 
 // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
 export const metadata: Metadata = {
-  //  manifest: 'https://nextjs.org/manifest.json',
-  robots: {
-    index: false,
-    follow: true,
-    nocache: true,
-    googleBot: {
-      index: true,
-      follow: false,
-      noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+  alternates: {
+    canonical: '/feed.xml',
+    types: {
+      'application/rss+xml': [{ url: '/feed.xml', title: 'rss' }],
     },
   },
-  generator: 'Next.js',
-  authors: [
-    { name: 'oeyoews' },
-    { name: 'oeyoews', url: 'https://github.com/oeyoews' },
-  ],
-  creator: 'oeyoews',
-  applicationName: 'Next.js',
+  //  manifest: 'https://nextjs.org/manifest.json',
+  // robots: {
+  //   index: false,
+  //   follow: true,
+  //   nocache: true,
+  //   googleBot: {
+  //     index: true,
+  //     follow: false,
+  //     noimageindex: true,
+  //     'max-video-preview': -1,
+  //     'max-image-preview': 'large',
+  //     'max-snippet': -1,
+  //   },
+  // },
+  // authors: [{ name: 'oeyoews', url: 'https://github.com/oeyoews' }],
   title: process.env.TITLE,
   description: process.env.DESCRIPTION,
-  keywords: ['Next.js', 'React', 'JavaScript', 'Blog'],
   openGraph: {
     images: [
       {
@@ -43,8 +44,8 @@ export const metadata: Metadata = {
     ],
     title: 'Next.js Blog',
     description: 'Next.js Blog',
-    // url: 'https://nextjs.org',
     siteName: 'Next.js Blog',
+    // url: 'https://nextjs.org',
   },
   //  metadataBase: new URL('https://acme.com'),
 };
@@ -57,8 +58,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
+        <ProgressBar />
         <NavBar />
-        {children}
+        <TransitionWrapper>{children}</TransitionWrapper>
       </body>
     </html>
   );

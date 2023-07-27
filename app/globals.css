@@ -54,7 +54,7 @@ code[data-line-numbers-max-digits='3'] > [data-line]::before {
   width: 3rem;
 }
 
-/* .medium-zoom-overlay,
+.medium-zoom-overlay,
 .medium-zoom-image--opened {
   z-index: 999;
-} */
+}

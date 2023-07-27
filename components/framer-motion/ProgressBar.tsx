@@ -13,7 +13,7 @@ function ProgressBar() {
   // TODO zindex
   return (
     <motion.div
-      className="shadow-sm; } fixed left-0 right-0 top-0 z-[99999] h-0.5 origin-left transform rounded-full bg-gradient-to-r from-indigo-300 via-purple-300
+      className="fixed left-0 right-0 top-0 z-[99999] h-0.5 origin-left transform rounded-full bg-gradient-to-b from-indigo-300 via-purple-300
 to-green-300"
       style={{ scaleX }}
     />

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import TransitionWrapper from '@/components/TransitionWrapper';
+
 // add metadata
 
 export async function generateMetadata() {
@@ -11,11 +13,13 @@ export async function generateMetadata() {
 
 export default function page() {
   return (
-    <div className="prose mx-auto my-4 max-w-none rounded p-4 sm:w-full md:w-1/2">
-      <blockquote>Coming ...</blockquote>
-      <div className="flex items-center justify-end">
-        <Link href="/"> ← Back to Home</Link>
+    <TransitionWrapper>
+      <div className="prose mx-auto my-4 rounded p-4 max-w-3xl">
+        <blockquote>Coming ...</blockquote>
+        <div className="flex items-center justify-end">
+          <Link href="/"> ← Back to Home</Link>
+        </div>
       </div>
-    </div>
+    </TransitionWrapper>
   );
 }

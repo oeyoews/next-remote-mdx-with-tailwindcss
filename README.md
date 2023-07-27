@@ -8,6 +8,7 @@
 - [x] 每篇文章支持设置密码
 - [x] 支持 md 和 mdx 文章
 - [x] 支持草稿模式,和文章置顶
+- [x] support rss
 
 ## Preview
 
@@ -46,7 +47,6 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 
 - [ ] support slug
 - [ ] not found page
-- [ ] support rss
       rss parser
       https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/website/post.js#L8
 

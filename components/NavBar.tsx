@@ -1,6 +1,7 @@
 import { FcInfo } from 'react-icons/fc';
 import { FiGithub } from 'react-icons/fi';
 
+// TODO: effect https://github.com/oeyoews/nextjs-blog/blob/main/src/components/LayoutWrapper.tsx
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -24,17 +25,16 @@ export default function NavBar() {
   );
 
   return (
-    <nav className="sticky top-0 mx-auto flex items-center justify-between rounded p-2 text-xl backdrop-blur-lg print:hidden sm:w-full lg:w-1/2">
+    <nav className="sticky top-0 mx-auto flex items-center justify-between rounded p-2 text-xl backdrop-blur-lg print:hidden z-[1] max-w-3xl">
       <div className="flex items-center">
         <Link href="/" className="p-1">
           <Image src="/next.svg" alt="Next.js Logo" width={100} height={37} />
         </Link>
       </div>
-      <div className="flex space-x-2">
+      {/* <div className="flex space-x-2">
         {GithubLink}
         {AboutPage}
-        {/* <SideBar /> */}
-      </div>
+      </div> */}
     </nav>
   );
 }

@@ -1,24 +1,23 @@
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import Gravatar from '@/components/Gravatar';
-import { ImageZoom } from '@/components/ImageZoom';
 import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
 import TransitionWrapper from '@/components/TransitionWrapper';
-import ProgressBar from '@/components/framer-motion/ProgressBar';
 
 import getFormattedDate from '@/lib/getFormatedDate';
-import { getAllPostsMeta } from '@/lib/mdx';
+import { getAllPosts } from '@/lib/mdx';
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
 // https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
 // https://nextjs.org/docs/app/api-reference/functions/generate-static-params
 export async function generateStaticParams() {
-  const posts = await getAllPostsMeta();
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     // local md(x) filename without extension
-    slug: post.meta.slug,
+    slug: post.slug,
   }));
 }
 
@@ -29,8 +28,8 @@ export async function generateMetadata({
 }) {
   const { slug } = params;
   const originalSlug = decodeURIComponent(slug);
-  const posts = await getAllPostsMeta();
-  const post = posts.find((post) => post.meta.slug === originalSlug);
+  const posts = await getAllPosts();
+  const post = posts.find((post) => post.slug === originalSlug);
 
   if (!post) {
     return {
@@ -39,8 +38,8 @@ export async function generateMetadata({
   }
 
   return {
-    title: post.meta.title,
-    description: post.meta?.description,
+    title: post.title || post.slug,
+    description: post.description,
   };
 }
 
@@ -48,72 +47,55 @@ export async function generateMetadata({
 export default async function Post({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const originalSlug = decodeURIComponent(slug);
-  const posts = await getAllPostsMeta();
+  const posts = await getAllPosts();
   // support chinese key steps
-  const post = posts.find((post) => post.meta.slug === originalSlug);
+  const post = posts.find((post) => post.slug === originalSlug);
 
   if (!post) {
     notFound();
   }
 
-  const { meta, content } = post;
-  const pubDate = getFormattedDate(meta.date);
+  const pubDate = getFormattedDate(post.date);
 
-  const currentIndex = posts.findIndex(
-    (post) => post.meta.slug === originalSlug,
-  );
-
-  const prevIndex = currentIndex - 1;
-  const nextIndex = currentIndex + 1;
-
-  // 循环
+  const currentIndex = posts.findIndex((post) => post.slug === originalSlug);
   const firstPost = posts[0];
   const lastPost = posts[posts.length - 1];
-  const prevPost = prevIndex >= 0 ? posts[prevIndex] : lastPost;
-  const nextPost = nextIndex < posts.length ? posts[nextIndex] : firstPost;
 
-  {
-    /* // <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2"> */
-  }
+  const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : lastPost;
+  const nextPost =
+    currentIndex < posts.length - 1 ? posts[currentIndex + 1] : firstPost;
+
   return (
     <TransitionWrapper>
       <KeyboardNavigation prevPost={prevPost} nextPost={nextPost} />
-      <article className="md:1/2 prose prose-indigo mx-auto mt-4 p-4 sm:w-full">
-        <ProgressBar />
-        {/* sticky backdrop-blur-sm hover:cursor-pointer */}
-        <h2
-          className="my-2 bg-white/30 p-1 text-center capitalize font-serif"
-          // onClick={scrollTop}
-        >
-          {meta.title}
+
+      <article className="prose prose-indigo mx-auto mt-4 p-4 max-w-3xl">
+        {post.cover && (
+          <Image src={post.cover} width={1020} height={280} alt={post.slug} />
+        )}
+
+        <h2 className="my-2 bg-white/30 p-1 text-center capitalize font-serif">
+          {post.title || post.slug}
         </h2>
         <div className="not-prose text-center">
           <Gravatar />
           <small className="font-serif text-gray-400">{pubDate}</small>
-          {meta.cover && (
-            <ImageZoom
-              src={meta.cover}
-              // placeholder="blur"
-              // blurDataURL="https://images.unsplash.com/photo-1690184432588-81068877d852?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"
-              width={1920}
-              height={1080}
-              alt={meta.title}
-            />
-          )}
         </div>
 
-        <blockquote className="my-2 mb-8 text-slate-400">
-          {meta.description}
-        </blockquote>
+        {post.description && (
+          <blockquote className="my-2 mb-8 text-slate-700">
+            {post.description}
+          </blockquote>
+        )}
 
-        {meta.password ? (
+        {post.password ? (
           <PassWord
-            content={content}
-            originPassword={meta.password}
-            title={meta.title}
+            content={post.content}
+            originPassword={post.password}
+            title={post.title || post.slug}
           />
         ) : (
-          content
+          post.content
         )}
         <hr />
         <PostNavigation prevPost={prevPost} nextPost={nextPost} />
