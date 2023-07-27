@@ -7,6 +7,11 @@ import { getAllPosts } from '@/lib/mdx';
 
 export default async function AllPostsListItem() {
   const posts = (await getAllPosts()).slice(0, 3);
+  const indexToColor: any = {
+    0: 'from-[#D8B4FE] to-[#818CF8]',
+    1: 'from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
+    2: 'from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]',
+  };
 
   if (!posts.length) {
     return (
@@ -24,15 +29,15 @@ export default async function AllPostsListItem() {
         <div className="mx-2 grid grid-cols-1 gap-4 lg:grid-cols-2">
           {posts.map((post, index) => (
             <Link
+              key={post.slug}
               href={`/posts/${post.slug}`}
               // className="text-neutral-700 hover:!no-underline group"
-              className={`text-neutral-700 hover:!no-underline group ${
+              className={`text-neutral-700 transition duration-300 hover:scale-105 bg-gradient-to-r p-1 rounded-lg hover:!no-underline group ${
                 index === 0 && post.fixed ? 'lg:col-span-2 lg:text-center' : ''
-              }`}
-              key={post.slug}
+              } ${indexToColor[index] || ''}`}
             >
               <div
-                className={`rounded-md border border-neutral-200 bg-white px-6 py-4 shadow-sm transition duration-300 hover:cursor-pointer hover:bg-neutral-200 text-xl hover:scale-105 hover:shadow-md`}
+                className={`rounded-lg border border-neutral-200 bg-white px-6 py-4 shadow-sm text-xl`}
               >
                 <h2 className="truncate font-semibold capitalize">
                   {post.title || post.slug} <span className="font-bold">→</span>
