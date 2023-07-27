@@ -23,7 +23,7 @@ interface TMetaAdditionialOptions {
 type TFrontmatter = TMetaOptions & Partial<TMetaAdditionialOptions>;
 
 interface PassWord {
-  title: string | undefined;
+  title: string;
   originPassword: string | number;
   content: any;
 }
