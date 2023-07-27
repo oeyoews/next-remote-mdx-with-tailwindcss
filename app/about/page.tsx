@@ -11,7 +11,7 @@ export async function generateMetadata() {
 
 export default function page() {
   return (
-    <div className="prose mx-auto my-4 max-w-none rounded p-4 sm:w-full md:w-1/2">
+    <div className="prose mx-auto my-4 max-w-none rounded p-4 max-3xl">
       <blockquote>Coming ...</blockquote>
       <div className="flex items-center justify-end">
         <Link href="/"> ← Back to Home</Link>

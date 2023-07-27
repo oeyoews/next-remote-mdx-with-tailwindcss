@@ -66,13 +66,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const nextPost =
     currentIndex < posts.length - 1 ? posts[currentIndex + 1] : firstPost;
 
-  {
-    /* // <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2"> */
-  }
   return (
     <TransitionWrapper>
       <KeyboardNavigation prevPost={prevPost} nextPost={nextPost} />
-      <article className="md:1/2 prose prose-indigo mx-auto mt-4 p-4 sm:w-full">
+      <article className="prose prose-indigo mx-auto mt-4 p-4 max-w-3xl">
         <ProgressBar />
         {/* sticky backdrop-blur-sm hover:cursor-pointer */}
         <h2

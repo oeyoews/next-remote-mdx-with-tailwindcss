@@ -17,7 +17,7 @@ export default async function AllPostsListItem() {
   if (!posts.length) {
     return (
       <main>
-        <section className="prose-md prose mx-auto max-h-screen max-w-none rounded p-4 sm:w-full md:w-1/2">
+        <section className="prose-md prose mx-auto max-h-screen rounded p-4 max-w-3xl">
           <h1>Posts is empty </h1>
         </section>
       </main>
@@ -26,7 +26,7 @@ export default async function AllPostsListItem() {
 
   return (
     <TransitionWrapper>
-      <section className="mx-auto mt-12 sm:w-full md:w-1/2">
+      <section className="mx-auto mt-12 max-w-3xl px-2">
         <div className="mx-2 grid grid-cols-1 gap-4 lg:grid-cols-2">
           {posts.map((post, index) => (
             <Link
