@@ -12,17 +12,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/fiber": "^8.13.5",
+    "@react-three/fiber": "^8.13.6",
     "@tailwindcss/typography": "^0.5.9",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
-    "@types/node": "20.4.4",
-    "@types/react": "18.2.16",
+    "@types/node": "20.4.5",
+    "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "^10.4.14",
     "date-fns": "^2.30.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
-    "framer-motion-3d": "^10.13.1",
+    "framer-motion-3d": "^10.13.2",
     "highlight.js": "^11.8.0",
     "medium-zoom": "^1.0.8",
     "next": "13.4.12",
@@ -48,6 +48,6 @@
     "tailwindcss": "^3.3.3",
     "three": "^0.154.0",
     "typescript": "5.1.6",
-    "vaul": "^0.0.6"
+    "vaul": "^0.1.0"
   }
 }

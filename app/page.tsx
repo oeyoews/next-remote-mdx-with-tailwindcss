@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import TransitionWrapper from '@/components/TransitionWrapper';
+import MyDrawer from '@/components/Vaul';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
@@ -26,6 +27,7 @@ export default async function AllPostsListItem() {
 
   return (
     <TransitionWrapper>
+      <MyDrawer />
       <section className="mx-auto mt-12 max-w-3xl px-2">
         <div className="mx-2 grid grid-cols-1 gap-4 lg:grid-cols-2">
           {posts.map((post, index) => (
