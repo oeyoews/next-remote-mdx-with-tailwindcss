@@ -9,6 +9,7 @@ const domains = [
 ];
 
 const nextConfig = {
+  // output: 'export',
   images: {
     domains,
   },

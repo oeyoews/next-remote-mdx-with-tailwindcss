@@ -1,7 +1,7 @@
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import Gravatar from '@/components/Gravatar';
-import { ImageZoom } from '@/components/ImageZoom';
 import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
@@ -68,32 +68,25 @@ export default async function Post({ params }: { params: { slug: string } }) {
   return (
     <TransitionWrapper>
       <KeyboardNavigation prevPost={prevPost} nextPost={nextPost} />
+
       <article className="prose prose-indigo mx-auto mt-4 p-4 max-w-3xl">
-        {/* sticky backdrop-blur-sm hover:cursor-pointer */}
-        <h2
-          className="my-2 bg-white/30 p-1 text-center capitalize font-serif"
-          // onClick={scrollTop}
-        >
+        {post.cover && (
+          <Image src={post.cover} width={1020} height={280} alt={post.slug} />
+        )}
+
+        <h2 className="my-2 bg-white/30 p-1 text-center capitalize font-serif">
           {post.title || post.slug}
         </h2>
         <div className="not-prose text-center">
           <Gravatar />
           <small className="font-serif text-gray-400">{pubDate}</small>
-          {post.cover && (
-            <ImageZoom
-              src={post.cover}
-              // placeholder="blur"
-              // blurDataURL="https://images.unsplash.com/photo-1690184432588-81068877d852?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"
-              width={1920}
-              height={1080}
-              alt={post.slug}
-            />
-          )}
         </div>
 
-        <blockquote className="my-2 mb-8 text-slate-400">
-          {post.description}
-        </blockquote>
+        {post.description && (
+          <blockquote className="my-2 mb-8 text-slate-700">
+            {post.description}
+          </blockquote>
+        )}
 
         {post.password ? (
           <PassWord
