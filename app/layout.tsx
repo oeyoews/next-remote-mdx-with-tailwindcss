@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import NavBar from '@/components/NavBar';
+import TransitionWrapper from '@/components/TransitionWrapper';
+import ProgressBar from '@/components/framer-motion/ProgressBar';
 
 import './globals.css';
 
@@ -56,8 +58,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
-        <NavBar />
-        {children}
+        <ProgressBar />
+        <TransitionWrapper>
+          <NavBar />
+          {children}
+        </TransitionWrapper>
       </body>
     </html>
   );

@@ -6,7 +6,6 @@ import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
 import TransitionWrapper from '@/components/TransitionWrapper';
-import ProgressBar from '@/components/framer-motion/ProgressBar';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
@@ -70,7 +69,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
     <TransitionWrapper>
       <KeyboardNavigation prevPost={prevPost} nextPost={nextPost} />
       <article className="prose prose-indigo mx-auto mt-4 p-4 max-w-3xl">
-        <ProgressBar />
         {/* sticky backdrop-blur-sm hover:cursor-pointer */}
         <h2
           className="my-2 bg-white/30 p-1 text-center capitalize font-serif"
