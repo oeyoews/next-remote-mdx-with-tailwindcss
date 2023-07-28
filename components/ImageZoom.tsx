@@ -1,32 +1,34 @@
 'use client';
-import { ComponentProps, useRef } from 'react'
-import mediumZoom, { Zoom, ZoomOptions } from 'medium-zoom'
 
-type ImageZoomProps = ComponentProps<'img'> & {
-	options?: ZoomOptions
-}
+import { useRef } from 'react';
 
-export function ImageZoom({ options, ...props }: ImageZoomProps) {
-	const zoomRef = useRef<Zoom | null>(null)
+import Image, { ImageProps } from 'next/image';
 
-	function getZoom() {
-		if (zoomRef.current === null) {
-			zoomRef.current = mediumZoom(options)
-		}
+import mediumZoom, { Zoom } from 'medium-zoom';
 
-		return zoomRef.current
-	}
+export function ImageZoom({ ...props }: ImageProps) {
+  const zoomRef = useRef<Zoom | null>(null);
 
-	function attachZoom(image: HTMLImageElement | null) {
-		const zoom = getZoom()
+  function getZoom() {
+    if (zoomRef.current === null) {
+      zoomRef.current = mediumZoom();
+    }
 
-		if (image) {
-			zoom.attach(image)
-		} else {
-			zoom.detach()
-		}
-	}
+    return zoomRef.current;
+  }
 
-	// how use next/Image
-	return <img {...props} ref={attachZoom} />
+  function attachZoom(image: HTMLImageElement | null) {
+    const zoom = getZoom();
+
+    if (image) {
+      zoom.attach(image);
+      zoom.update({
+        background: 'rgba(0, 0, 0, 0.5)',
+      });
+    } else {
+      zoom.detach();
+    }
+  }
+
+  return <Image {...props} ref={attachZoom} className="rounded" />;
 }

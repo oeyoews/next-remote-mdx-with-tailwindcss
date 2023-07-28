@@ -1,5 +1,3 @@
 export default function page() {
-	return (
-		<blockquote>Coming Here</blockquote>
-	)
+  return <blockquote>Coming Here</blockquote>;
 }

@@ -1,75 +1,112 @@
-import getFormattedDate from "@/lib/getFormatedDate";
-import { getAllPostsMeta } from "@/lib/mdx";
-import Link from "next/link";
-import { notFound } from 'next/navigation'
-import Gravatar from "@/components/Gravatar";
-import { ImageZoom } from "@/components/ImageZoom";
-import scrollTop from "@/lib/scrollTop";
-import PassWord from "@/components/PassWord";
-import ProgressBar from "@/components/ProgressBar";
+import { notFound } from 'next/navigation';
 
+import Gravatar from '@/components/Gravatar';
+import Hitokoto from '@/components/Hitokoto';
+import KeyboardNavigation from '@/components/KeyboardNavigation';
+import PassWord from '@/components/PassWord';
+import PostNavigation from '@/components/PostNav';
+import TransitionWrapper from '@/components/TransitionWrapper';
+
+import getFormattedDate from '@/lib/getFormatedDate';
+import { getAllPosts } from '@/lib/mdx';
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
 // https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
 // https://nextjs.org/docs/app/api-reference/functions/generate-static-params
 export async function generateStaticParams() {
-	const posts = await getAllPostsMeta();
-	return posts.map((post) => ({
-		// local md(x) filename without extension
-		slug: post.meta.slug
-	}))
+  const posts = await getAllPosts();
+  return posts.map((post) => ({
+    // local md(x) filename without extension
+    slug: post.slug,
+  }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params;
+  const originalSlug = decodeURIComponent(slug);
+  const posts = await getAllPosts();
+  const post = posts.find((post) => post.slug === originalSlug);
+  // console.log(JSON.stringify(post, null, 2));
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-	const { slug } = params
-	const originalSlug = decodeURIComponent(slug)
-	const posts = await getAllPostsMeta();
-	const post = posts.find((post) => post.meta.slug === originalSlug);
+  if (!post) {
+    return {
+      title: `${originalSlug} Post Not Found`,
+    };
+  }
 
-	if (!post) {
-		return {
-			title: `${originalSlug} Post Not Found`
-		}
-	}
-
-	return {
-		title: post.meta.title,
-		description: post.meta?.description
-	}
+  return {
+    title: post.title || post.slug,
+    description: post.description,
+  };
 }
 
 // support click h1 title to scroll top
-export default async function Posts({ params }: { params: { slug: string } }) {
-	const { slug } = params;
-	const originalSlug = decodeURIComponent(slug)
-	const posts = await getAllPostsMeta();
-	const post = posts.find((post) => post.meta.slug === originalSlug);
-	if (!post) { notFound(); }
-	const { meta, content } = post
-	const pubDate = getFormattedDate(meta.date)
-	return (
-		// <main className="prose prose-indigo mx-auto mt-4 mb-0 rounded max-w-none sm:w-full md:w-1/2">
-		<article className="prose prose-indigo mx-auto mt-4 mb-0 sm:w-full md:1/2">
-			<ProgressBar />
-			{/* sticky backdrop-blur-sm */}
-			<h2 className="capitalize top-0.5 bg-white/30 p-1 text-center hover:cursor-pointer my-2" onClick={scrollTop}>{meta.title}</h2>
-			<div className="text-center not-prose">
-				<Gravatar />
-				<small className="font-serif text-gray-400">
-					{pubDate}
-				</small>
-				{meta.cover && <ImageZoom src={meta.cover} alt={meta.title} width={1920} className="rounded-md mt-2" />}
-			</div>
+export default async function Post({ params }: { params: { slug: string } }) {
+  const { slug } = params;
+  const originalSlug = decodeURIComponent(slug);
+  const posts = await getAllPosts();
+  // support chinese key steps
+  const post = posts.find((post) => post.slug === originalSlug);
 
-			<blockquote className="my-2 text-slate-400 mb-8">
-				{meta.description}
-			</blockquote>
+  if (!post) {
+    notFound();
+  }
 
-			{meta.password ? <PassWord content={content} originPassword={meta.password} /> : content}
-			<p className="flex justify-end items-end mt-16 mb-0">
-				<Link href="/">← Back to Home</Link>
-			</p>
-		</article>
-	);
+  const pubDate = getFormattedDate(post.date);
+
+  const currentIndex = posts.findIndex((post) => post.slug === originalSlug);
+  const firstPost = posts[0];
+  const lastPost = posts[posts.length - 1];
+
+  const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : lastPost;
+  const nextPost =
+    currentIndex < posts.length - 1 ? posts[currentIndex + 1] : firstPost;
+
+  return (
+    <TransitionWrapper>
+      <KeyboardNavigation prevPost={prevPost} nextPost={nextPost} />
+
+      <article className="prose mx-auto mt-4 p-4 max-w-3xl">
+        {/* {post.cover && (
+          <Image
+            src={post.cover}
+            width={1020}
+            height={1280}
+            alt={post.slug}
+            className="w-auto rounded-md"
+          />
+        )} */}
+        <h2 className="my-2 bg-white/30 p-1 text-center capitalize font-serif">
+          {post.title || post.slug}
+        </h2>
+        <div className="not-prose text-center">
+          <Gravatar />
+          <small className="font-serif text-gray-400">{pubDate}</small>
+        </div>
+
+        {post.description && (
+          <blockquote className="my-2 mb-8 text-slate-700">
+            {post.description}
+          </blockquote>
+        )}
+
+        {post.password ? (
+          <PassWord
+            content={post.content}
+            originPassword={post.password}
+            title={post.title || (post.slug as string)}
+          />
+        ) : (
+          post.content
+        )}
+        <Hitokoto />
+        <hr />
+        <PostNavigation prevPost={prevPost} nextPost={nextPost} />
+      </article>
+    </TransitionWrapper>
+  );
 }

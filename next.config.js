@@ -1,15 +1,19 @@
 /** @type {import('next').NextConfig} */
 
-const domains = ["unsplash.com", "plus.unsplash.com", "images.unsplash.com", 'gravatar.com'];
+const domains = [
+  'cdn-icons-png.flaticon.com',
+  'unsplash.com',
+  'plus.unsplash.com',
+  'images.unsplash.com',
+  'gravatar.com',
+];
 
 const nextConfig = {
-webpack(config, { isServer, dev }) {
-    config.experiments = {
-      asyncWebAssembly: true,
-      layers: true,
-    };
-    return config;
+  // output: 'export',
+  experimental: {
+    typedRoutes: true,
   },
+  // ignoreBuildErrors: true,
   images: {
     domains,
   },

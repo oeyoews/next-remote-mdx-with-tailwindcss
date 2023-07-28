@@ -36,3 +36,5 @@ next-env.d.ts
 
 public/sw**
 public/workbox**
+sitemap.xml
+robots.txt

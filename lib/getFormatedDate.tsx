@@ -1,6 +1,16 @@
-// NOTE: date 最好加上引号, 时间格式化有多种, 数字不保证绝对正确
-export default function getFormattedDate(dateString: string) {
-	return new Intl.DateTimeFormat('en-US', {
-		dateStyle: 'long',
-	}).format(new Date(dateString));
+import { format, isValid, parseISO } from 'date-fns';
+
+function getFormattedDate(date: string | object) {
+  let parsedDate;
+
+  if (typeof date === 'object' && date instanceof Date) {
+    parsedDate = date;
+  } else {
+    parsedDate = parseISO(date.toString());
+  }
+
+  if (isValid(parsedDate)) {
+    return format(parsedDate, 'yyyy-MM-dd');
+  }
 }
+export default getFormattedDate;

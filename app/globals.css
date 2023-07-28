@@ -16,15 +16,27 @@
   }
 } */
 
+a {
+  text-decoration: none !important;
+}
+
+/* a::after {
+  content: '';
+} */
+
 /* conflict to prose */
 @layer base {
-  a {
-    @apply !no-underline hover:!underline hover:decoration-dotted
+  /* a {
+    @apply !no-underline hover:!underline hover:decoration-dotted;
+  } */
+
+  ::selection {
+    @apply bg-[#79ffe1];
   }
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 code {
@@ -48,4 +60,9 @@ code[data-line-numbers-max-digits='2'] > [data-line]::before {
 
 code[data-line-numbers-max-digits='3'] > [data-line]::before {
   width: 3rem;
+}
+
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 999;
 }

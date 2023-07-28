@@ -1,6 +1,14 @@
 ## README
 
-* Next13, Tailwindcss, next-mdx-remote, og:image
+- Next13, Tailwindcss, next-mdx-remote, og:image
+
+## Feature
+
+- [x] 支持方向键查看下篇文章
+- [x] 每篇文章支持设置密码
+- [x] 支持 md 和 mdx 文章
+- [x] 支持草稿模式,和文章置顶
+- [x] support rss
 
 ## Preview
 
@@ -12,8 +20,14 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 
 ## TODO
 
-- [ ] support password
+- [ ] add deploy button
+- [ ] 7/21 写一个时间组件
+- [ ] support backtotop
+- [ ] 渐进式呈现元素 with framer-motion
+- [ ] 分页 paging
+- [x] support password
 <!-- * og: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image -->
+
 * og not support cn name now
 * full context search
 * next auth (sites)
@@ -29,13 +43,15 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 * better toc https://github.com/gaoxiu333/next-blog-template/blob/main/components/Articles/ArticleTableOfContens/ArticleTableOfContens.tsx
 * support reading time
 * mdx-bundler
-https://github.com/gaoxiu333/next-blog-template
+  https://github.com/gaoxiu333/next-blog-template
+
 - [ ] support slug
 - [ ] not found page
-- [ ] support rss
-https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/website/post.js#L8
+      rss parser
+      https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/website/post.js#L8
+
 * support highlight code
-* zoom image
+* [x] zoom image
 * https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
 * support meta
 * support meta
@@ -50,6 +66,6 @@ https://github.com/mdx-js/mdx/blob/8a563128a346a637dfe6bc83df55f069947d2337/webs
 
 ## links
 
-* https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes
-* support html in mdx file
-* use daysiui
+- https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes
+- support html in mdx file
+- use daysiui
