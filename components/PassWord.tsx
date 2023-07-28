@@ -3,10 +3,13 @@
 import { useEffect, useState } from 'react';
 import { FcUnlock } from 'react-icons/fc';
 
+import confetti from 'canvas-confetti';
+
 const PassWord = ({ title, originPassword, content }: PassWord) => {
   const [password, setPassword] = useState('');
   const [showContent, setShowContent] = useState(false);
   const [error, setError] = useState(false);
+  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
 
   const handlePasswordInput = (event: any) => {
     setPassword(event.target.value);
@@ -15,6 +18,8 @@ const PassWord = ({ title, originPassword, content }: PassWord) => {
   const handlePasswordSubmit = (e: any) => {
     e.preventDefault();
     if (password === originPassword) {
+      setIsPasswordCorrect(true);
+      confetti();
       // 获取已存储的密码对象
       const storedPasswords = JSON.parse(
         localStorage.getItem('PostPasswords') || '{}',
