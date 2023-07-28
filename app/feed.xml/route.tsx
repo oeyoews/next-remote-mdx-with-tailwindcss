@@ -22,6 +22,8 @@ export async function GET() {
       url: `${domain}/posts/${post.slug}`,
       author: 'oeyoews',
       pubDate: post.date,
+      categories: ['blog'],
+      // custom_elements: [{ content: post.description }],
     });
   });
 

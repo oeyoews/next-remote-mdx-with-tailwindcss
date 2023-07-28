@@ -64,6 +64,7 @@ export async function getPostBySlug(fileName: string) {
 
   const rawFileContent = fs.readFileSync(filePath, 'utf-8');
 
+  // content 是一个对象, html 是如何处理的呢
   const { frontmatter, content } = await compileMDX<TFrontmatter>({
     source: rawFileContent,
     options: { parseFrontmatter: true, mdxOptions },

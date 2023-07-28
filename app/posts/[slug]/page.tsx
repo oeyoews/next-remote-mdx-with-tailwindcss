@@ -30,6 +30,7 @@ export async function generateMetadata({
   const originalSlug = decodeURIComponent(slug);
   const posts = await getAllPosts();
   const post = posts.find((post) => post.slug === originalSlug);
+  // console.log(JSON.stringify(post, null, 2));
 
   if (!post) {
     return {
