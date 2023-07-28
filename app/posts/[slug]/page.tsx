@@ -72,7 +72,13 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
       <article className="prose prose-indigo mx-auto mt-4 p-4 max-w-3xl">
         {post.cover && (
-          <Image src={post.cover} width={1020} height={280} alt={post.slug} />
+          <Image
+            src={post.cover}
+            width={1020}
+            height={1280}
+            alt={post.slug}
+            className="w-auto rounded-md"
+          />
         )}
 
         <h2 className="my-2 bg-white/30 p-1 text-center capitalize font-serif">
