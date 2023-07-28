@@ -101,7 +101,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <Gravatar />
           <small className="font-serif text-gray-400">
             {pubDate}
-            <FiEye className="inline ml-2 mr-1" /> views: {views?.quantity}
+            {/* <FiEye className="inline ml-2 mr-1" /> views: {views?.quantity} */}
           </small>
         </div>
         {post.description && (
