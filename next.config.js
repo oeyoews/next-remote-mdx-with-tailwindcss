@@ -10,6 +10,10 @@ const domains = [
 
 const nextConfig = {
   // output: 'export',
+  experimental: {
+    typedRoutes: true,
+  },
+  // ignoreBuildErrors: true,
   images: {
     domains,
   },
