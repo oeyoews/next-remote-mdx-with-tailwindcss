@@ -1,3 +1,5 @@
+import { FiEye } from 'react-icons/fi';
+
 import { notFound } from 'next/navigation';
 
 import Gravatar from '@/components/Gravatar';
@@ -9,6 +11,7 @@ import TransitionWrapper from '@/components/TransitionWrapper';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
+import { kv } from '@vercel/kv';
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
 // https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
@@ -47,6 +50,17 @@ export async function generateMetadata({
 // support click h1 title to scroll top
 export default async function Post({ params }: { params: { slug: string } }) {
   const { slug } = params;
+  // if dev, disabled
+  let views;
+  if (process.env.NODE_ENV === 'production') {
+    views = await kv.get<kvOptions>(slug);
+    await kv.set(slug, {
+      slug,
+      quantity: views?.quantity ? views.quantity + 1 : 1,
+    });
+  }
+  views = await kv.get<kvOptions>(slug);
+
   const originalSlug = decodeURIComponent(slug);
   const posts = await getAllPosts();
   // support chinese key steps
@@ -71,29 +85,21 @@ export default async function Post({ params }: { params: { slug: string } }) {
       <KeyboardNavigation prevPost={prevPost} nextPost={nextPost} />
 
       <article className="prose mx-auto mt-4 p-4 max-w-3xl">
-        {/* {post.cover && (
-          <Image
-            src={post.cover}
-            width={1020}
-            height={1280}
-            alt={post.slug}
-            className="w-auto rounded-md"
-          />
-        )} */}
         <h2 className="my-2 bg-white/30 p-1 text-center capitalize font-serif">
           {post.title || post.slug}
         </h2>
         <div className="not-prose text-center">
           <Gravatar />
-          <small className="font-serif text-gray-400">{pubDate}</small>
+          <small className="font-serif text-gray-400">
+            {pubDate}
+            <FiEye className="inline ml-2 mr-1" /> views: {views?.quantity}
+          </small>
         </div>
-
         {post.description && (
           <blockquote className="my-2 mb-8 text-slate-700">
             {post.description}
           </blockquote>
         )}
-
         {post.password ? (
           <PassWord
             content={post.content}

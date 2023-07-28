@@ -11,7 +11,7 @@ const domains = [
 const nextConfig = {
   // output: 'export',
   experimental: {
-    typedRoutes: true,
+    // typedRoutes: true,
   },
   // ignoreBuildErrors: true,
   images: {
