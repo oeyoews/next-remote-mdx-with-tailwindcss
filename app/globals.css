@@ -16,11 +16,19 @@
   }
 } */
 
+a {
+  text-decoration: none !important;
+}
+
+/* a::after {
+  content: '';
+} */
+
 /* conflict to prose */
 @layer base {
-  a {
+  /* a {
     @apply !no-underline hover:!underline hover:decoration-dotted;
-  }
+  } */
 
   ::selection {
     @apply bg-[#79ffe1];

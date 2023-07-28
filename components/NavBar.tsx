@@ -27,7 +27,10 @@ export default function NavBar() {
   return (
     <nav className="sticky top-0 mx-auto flex items-center justify-between rounded p-2 text-xl backdrop-blur-lg print:hidden z-[1] max-w-3xl">
       <div className="flex items-center">
-        <Link href="/" className="p-1">
+        <Link
+          href="/"
+          className="p-2 hover:bg-neutral-100 duration-200 transition"
+        >
           <Image src="/next.svg" alt="Next.js Logo" width={100} height={37} />
         </Link>
       </div>

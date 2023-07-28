@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import Gravatar from '@/components/Gravatar';
@@ -70,7 +69,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
     <TransitionWrapper>
       <KeyboardNavigation prevPost={prevPost} nextPost={nextPost} />
 
-      <article className="prose prose-indigo mx-auto mt-4 p-4 max-w-3xl">
+      <article className="prose mx-auto mt-4 p-4 max-w-3xl">
         {/* {post.cover && (
           <Image
             src={post.cover}
