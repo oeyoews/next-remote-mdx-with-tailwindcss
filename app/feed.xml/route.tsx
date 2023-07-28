@@ -1,8 +1,7 @@
 // https://validator.w3.org/feed/#validate_by_input
 import { getAllPosts } from '@/lib/mdx';
-import RSS, { FeedOptions } from 'rss';
+import RSS from 'rss';
 
-// TODO content is a obj ???
 const domain = process.env.DOMAIN;
 
 export async function GET() {
@@ -18,6 +17,7 @@ export async function GET() {
   posts.forEach((post) => {
     feed.item({
       title: post.title,
+      // TODO content is a obj ???
       description: post.description,
       url: `${domain}/posts/${post.slug}`,
       author: 'oeyoews',
