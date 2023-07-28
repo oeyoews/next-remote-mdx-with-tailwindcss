@@ -114,7 +114,7 @@ export async function getAllPosts() {
     datePosts.sort((a, b) => b.date.localeCompare(a.date));
 
     posts = [...fixedPosts, ...datePosts, ...noDatePost];
-    // posts = [...noDatePost];
+    // posts = [...datePosts];
     return posts;
   }
 

@@ -18,8 +18,8 @@ export default async function AllPostsListItem() {
   if (!posts.length) {
     return (
       <main>
-        <section className="prose-md prose mx-auto max-h-screen rounded p-4 max-w-3xl">
-          <h1>Posts is empty </h1>
+        <section className="prose-md prose mx-auto rounded p-4 max-w-3xl">
+          <h1>Posts is empty</h1>
         </section>
       </main>
     );

@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 const TransitionWrapper = ({ children }: any) => {
   return (
-    <motion.div className="min-h-screen">
+    <motion.div>
       <AnimatePresence initial={true} mode="sync">
         <motion.div
           initial={{

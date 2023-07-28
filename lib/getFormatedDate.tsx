@@ -1,14 +1,16 @@
 import { format, isValid, parseISO } from 'date-fns';
 
-// TODO: 支持各种格式的日期
-function getFormattedDate(date: string) {
-  const parsedDate = parseISO(date);
-  const currentDate = new Date();
+function getFormattedDate(date: string | object) {
+  let parsedDate;
 
-  if (isValid(parsedDate) && currentDate >= parsedDate) {
-    return format(parsedDate, 'yyyy-MM-dd');
+  if (typeof date === 'object' && date instanceof Date) {
+    parsedDate = date;
+  } else {
+    parsedDate = parseISO(date.toString());
   }
 
-  return false;
+  if (isValid(parsedDate)) {
+    return format(parsedDate, 'yyyy-MM-dd');
+  }
 }
 export default getFormattedDate;
