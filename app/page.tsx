@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
-import Hitokoto from '@/components/Hitokoto';
 import TransitionWrapper from '@/components/TransitionWrapper';
 
 import getFormattedDate from '@/lib/getFormatedDate';
@@ -41,6 +41,17 @@ export default async function AllPostsListItem() {
               <div
                 className={`rounded-lg border border-neutral-200 bg-white px-6 py-4 shadow-sm text-xl`}
               >
+                {/* 添加图片 */}
+                {/* {post.cover && (
+                  <Image
+                    src={post.cover as any}
+                    alt={post.title}
+                    title={post.title}
+                    width={1920}
+                    height={80}
+                    className="mb-4 rounded-lg bg-cover object-cover"
+                  />
+                )} */}
                 <h2 className="truncate font-semibold capitalize">
                   {post.title || post.slug} <span className="font-bold">→</span>
                 </h2>
