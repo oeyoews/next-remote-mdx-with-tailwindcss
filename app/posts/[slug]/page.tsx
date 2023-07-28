@@ -61,11 +61,11 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
   let views;
   // if (process.env.NODE_ENV === 'production') {
-  // views = await kv.get<kvOptions>(slug);
-  // await kv.set(slug, {
-  //   slug,
-  //   quantity: views?.quantity ? views.quantity + 1 : 1,
-  // });
+  views = await kv.get<kvOptions>(slug);
+  await kv.set(slug, {
+    slug,
+    quantity: views?.quantity ? views.quantity + 1 : 1,
+  });
   // // }
 
   // {total: {quantity: 1}}
@@ -101,7 +101,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <Gravatar />
           <small className="font-serif text-gray-400">
             {pubDate}
-            {/* <FiEye className="inline ml-2 mr-1" /> views: {views?.quantity} */}
+            <FiEye className="inline ml-2 mr-1" /> views: {views?.quantity}
           </small>
         </div>
         {post.description && (
