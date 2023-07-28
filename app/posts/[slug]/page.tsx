@@ -52,13 +52,13 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const { slug } = params;
   // if dev, disabled
   let views;
-  if (process.env.NODE_ENV === 'production') {
-    views = await kv.get<kvOptions>(slug);
-    await kv.set(slug, {
-      slug,
-      quantity: views?.quantity ? views.quantity + 1 : 1,
-    });
-  }
+  // if (process.env.NODE_ENV === 'production') {
+  views = await kv.get<kvOptions>(slug);
+  await kv.set(slug, {
+    slug,
+    quantity: views?.quantity ? views.quantity + 1 : 1,
+  });
+  // }
   views = await kv.get<kvOptions>(slug);
 
   const originalSlug = decodeURIComponent(slug);
