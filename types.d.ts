@@ -11,23 +11,23 @@ type TFrontmatter = {
   content: any
 };
 
-declare module 'lqip-modern' {
-  type LqipResult = Promise<{
-    content: Buffer;
-    metadata: {
-      originalWidth: number;
-      originalHeight: number;
-      width: number;
-      height: number;
-      type: string;
-      dataURIBase64: string;
-    };
-  }>;
+// declare module 'lqip-modern' {
+//   type LqipResult = Promise<{
+//     content: Buffer;
+//     metadata: {
+//       originalWidth: number;
+//       originalHeight: number;
+//       width: number;
+//       height: number;
+//       type: string;
+//       dataURIBase64: string;
+//     };
+//   }>;
 
-  function lqip(imagePath: string): LqipResult;
+//   function lqip(imagePath: string): LqipResult;
 
-  export = lqip;
-}
+//   export = lqip;
+// }
 interface PostNavigationProps {
   prevPost: TFrontmatter;
   nextPost: TFrontmatter;
