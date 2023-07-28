@@ -50,17 +50,6 @@ export async function generateMetadata({
 // support click h1 title to scroll top
 export default async function Post({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  // if dev, disabled
-  let views;
-  // if (process.env.NODE_ENV === 'production') {
-  views = await kv.get<kvOptions>(slug);
-  await kv.set(slug, {
-    slug,
-    quantity: views?.quantity ? views.quantity + 1 : 1,
-  });
-  // }
-  views = await kv.get<kvOptions>(slug);
-
   const originalSlug = decodeURIComponent(slug);
   const posts = await getAllPosts();
   // support chinese key steps
@@ -69,6 +58,26 @@ export default async function Post({ params }: { params: { slug: string } }) {
   if (!post) {
     notFound();
   }
+
+  let views;
+  // if (process.env.NODE_ENV === 'production') {
+  // views = await kv.get<kvOptions>(slug);
+  // await kv.set(slug, {
+  //   slug,
+  //   quantity: views?.quantity ? views.quantity + 1 : 1,
+  // });
+  // // }
+
+  // {total: {quantity: 1}}
+  // {slug: {quantity: 1}}
+
+  // views = await kv.get<kvOptions>('total');
+  // await kv.set('total', {
+  //   total: 'total',
+  //   quantity: views?.quantity ? views.quantity + 1 : 1,
+  // });
+
+  // views = await kv.get<kvOptions>('total');
 
   const pubDate = getFormattedDate(post.date);
 
