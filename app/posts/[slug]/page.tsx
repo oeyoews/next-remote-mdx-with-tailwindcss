@@ -1,5 +1,3 @@
-import { FiEye } from 'react-icons/fi';
-
 import { notFound } from 'next/navigation';
 
 import Gravatar from '@/components/Gravatar';
@@ -8,6 +6,7 @@ import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
 import TransitionWrapper from '@/components/TransitionWrapper';
+import Views from '@/components/Views';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
@@ -59,26 +58,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  let views;
-  // if (process.env.NODE_ENV === 'production') {
-  views = await kv.get<kvOptions>(slug);
-  await kv.set(slug, {
-    slug,
-    quantity: views?.quantity ? views.quantity + 1 : 1,
-  });
-  // // }
-
-  // {total: {quantity: 1}}
-  // {slug: {quantity: 1}}
-
-  // views = await kv.get<kvOptions>('total');
-  // await kv.set('total', {
-  //   total: 'total',
-  //   quantity: views?.quantity ? views.quantity + 1 : 1,
-  // });
-
-  // views = await kv.get<kvOptions>('total');
-
   const pubDate = getFormattedDate(post.date);
 
   const currentIndex = posts.findIndex((post) => post.slug === originalSlug);
@@ -101,7 +80,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <Gravatar />
           <small className="font-serif text-gray-400">
             {pubDate}
-            <FiEye className="inline ml-2 mr-1" /> views: {views?.quantity}
+            {/* <Views slug={slug} /> */}
           </small>
         </div>
         {post.description && (
