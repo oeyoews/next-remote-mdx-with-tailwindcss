@@ -71,7 +71,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
       <KeyboardNavigation prevPost={prevPost} nextPost={nextPost} />
 
       <article className="prose prose-indigo mx-auto mt-4 p-4 max-w-3xl">
-        {post.cover && (
+        {/* {post.cover && (
           <Image
             src={post.cover}
             width={1020}
@@ -79,8 +79,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
             alt={post.slug}
             className="w-auto rounded-md"
           />
-        )}
-
+        )} */}
         <h2 className="my-2 bg-white/30 p-1 text-center capitalize font-serif">
           {post.title || post.slug}
         </h2>
