@@ -364,6 +364,11 @@
     picocolors "^1.0.0"
     tslib "^2.6.0"
 
+"@plaiceholder/next@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npmmirror.com/@plaiceholder/next/-/next-3.0.0.tgz#b35d74286f14fccf8df6793a540d81ac16bca349"
+  integrity sha512-7UK/H1X64hwo2VaxOPKMXE+OY9IgmKLPsq/xKHZ+gU07oqQSfIWWIgpVVucMB3ZgVYah+68agR15BRuSxAuMHw==
+
 "@react-three/fiber@^8.13.5":
   version "8.13.5"
   resolved "https://registry.npmmirror.com/@react-three/fiber/-/fiber-8.13.5.tgz#6075a18364381a03551068e28cb9b82a8ed7ae0d"

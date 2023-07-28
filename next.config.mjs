@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+import withPlaiceholder from '@plaiceholder/next';
 
 const domains = [
   'cdn-icons-png.flaticon.com',
@@ -19,4 +20,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default withPlaiceholder(nextConfig);
