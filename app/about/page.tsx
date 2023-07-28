@@ -16,8 +16,12 @@ export default function page() {
     <TransitionWrapper>
       <div className="prose mx-auto my-4 rounded p-4 max-w-3xl">
         <blockquote>Coming ...</blockquote>
+        <span className="countdown font-mono text-6xl">dmeo</span>
+
         <div className="flex items-center justify-end">
-          <Link href="/"> ← Back to Home</Link>
+          <Link href="/">
+            <button className="btn btn-info btn-outline">← Back to Home</button>
+          </Link>
         </div>
       </div>
     </TransitionWrapper>
