@@ -5,6 +5,8 @@ import { FiGithub } from 'react-icons/fi';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { ModeToggle } from './ToggleTheme';
+
 // scale not work
 export default function NavBar() {
   const iconClasses =
@@ -34,6 +36,7 @@ export default function NavBar() {
           <Image src="/next.svg" alt="Next.js Logo" width={100} height={37} />
         </Link>
       </div>
+      <ModeToggle />
       {/* <div className="flex space-x-2">
         {GithubLink}
         {AboutPage}

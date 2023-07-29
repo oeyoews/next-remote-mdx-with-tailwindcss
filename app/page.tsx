@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 import TransitionWrapper from '@/components/TransitionWrapper';
-import { Button, buttonVariants } from '@/components/ui/button';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
@@ -67,8 +66,6 @@ export default async function AllPostsListItem() {
           >
             ...
             {/* ... ... <Views slug="/home" /> */}
-            <Button>demo</Button>
-            <buttonVariants>demo</buttonVariants>
           </Link>
         </div>
       </section>
