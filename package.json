@@ -23,6 +23,7 @@
     "date-fns": "^2.30.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
+    "framer-motion": "^10.15.0",
     "framer-motion-3d": "^10.15.0",
     "highlight.js": "^11.8.0",
     "medium-zoom": "^1.0.8",
