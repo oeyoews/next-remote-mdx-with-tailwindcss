@@ -37,17 +37,18 @@ const mdxOptions: {} = {
   rehypePlugins: [
     rehypeSlug,
     rehypeKatex,
-    // [
-    //   rehypePrettyCode,
-    //   {
-    //     // theme: 'one-dark-pro',
-    //     // theme: {
-    //     // 	dark: 'one-dark-pro',
-    //     // 	light: 'one-dark-pro'
-    //     // },
-    //     keepBackground: false,
-    //   },
-    // ],
+    // this code is a bug for kv about md(x) page
+    [
+      rehypePrettyCode,
+      {
+        // theme: 'one-dark-pro',
+        // theme: {
+        // 	dark: 'one-dark-pro',
+        // 	light: 'one-dark-pro'
+        // },
+        keepBackground: false,
+      },
+    ],
   ],
   format: 'mdx',
 };

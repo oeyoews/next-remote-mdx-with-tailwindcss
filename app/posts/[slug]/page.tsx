@@ -6,7 +6,6 @@ import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
 import TransitionWrapper from '@/components/TransitionWrapper';
-import Views from '@/components/Views';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
@@ -75,10 +74,7 @@ export default async function Post({ params }: { params: Params }) {
         </h2>
         <div className="not-prose text-center">
           <Gravatar />
-          <small className="font-serif text-gray-400">
-            {pubDate}
-            <Views slug={slug} />
-          </small>
+          <small className="font-serif text-gray-400">{pubDate}</small>
         </div>
         {post.description && (
           <blockquote className="my-2 mb-8 text-slate-700">
