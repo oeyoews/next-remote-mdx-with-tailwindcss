@@ -3,7 +3,7 @@ import { FiEye } from 'react-icons/fi';
 
 import { kv } from '@vercel/kv';
 
-async function Views(params: { slug: string }) {
+async function Views(params: Params) {
   const { slug } = params;
   if (!slug) {
     console.log(`${slug} not found`);

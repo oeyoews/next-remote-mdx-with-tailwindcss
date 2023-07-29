@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import Like from '@/components/Like';
 import TransitionWrapper from '@/components/TransitionWrapper';
 import Views from '@/components/Views';
 
@@ -12,8 +13,7 @@ export async function generateMetadata() {
   };
 }
 
-export default async function page({ params }: { params: Params }) {
-  const { slug } = params;
+export default async function page() {
   return (
     <TransitionWrapper>
       <div className="prose mx-auto my-4 rounded p-4 max-w-3xl">
