@@ -4,6 +4,7 @@ import TransitionWrapper from '@/components/TransitionWrapper';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
+import { Button, DatePicker } from 'antd';
 
 export default async function AllPostsListItem() {
   const posts = (await getAllPosts()).slice(0, 3);
@@ -67,6 +68,8 @@ export default async function AllPostsListItem() {
             ...
             {/* ... ... <Views slug="/home" /> */}
           </Link>
+          <Button type="primary">PRESS ME</Button>
+          <DatePicker />
         </div>
       </section>
     </TransitionWrapper>
