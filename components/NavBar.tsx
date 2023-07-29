@@ -31,7 +31,13 @@ export default function NavBar() {
           href="/"
           className="p-2 hover:bg-neutral-100 duration-200 transition"
         >
-          <Image src="/next.svg" alt="Next.js Logo" width={100} height={37} />
+          <Image
+            src="/next.svg"
+            alt="Next.js Logo"
+            width={100}
+            height={37}
+            className="h-auto"
+          />
         </Link>
       </div>
       {/* <div className="flex space-x-2">

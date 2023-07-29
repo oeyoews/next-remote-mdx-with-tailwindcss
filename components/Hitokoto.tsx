@@ -19,6 +19,7 @@ function Hitokoto() {
 
   useEffect(() => {
     fetchHitokoto();
+    console.log('hi');
   }, []);
 
   return (
