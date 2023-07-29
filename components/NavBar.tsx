@@ -8,15 +8,15 @@ import Link from 'next/link';
 // scale not work
 export default function NavBar() {
   const iconClasses =
-    'inline mr-1 align-baseline stroke-blue-300 hover:scale-125 transition duration-300 hover:stroke-indigo-300';
+    'inline mr-1 align-baseline hover:scale-125 transition duration-300';
 
   const GithubLink = (
-    <a
+    <Link
       target="_blank"
       href={'https://github.com/oeyoews/next-remote-mdx-with-tailwindcss'}
     >
       <FiGithub className={iconClasses} />{' '}
-    </a>
+    </Link>
   );
   const AboutPage = (
     <Link href="/about" className="scale-110">
@@ -40,8 +40,8 @@ export default function NavBar() {
           />
         </Link>
       </div>
+      {GithubLink}
       {/* <div className="flex space-x-2">
-        {GithubLink}
         {AboutPage}
       </div> */}
     </nav>
