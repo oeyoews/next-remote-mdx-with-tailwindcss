@@ -41,7 +41,7 @@ const mdxOptions: {} = {
     [
       rehypePrettyCode,
       {
-        // theme: 'one-dark-pro',
+        theme: 'one-dark-pro',
         // theme: {
         // 	dark: 'one-dark-pro',
         // 	light: 'one-dark-pro'
