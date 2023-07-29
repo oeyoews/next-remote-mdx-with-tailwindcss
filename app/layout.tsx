@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/react';
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -61,6 +63,7 @@ export default function RootLayout({
         <ProgressBar />
         <NavBar />
         <TransitionWrapper>{children}</TransitionWrapper>
+        <Analytics />
       </body>
     </html>
   );
