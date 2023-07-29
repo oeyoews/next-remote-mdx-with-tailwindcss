@@ -12,8 +12,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/fiber": "^8.13.5",
-    "@tailwindcss/tnpography": "^0.5.9",
+    "@react-three/fiber": "^8.13.6",
+    "@tailwindcss/typography": "^0.5.9",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/react": "18.2.16",
     "@types/react-dom": "18.2.7",
@@ -23,7 +23,7 @@
     "date-fns": "^2.30.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
-    "framer-motion-3d": "^10.13.1",
+    "framer-motion-3d": "^10.15.0",
     "highlight.js": "^11.8.0",
     "medium-zoom": "^1.0.8",
     "next": "13.4.12",
