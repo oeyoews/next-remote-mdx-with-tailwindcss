@@ -65,8 +65,8 @@ export default async function AllPostsListItem() {
             href="/posts"
             className="sm:col-span-1 lg:col-span-2 font-bold text-center rounded p-2 bg-neutral-100"
           >
-            ...
-            {/* ... <Views slug="/home" /> */}
+            {/* ... */}
+            ... <Views slug="/home" />
           </Link>
         </div>
       </section>

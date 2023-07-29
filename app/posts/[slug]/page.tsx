@@ -10,7 +10,6 @@ import Views from '@/components/Views';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
-import { kv } from '@vercel/kv';
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
 // https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
@@ -80,7 +79,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <Gravatar />
           <small className="font-serif text-gray-400">
             {pubDate}
-            {/* <Views slug={slug} /> */}
+            <Views slug={slug} />
           </small>
         </div>
         {post.description && (

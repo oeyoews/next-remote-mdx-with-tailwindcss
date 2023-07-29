@@ -1,7 +1,11 @@
-interface kvOptions {
-  slug: string | undefined;
-  quantity: number | undefined;
-}
+type kvOptions = {
+  quantity: number;
+};
+
+type Views = {
+  slug: kvOptions;
+};
+
 interface PostNavigationProps {
   prevPost: TFrontmatter;
   nextPost: TFrontmatter;
