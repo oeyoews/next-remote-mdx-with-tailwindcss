@@ -1,3 +1,4 @@
+// 'use server';
 import { FiEye } from 'react-icons/fi';
 
 import { kv } from '@vercel/kv';
@@ -7,13 +8,13 @@ import { kv } from '@vercel/kv';
 async function Views(params: { slug: string }) {
   let views: kvOptions | null = null;
   let quantity: number | undefined;
-  if (process.env.NODE_ENV !== 'development') {
-    const { slug } = params;
-    views = await kv.get(slug);
-    quantity = (views?.quantity || 0) + 1;
-    await kv.set(slug, { quantity });
-    views = await kv.get(slug);
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  const { slug } = params;
+  views = await kv.get(slug);
+  quantity = (views?.quantity || 0) + 1;
+  await kv.set(slug, { quantity });
+  views = await kv.get(slug);
+  // }
 
   return (
     <>

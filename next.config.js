@@ -12,6 +12,7 @@ const nextConfig = {
   // output: 'export',
   experimental: {
     // typedRoutes: true,
+    serverActions: true,
   },
   // ignoreBuildErrors: true,
   images: {
