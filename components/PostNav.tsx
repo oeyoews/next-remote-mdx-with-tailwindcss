@@ -3,8 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 function PostNavigation({ prevPost, nextPost }: PostNavigationProps) {
-  const navClass =
-    'mb-4 text-center bg-neutral-100 p-2 rounded-md hover:scale-105 duration-200 transition';
+  const navClass = 'mb-4 text-center bg-neutral-100 p-2 rounded-md';
 
   return (
     <div className="justify-between items-center flex">
