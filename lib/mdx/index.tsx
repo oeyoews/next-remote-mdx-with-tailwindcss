@@ -37,17 +37,17 @@ const mdxOptions: {} = {
   rehypePlugins: [
     rehypeSlug,
     rehypeKatex,
-    [
-      rehypePrettyCode,
-      {
-        // theme: 'one-dark-pro',
-        // theme: {
-        // 	dark: 'one-dark-pro',
-        // 	light: 'one-dark-pro'
-        // },
-        keepBackground: false,
-      },
-    ],
+    // [
+    //   rehypePrettyCode,
+    //   {
+    //     // theme: 'one-dark-pro',
+    //     // theme: {
+    //     // 	dark: 'one-dark-pro',
+    //     // 	light: 'one-dark-pro'
+    //     // },
+    //     keepBackground: false,
+    //   },
+    // ],
   ],
   format: 'mdx',
 };
