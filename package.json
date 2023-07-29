@@ -44,6 +44,7 @@
     "remark-emoji": "^3.1.2",
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
+    "remark-reading-time": "^2.0.1",
     "remark-toc": "^8.0.1",
     "rss": "^1.2.2",
     "sharp": "^0.32.4",

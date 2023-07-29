@@ -90,6 +90,7 @@ export default async function Post({ params }: { params: Params }) {
         ) : (
           post.content
         )}
+        {JSON.stringify(post.data)}
         <Hitokoto />
         <hr />
         <PostNavigation prevPost={prevPost} nextPost={nextPost} />
