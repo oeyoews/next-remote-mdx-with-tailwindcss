@@ -6,6 +6,7 @@ import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
 import TransitionWrapper from '@/components/TransitionWrapper';
+import Views from '@/components/Views';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
@@ -13,6 +14,7 @@ import { getAllPosts } from '@/lib/mdx';
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
 // https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
 // https://nextjs.org/docs/app/api-reference/functions/generate-static-params
+
 export async function generateStaticParams() {
   const posts = await getAllPosts();
   return posts.map((post) => ({
@@ -21,11 +23,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export async function generateMetadata({ params }: { params: Params }) {
+  // slug is [slug] dir
   const { slug } = params;
   const originalSlug = decodeURIComponent(slug);
   const posts = await getAllPosts();
@@ -45,7 +44,7 @@ export async function generateMetadata({
 }
 
 // support click h1 title to scroll top
-export default async function Post({ params }: { params: { slug: string } }) {
+export default async function Post({ params }: { params: Params }) {
   const { slug } = params;
   const originalSlug = decodeURIComponent(slug);
   const posts = await getAllPosts();
@@ -78,7 +77,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <Gravatar />
           <small className="font-serif text-gray-400">
             {pubDate}
-            {/* <Views slug={slug} /> */}
+            <Views slug={slug} />
           </small>
         </div>
         {post.description && (

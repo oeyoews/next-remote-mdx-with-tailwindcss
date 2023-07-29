@@ -1,3 +1,7 @@
+type Params = {
+  slug: string;
+};
+
 type kvOptions = {
   quantity: number;
 };
