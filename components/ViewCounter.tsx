@@ -15,12 +15,12 @@ async function ViewCounter(params: { slug: string }) {
   quantity = (views?.quantity || 0) + 1;
   if (!isDev) {
     await kv.set(slug, { quantity });
-    views = await kv.get(slug);
+    // views = await kv.get(slug);
   }
 
   return (
     <>
-      <FiEye className="inline ml-2 mr-1" /> views: {views?.quantity}
+      <FiEye className="inline ml-2 mr-1" /> views: {quantity}
     </>
   );
 }

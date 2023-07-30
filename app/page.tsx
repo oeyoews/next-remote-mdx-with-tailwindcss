@@ -66,7 +66,7 @@ export default async function AllPostsListItem() {
             className="sm:col-span-1 lg:col-span-2 font-bold text-center rounded p-2 bg-neutral-100"
           >
             ...
-            <ViewCounter slug="/home" />
+            <ViewCounter slug="home" />
           </Link>
         </div>
       </section>
