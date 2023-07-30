@@ -8,51 +8,6 @@ coverAlt: 'Girl Banner'
 fixed: false
 ---
 
-```js showLineNumbers
-const [age, setAge] = useState(50);
-const [age, setAge] = useState(50);
-const [age, setAge] = useState(50);
-const [name, setName] = useState('Taylor');
-```
-
-```js title="hello.js" {1,2} caption="show line highlight"
-const [age, setAge] = useState(50);
-const [name, setName] = useState('Taylor');
-```
-
-```js /age/#v /name/#v /setAge/#s /setName/#s /50/#i /'Taylor'/#i
-const [age, setAge] = useState(50);
-const [name, setName] = useState('Taylor');
-```
-
-This is an array `console.log("This is a demo"){:js}` of numbers 1 through 3.
-
-```tsx title="main.tsx" caption="This is a dmeo for tsx"
-'use client';
-
-// NOTE: This is required!
-import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
-
-type MdxContentProps = {
-  source: MDXRemoteSerializeResult;
-};
-/** Place your custom MDX components here */ const MdxComponents = {
-  /** h1 colored in yellow */
-  h1: (props: React.HTMLProps<HTMLHeadingElement>) => <h1 {...props} />,
-  /** Card component */
-  Card: (props: React.HTMLProps<HTMLDivElement>) => <div {...props} />,
-};
-
-export function MdxContent({ source }: MdxContentProps) {
-  return <MDXRemote {...source} components={MdxComponents} />;
-}
-```
-
-```js
-const num = 1;
-console.log('This is a dmeo');
-```
-
 ## Components
 
 {/* navbar has hydration on client on refreshed */}
