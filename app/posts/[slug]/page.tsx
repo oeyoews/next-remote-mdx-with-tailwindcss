@@ -76,7 +76,7 @@ export default async function Post({ params }: { params: Params }) {
           <Gravatar />
           <small className="font-serif text-gray-400">
             {pubDate}
-            <ViewCounter slug={originalSlug} />
+            {/* <ViewCounter slug={originalSlug} /> */}
           </small>
         </div>
         {post.description && (

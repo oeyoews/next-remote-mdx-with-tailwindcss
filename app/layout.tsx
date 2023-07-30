@@ -67,7 +67,7 @@ export default function RootLayout({
         <NavBar />
         <TransitionWrapper>{children}</TransitionWrapper>
         {!isDev && <Analytics />}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
