@@ -1,6 +1,7 @@
 import { format, isValid, parseISO } from 'date-fns';
 
 function getFormattedDate(date: string | object) {
+  if (!date) return;
   let parsedDate;
 
   if (typeof date === 'object' && date instanceof Date) {

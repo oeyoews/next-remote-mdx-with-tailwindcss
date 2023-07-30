@@ -13,7 +13,7 @@ async function ViewCounter(params: { slug: string }) {
   let quantity: number | undefined;
   views = await kv.get(slug);
   quantity = (views?.quantity || 0) + 1;
-  if (!isDev) {
+  if (isDev) {
     await kv.set(slug, { quantity });
     // views = await kv.get(slug);
   }
