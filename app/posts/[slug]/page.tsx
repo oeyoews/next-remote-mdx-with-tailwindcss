@@ -5,7 +5,6 @@ import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
 import TransitionWrapper from '@/components/TransitionWrapper';
-import ViewCounter from '@/components/ViewCounter';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
