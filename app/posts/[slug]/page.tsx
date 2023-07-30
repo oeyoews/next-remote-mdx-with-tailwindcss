@@ -6,8 +6,11 @@ import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
 import TransitionWrapper from '@/components/TransitionWrapper';
 
+import LikeButton from './LikeButton';
+
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
+import { kv } from '@vercel/kv';
 
 // https://nextjs.org/docs/app/building-your-application/routing/colocation
 // https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata
@@ -52,6 +55,10 @@ export default async function Post({ params }: { params: Params }) {
   if (!post) {
     notFound();
   }
+  async function increment() {
+    'use server';
+    await kv.incr(`bug`);
+  }
 
   const pubDate = getFormattedDate(post.date);
 
@@ -94,6 +101,7 @@ export default async function Post({ params }: { params: Params }) {
         )}
         <hr />
         <PostNavigation prevPost={prevPost} nextPost={nextPost} />
+        <LikeButton increment={increment} />
       </article>
     </TransitionWrapper>
   );
