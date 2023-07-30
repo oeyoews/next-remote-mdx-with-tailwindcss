@@ -13,10 +13,7 @@ function PostNavigation({ prevPost, nextPost }: PostNavigationProps) {
         </Link>
       )}
       {nextPost && (
-        <Link
-          href={`/posts/${nextPost.slug}`}
-          title={nextPost.title.toLocaleUpperCase()}
-        >
+        <Link href={`/posts/${nextPost.slug}`} title={nextPost.title}>
           <p className={navClass}>下一篇 →</p>
         </Link>
       )}
