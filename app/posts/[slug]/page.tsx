@@ -4,7 +4,6 @@ import Gravatar from '@/components/Gravatar';
 import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
-import TransitionWrapper from '@/components/TransitionWrapper';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
@@ -64,7 +63,7 @@ export default async function Post({ params }: { params: Params }) {
     currentIndex < posts.length - 1 ? posts[currentIndex + 1] : firstPost;
 
   return (
-    <TransitionWrapper>
+    <div>
       <KeyboardNavigation prevPost={prevPost} nextPost={nextPost} />
 
       <article className="prose mx-auto mt-4 p-4 max-w-3xl">
@@ -95,6 +94,6 @@ export default async function Post({ params }: { params: Params }) {
         <hr />
         <PostNavigation prevPost={prevPost} nextPost={nextPost} />
       </article>
-    </TransitionWrapper>
+    </div>
   );
 }
