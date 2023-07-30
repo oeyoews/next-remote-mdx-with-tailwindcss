@@ -1,4 +1,4 @@
-import ViewCounter from './Views';
+import ViewCounter from './ViewCounter';
 
 function Footer() {
   return (
