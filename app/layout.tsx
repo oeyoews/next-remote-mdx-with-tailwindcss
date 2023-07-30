@@ -3,12 +3,13 @@ import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import TransitionWrapper from '@/components/TransitionWrapper';
 import ProgressBar from '@/components/framer-motion/ProgressBar';
 
 import './globals.css';
+
+import { isDev } from '@/lib/dev';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -64,8 +65,7 @@ export default function RootLayout({
         <ProgressBar />
         <NavBar />
         <TransitionWrapper>{children}</TransitionWrapper>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
-        {/* <Footer /> */}
+        {!isDev && <Analytics />}
       </body>
     </html>
   );

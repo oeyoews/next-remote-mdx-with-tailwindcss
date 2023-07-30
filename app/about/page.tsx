@@ -4,7 +4,7 @@ import Hitokoto from '@/components/Hitokoto';
 import TransitionWrapper from '@/components/TransitionWrapper';
 import Views from '@/components/Views';
 
-// add metadata
+import { isDev } from '@/lib/dev';
 
 export async function generateMetadata() {
   return {
@@ -13,17 +13,16 @@ export async function generateMetadata() {
   };
 }
 
-export default async function page({ params }: { params: Params }) {
-  const { slug } = params;
+export default async function page() {
   return (
     <TransitionWrapper>
       <div className="prose mx-auto my-4 rounded p-4 max-w-3xl">
         <blockquote>Coming ...</blockquote>
         <div className="flex items-center justify-end space-x-2">
-          <Views slug="about" />
+          {!isDev && <Views slug="about" />}
           <Link href="/"> ← Back to Home</Link>
         </div>
-        <Hitokoto />
+        {!isDev && <Hitokoto />}
       </div>
     </TransitionWrapper>
   );
