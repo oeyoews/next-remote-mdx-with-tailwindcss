@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 
 import Gravatar from '@/components/Gravatar';
-import Hitokoto from '@/components/Hitokoto';
 import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
@@ -90,7 +89,6 @@ export default async function Post({ params }: { params: Params }) {
         ) : (
           post.content
         )}
-        <Hitokoto />
         <hr />
         <PostNavigation prevPost={prevPost} nextPost={nextPost} />
       </article>

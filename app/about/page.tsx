@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import Hitokoto from '@/components/Hitokoto';
 import TransitionWrapper from '@/components/TransitionWrapper';
 import Views from '@/components/Views';
 
@@ -22,6 +23,7 @@ export default async function page({ params }: { params: Params }) {
           <Views slug="about" />
           <Link href="/"> ← Back to Home</Link>
         </div>
+        <Hitokoto />
       </div>
     </TransitionWrapper>
   );

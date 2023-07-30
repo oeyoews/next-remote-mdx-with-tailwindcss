@@ -64,7 +64,7 @@ export default function RootLayout({
         <ProgressBar />
         <NavBar />
         <TransitionWrapper>{children}</TransitionWrapper>
-        <Analytics />
+        {process.env.NODE_ENV === 'production' && <Analytics />}
         {/* <Footer /> */}
       </body>
     </html>
