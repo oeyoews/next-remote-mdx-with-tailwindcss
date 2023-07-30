@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
 import TransitionWrapper from '@/components/TransitionWrapper';
-import ViewCounter from '@/components/ViewCounter';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
 
-export const dynamic = 'force-dynamic';
+// ???
+// export const dynamic = 'force-dynamic';
 
 export default async function AllPostsListItem() {
   const posts = (await getAllPosts()).slice(0, 3);
@@ -59,7 +59,6 @@ export default async function AllPostsListItem() {
           >
             ...
           </Link>
-          <ViewCounter slug="total" />
         </div>
       </section>
     </TransitionWrapper>
