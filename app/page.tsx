@@ -1,11 +1,21 @@
+import { SessionProvider } from 'next-auth/react';
+
+import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 
+import Login from '@/components/Login';
 import TransitionWrapper from '@/components/TransitionWrapper';
+
+import { options } from './api/auth/[...nextauth]/options';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
 
 export default async function AllPostsListItem() {
+  const session = getServerSession(options);
+  if (!session) {
+    console.log('login please');
+  }
   const posts = (await getAllPosts()).slice(0, 3);
   const gradientBorder = false;
   const indexToColor: any = {
@@ -67,6 +77,9 @@ export default async function AllPostsListItem() {
             ...
             {/* ... ... <Views slug="/home" /> */}
           </Link>
+          {/* <SessionProvider session={session}>
+            <Login />
+          </SessionProvider> */}
         </div>
       </section>
     </TransitionWrapper>
