@@ -6,12 +6,10 @@ import getFormattedDate from '../getFormatedDate';
 
 import fs, { readdirSync } from 'fs';
 import path from 'path';
-import rehypeKatex from 'rehype-katex';
-import rehypePrettyCode from 'rehype-pretty-code';
+// import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkEmoji from 'remark-emoji';
 import remarkGFM from 'remark-gfm';
-import remarkMath from 'remark-math';
 import remarkToc from 'remark-toc';
 
 // https://github.com/kfirfitousi/blog/blob/4169a4268764a46ba61e6ea5ed51e459a73926e5/contentlayer.config.ts#L7
@@ -32,23 +30,21 @@ const mdxOptions: {} = {
       },
     ],
     remarkEmoji,
-    remarkMath,
   ],
   rehypePlugins: [
     rehypeSlug,
-    rehypeKatex,
     // this code is a bug for kv about md(x) page
-    [
-      rehypePrettyCode,
-      {
-        // theme: 'one-dark-pro',
-        // theme: {
-        // 	dark: 'one-dark-pro',
-        // 	light: 'one-dark-pro'
-        // },
-        keepBackground: false,
-      },
-    ],
+    // [
+    //   // rehypePrettyCode,
+    //   {
+    //     // theme: 'one-dark-pro',
+    //     // theme: {
+    //     // 	dark: 'one-dark-pro',
+    //     // 	light: 'one-dark-pro'
+    //     // },
+    //     keepBackground: false,
+    //   },
+    // ],
   ],
   format: 'mdx',
 };

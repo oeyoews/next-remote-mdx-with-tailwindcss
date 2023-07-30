@@ -1,5 +1,4 @@
 import { FaGithub } from 'react-icons/fa';
-import { Tweet } from 'react-tweet';
 
 import Pre from './CopyCode';
 import { ImageZoom as Image } from './ImageZoom';
@@ -9,7 +8,6 @@ function Star() {
 }
 
 const mdxCustomComponents = {
-  Tweet,
   pre: Pre,
   Star,
   Image,
