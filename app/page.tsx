@@ -6,6 +6,8 @@ import ViewCounter from '@/components/ViewCounter';
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AllPostsListItem() {
   const posts = (await getAllPosts()).slice(0, 3);
   const gradientBorder = false;
