@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 
-import Gravatar from '@/components/Gravatar';
 import KeyboardNavigation from '@/components/KeyboardNavigation';
 import PassWord from '@/components/PassWord';
 import PostNavigation from '@/components/PostNav';
@@ -71,7 +70,6 @@ export default async function Post({ params }: { params: Params }) {
           {post.title || post.slug}
         </h2>
         <div className="not-prose text-center">
-          <Gravatar />
           <small className="font-serif text-gray-400">
             {pubDate}
             {/* <ViewCounter slug={originalSlug} /> */}

@@ -14,7 +14,7 @@ function PostNavigation({ prevPost, nextPost }: PostNavigationProps) {
       )}
       {nextPost && (
         <Link href={`/posts/${nextPost.slug}`} title={nextPost.title}>
-          <p className={navClass}>下一篇 →</p>
+          <button className={navClass}>下一篇 →</button>
         </Link>
       )}
     </div>

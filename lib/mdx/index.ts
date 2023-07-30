@@ -6,7 +6,7 @@ import getFormattedDate from '../getFormatedDate';
 
 import fs, { readdirSync } from 'fs';
 import path from 'path';
-// import rehypePrettyCode from 'rehype-pretty-code';
+import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkEmoji from 'remark-emoji';
 import remarkGFM from 'remark-gfm';
@@ -34,17 +34,17 @@ const mdxOptions: {} = {
   rehypePlugins: [
     rehypeSlug,
     // this code is a bug for kv about md(x) page
-    // [
-    //   // rehypePrettyCode,
-    //   {
-    //     // theme: 'one-dark-pro',
-    //     // theme: {
-    //     // 	dark: 'one-dark-pro',
-    //     // 	light: 'one-dark-pro'
-    //     // },
-    //     keepBackground: false,
-    //   },
-    // ],
+    [
+      rehypePrettyCode,
+      {
+        theme: 'one-dark-pro',
+        // theme: {
+        // 	dark: 'one-dark-pro',
+        // 	light: 'one-dark-pro'
+        // },
+        keepBackground: false,
+      },
+    ],
   ],
   format: 'mdx',
 };

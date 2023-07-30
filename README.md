@@ -16,6 +16,7 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 
 ## NOTE
 
+* kv and compiled mdx page is conflict
 <!-- * codeblock on dev is very slow for ui -->
 
 ## TODO
@@ -69,3 +70,11 @@ https://next-remote-mdx-with-tailwindcss.vercel.app
 - https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes
 - support html in mdx file
 - use daysiui
+
+## Why not use contentlayer
+
+because of this error on my computer, so weired to use contentlayer
+
+```
+next@13.4.10_@opentelemetry+api@1.4.1_react-dom@18.2.0_react@18.2.0/node_modules/next/dist/compiled/jest-worker/processChild.js
+```

@@ -9,3 +9,7 @@ fixed: false
 ---
 
 > markdown test on mdx
+
+```js
+consolg.log('This');
+```

@@ -24,12 +24,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
+    "rehype-pretty-code": "^0.10.0",
     "rehype-slug": "^5.1.0",
     "remark-emoji": "^3.1.2",
     "remark-gfm": "^3.0.1",
     "remark-toc": "^8.0.1",
     "rss": "^1.2.2",
-    "sharp": "^0.32.4"
+    "sharp": "^0.32.4",
+    "shiki": "^0.14.3"
   },
   "devDependencies": {
     "@react-three/fiber": "^8.13.6",
