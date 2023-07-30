@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import ProgressBar from '@/components/framer-motion/ProgressBar';
 
@@ -12,7 +13,6 @@ import { isDev } from '@/lib/dev';
 
 const inter = Inter({ subsets: ['latin'] });
 
-// https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
 export const metadata: Metadata = {
   alternates: {
     canonical: '/feed.xml',
@@ -65,7 +65,7 @@ export default function RootLayout({
         <NavBar />
         {children}
         {!isDev && <Analytics />}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
