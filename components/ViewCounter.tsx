@@ -1,9 +1,9 @@
-// 'use server';
 import { FiEye } from 'react-icons/fi';
 
+import { isDev } from '@/lib/dev';
 import { kv } from '@vercel/kv';
 
-async function Views(params: { slug: string }) {
+async function ViewCounter(params: { slug: string }) {
   const { slug } = params;
   if (!slug) {
     console.log(`${slug} not found`);
@@ -13,8 +13,10 @@ async function Views(params: { slug: string }) {
   let quantity: number | undefined;
   views = await kv.get(slug);
   quantity = (views?.quantity || 0) + 1;
-  await kv.set(slug, { quantity });
-  views = await kv.get(slug);
+  if (!isDev) {
+    await kv.set(slug, { quantity });
+    views = await kv.get(slug);
+  }
 
   return (
     <>
@@ -23,4 +25,4 @@ async function Views(params: { slug: string }) {
   );
 }
 
-export default Views;
+export default ViewCounter;

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import TransitionWrapper from '@/components/TransitionWrapper';
+import ViewCounter from '@/components/ViewCounter';
 
 import getFormattedDate from '@/lib/getFormatedDate';
 import { getAllPosts } from '@/lib/mdx';
@@ -65,7 +66,7 @@ export default async function AllPostsListItem() {
             className="sm:col-span-1 lg:col-span-2 font-bold text-center rounded p-2 bg-neutral-100"
           >
             ...
-            {/* ... ... <Views slug="/home" /> */}
+            <ViewCounter slug="/home" />
           </Link>
         </div>
       </section>
