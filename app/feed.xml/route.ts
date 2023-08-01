@@ -1,6 +1,17 @@
 // https://validator.w3.org/feed/#validate_by_input
 import { getAllPosts } from '@/lib/mdx';
+import { marked } from 'marked';
 import RSS from 'rss';
+
+const renderer = new marked.Renderer();
+
+marked.setOptions({
+  gfm: true,
+  breaks: true,
+  renderer,
+});
+
+const renderPost = (md: string) => marked.parse(md);
 
 const domain = process.env.DOMAIN;
 
@@ -19,6 +30,8 @@ export async function GET() {
       title: post.title,
       // TODO content is a obj ???
       description: post.description,
+      // maybe sue gray-matter not use remote-mdx's matter
+      // description: renderPost(post.content),
       url: `${domain}/posts/${post.slug}`,
       author: 'oeyoews',
       pubDate: post.date,
